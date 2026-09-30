@@ -1,0 +1,1161 @@
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #03061f;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   FONDO DE PUNTOS
+========================================= */
+
+.puntos {
+    position: fixed;
+    width: 280px;
+    height: 280px;
+
+    pointer-events: none;
+
+    opacity: 0.65;
+
+    z-index: 0;
+
+    background-image: radial-gradient(
+        circle,
+        #30449b 2px,
+        transparent 3px
+    );
+
+    background-size: 14px 14px;
+}
+
+.puntos-izquierda {
+    top: 0;
+    left: 0;
+
+    mask-image: linear-gradient(
+        135deg,
+        black,
+        transparent 80%
+    );
+}
+
+.puntos-derecha {
+    right: 0;
+    bottom: 0;
+
+    mask-image: linear-gradient(
+        315deg,
+        black,
+        transparent 80%
+    );
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    width: 100%;
+    height: 127px;
+
+    border-bottom: 1px solid #14266e;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    z-index: 100;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.titulo h1 {
+    color: #2850bd;
+
+    font-size: 28px;
+
+    font-weight: bold;
+}
+
+.titulo span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #182a6e;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   BOTÓN HAMBURGUESA
+========================================= */
+
+.boton-menu {
+    position: absolute;
+
+    top: 32px;
+    right: 50px;
+
+    width: 52px;
+    height: 52px;
+
+    border: none;
+    border-radius: 13px;
+
+    background: #2445ad;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px rgba(48, 79, 200, 0.5);
+
+    z-index: 110;
+}
+
+.boton-menu span {
+    width: 24px;
+    height: 3px;
+
+    background: white;
+
+    border-radius: 5px;
+
+    transition: 0.3s;
+}
+
+
+/* Hamburguesa → X */
+
+.boton-menu.activo span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.boton-menu.activo span:nth-child(2) {
+    opacity: 0;
+}
+
+.boton-menu.activo span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* =========================================
+   MENÚ LATERAL
+========================================= */
+
+.sidebar {
+    position: fixed;
+
+    top: 0;
+    right: -440px;
+
+    width: 440px;
+    height: 100vh;
+
+    padding-top: 127px;
+
+    background: #02051b;
+
+    border-left: 1px solid #15276d;
+
+    transition: right 0.4s ease;
+
+    z-index: 90;
+}
+
+
+/* MENÚ ABIERTO */
+
+.sidebar.abierto {
+    right: 0;
+}
+
+
+/* =========================================
+   FONDO OSCURO
+========================================= */
+
+.overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 0.3s;
+
+    z-index: 80;
+}
+
+.overlay.activo {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* =========================================
+   OPCIONES DEL MENÚ
+========================================= */
+
+.opcion {
+    width: 100%;
+    height: 87px;
+
+    padding: 0 50px;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom: 1px solid #111f58;
+
+    transition: 0.25s;
+}
+
+.opcion:first-child {
+    border-top: 1px solid #111f58;
+}
+
+.opcion:hover {
+    background: #080d2d;
+
+    padding-left: 60px;
+}
+
+.opcion p {
+    margin-left: 15px;
+
+    color: #eeeeee;
+
+    font-size: 13px;
+
+    line-height: 18px;
+}
+
+
+/* =========================================
+   ICONOS DEL MENÚ
+========================================= */
+
+.icono {
+    width: 56px;
+    height: 56px;
+
+    border-radius: 17px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    background: linear-gradient(
+        135deg,
+        #7450d8,
+        #5969dc,
+        #b5bb4c
+    );
+
+    box-shadow:
+        inset 0 0 15px rgba(255,255,255,0.15),
+        0 0 10px rgba(87,70,220,0.25);
+}
+
+
+/* =========================================
+   CONTENIDO PRINCIPAL
+========================================= */
+
+main {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 42% 58%;
+
+    gap: 4%;
+
+    padding: 27px 7% 70px;
+}
+
+
+/* =========================================
+   DEFINICIÓN
+========================================= */
+
+.definicion h2 {
+    color: #2850bd;
+
+    font-size: 30px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================
+   CAJA DE DEFINICIÓN
+========================================= */
+
+.texto-definicion {
+    width: 100%;
+    max-width: 500px;
+
+    height: 485px;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(11, 18, 52, 0.95),
+        rgba(8, 13, 39, 0.9)
+    );
+
+    box-shadow:
+        0 0 15px rgba(36, 68, 180, 0.25),
+        inset 0 0 10px rgba(30, 55, 140, 0.2);
+}
+
+.texto-definicion p {
+    color: #eeeeee;
+
+    font-size: 14px;
+
+    line-height: 18px;
+
+    margin-bottom: 25px;
+}
+
+.texto-definicion .texto-oculto {
+    color: #68708d;
+}
+
+
+/* =====================================
+   CONFIGURACIÓN GENERAL
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    background: #03061f;
+
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =====================================
+   FONDO DE PUNTOS
+===================================== */
+
+.puntos {
+    position: fixed;
+
+    width: 280px;
+    height: 280px;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    opacity: 0.65;
+
+    background-image: radial-gradient(
+        circle,
+        #30449b 2px,
+        transparent 3px
+    );
+
+    background-size: 14px 14px;
+}
+
+
+/* Puntos de arriba a la izquierda */
+
+.puntos-izquierda {
+    top: 0;
+    left: 0;
+
+    mask-image: linear-gradient(
+        135deg,
+        black,
+        transparent 80%
+    );
+}
+
+
+/* Puntos de abajo a la derecha */
+
+.puntos-derecha {
+    right: 0;
+    bottom: 0;
+
+    mask-image: linear-gradient(
+        315deg,
+        black,
+        transparent 80%
+    );
+}
+
+
+/* =====================================
+   CONTENIDO PRINCIPAL
+===================================== */
+
+main {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 42% 58%;
+
+    gap: 4%;
+
+    padding: 55px 7% 80px;
+}
+
+
+/* =====================================
+   SECCIÓN IMPORTANCIA
+===================================== */
+
+.importancia h1 {
+    color: #2850bd;
+
+    font-size: 30px;
+
+    margin-bottom: 12px;
+}
+
+
+/* =====================================
+   CAJA DE TEXTO
+===================================== */
+
+.caja-texto {
+    width: 100%;
+
+    max-width: 420px;
+
+    height: 485px;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(11, 18, 52, 0.96),
+        rgba(8, 13, 39, 0.92)
+    );
+
+    box-shadow:
+        0 0 15px rgba(36, 68, 180, 0.30),
+        inset 0 0 10px rgba(30, 55, 140, 0.20);
+}
+
+
+/* Texto */
+
+.caja-texto p {
+    color: #eeeeee;
+
+    font-size: 14px;
+
+    line-height: 18px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =====================================
+   VÉASE TAMBIÉN
+===================================== */
+
+.vease {
+    padding-top: 10px;
+}
+
+
+/* Título */
+
+.vease h2 {
+    text-align: center;
+
+    color: #2850bd;
+
+    font-size: 30px;
+
+    margin-bottom: 15px;
+}
+
+
+/* Línea debajo del título */
+
+.linea {
+    width: 100%;
+
+    height: 1px;
+
+    background: #14266e;
+
+    margin-bottom: 45px;
+}
+
+
+/* =====================================
+   GRID DE OPCIONES
+===================================== */
+
+.opciones {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    column-gap: 35px;
+
+    row-gap: 80px;
+
+    justify-items: center;
+}
+
+
+/* =====================================
+   OPCIÓN
+===================================== */
+
+.opcion {
+    width: 180px;
+
+    min-width: 180px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    transition: 0.3s ease;
+}
+
+
+/* =====================================
+   ICONOS
+===================================== */
+
+.icono {
+    width: 68px;
+    height: 68px;
+
+    min-width: 68px;
+    min-height: 68px;
+
+    max-width: 68px;
+    max-height: 68px;
+
+    margin: 0 auto 12px;
+
+    padding: 0;
+
+    border-radius: 17px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-shrink: 0;
+
+    color: #eeeeee;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    background: linear-gradient(
+        135deg,
+        #7450d8,
+        #5969dc,
+        #b5bb4c
+    );
+
+    box-shadow:
+        0 0 15px rgba(87, 70, 220, 0.30);
+
+    transition: 0.3s ease;
+}
+
+
+/* =====================================
+   TEXTO DE LAS OPCIONES
+===================================== */
+
+.opcion p {
+    width: 180px;
+
+    color: #eeeeee;
+
+    font-size: 14px;
+
+    line-height: 18px;
+
+    text-align: center;
+
+    margin: 0;
+}
+
+
+/* =====================================
+   EFECTO AL PASAR EL MOUSE
+===================================== */
+
+.opcion:hover {
+    transform: translateY(-7px);
+}
+
+.opcion:hover .icono {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 25px rgba(80, 90, 220, 0.55);
+}
+
+
+/* =====================================
+   PARTE INFERIOR
+===================================== */
+
+.parte-inferior {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    padding: 0 7% 25px;
+
+    text-align: center;
+}
+
+
+/* Línea inferior */
+
+.linea-inferior {
+    width: 100%;
+
+    height: 1px;
+
+    background: #14266e;
+
+    margin-bottom: 23px;
+}
+
+
+/* =====================================
+   BOTÓN SOBRE NOSOTROS
+===================================== */
+
+.sobre-nosotros {
+    border: none;
+
+    padding: 9px 32px;
+
+    border-radius: 25px;
+
+    background: linear-gradient(
+        90deg,
+        #8580dd,
+        #9b8ce6
+    );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(130, 120, 220, 0.65);
+
+    transition: 0.3s ease;
+}
+
+.sobre-nosotros:hover {
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 25px rgba(130, 120, 220, 0.85);
+}
+
+
+/* =========================================
+   CORRECCIÓN DEL MENÚ HAMBURGUESA
+   NO MODIFICA LA PÁGINA PRINCIPAL
+========================================= */
+
+
+/* El contenido del menú puede desplazarse
+   si la pantalla es más chica */
+
+.sidebar {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   OPCIONES DEL MENÚ LATERAL
+========================================= */
+
+.sidebar .opcion {
+    width: 100%;
+    height: 87px;
+    min-height: 87px;
+
+    padding: 0 50px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 0;
+
+    border-bottom: 1px solid #111f58;
+
+    transition:
+        background 0.25s ease;
+}
+
+
+/* Primera opción */
+
+.sidebar .opcion:first-child {
+    border-top: 1px solid #111f58;
+}
+
+
+/* =========================================
+   HOVER DEL MENÚ
+========================================= */
+
+/* IMPORTANTE:
+   no mover la opción al pasar el mouse */
+
+.sidebar .opcion:hover {
+    background: #080d2d;
+
+    padding-left: 50px;
+
+    transform: none;
+}
+
+
+/* =========================================
+   ICONOS DEL MENÚ
+========================================= */
+
+.sidebar .icono {
+    width: 56px;
+    height: 56px;
+
+    min-width: 56px;
+    min-height: 56px;
+
+    max-width: 56px;
+    max-height: 56px;
+
+    flex-shrink: 0;
+
+    margin: 0;
+
+    padding: 0;
+
+    border-radius: 17px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    background: linear-gradient(
+        135deg,
+        #7450d8,
+        #5969dc,
+        #b5bb4c
+    );
+
+    box-shadow:
+        inset 0 0 15px rgba(255,255,255,0.15),
+        0 0 10px rgba(87,70,220,0.25);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* El icono solamente crece un poco.
+   No cambia de lugar */
+
+.sidebar .opcion:hover .icono {
+    transform: scale(1.05);
+
+    box-shadow:
+        inset 0 0 15px rgba(255,255,255,0.15),
+        0 0 18px rgba(87,70,220,0.45);
+}
+
+
+/* =========================================
+   TEXTO DEL MENÚ
+========================================= */
+
+.sidebar .opcion p {
+    width: auto;
+
+    max-width: 230px;
+
+    margin: 0 0 0 15px;
+
+    color: #eeeeee;
+
+    font-size: 13px;
+
+    line-height: 18px;
+
+    text-align: left;
+
+    white-space: normal;
+
+    overflow-wrap: break-word;
+}
+
+
+/* =========================================
+   SEPARACIÓN ENTRE ELEMENTOS
+========================================= */
+
+/* Evita que un texto largo invada
+   visualmente la siguiente opción */
+
+.sidebar .opcion + .opcion {
+    margin-top: 0;
+}
+
+
+/* =========================================
+   RESPONSIVE DEL MENÚ
+========================================= */
+
+@media (max-width: 600px) {
+
+    .sidebar {
+        width: 350px;
+
+        right: -350px;
+    }
+
+    .sidebar.abierto {
+        right: 0;
+    }
+
+    .sidebar .opcion {
+        padding: 0 30px;
+    }
+
+    .sidebar .opcion:hover {
+        padding-left: 30px;
+    }
+
+    .sidebar .opcion p {
+        max-width: 190px;
+
+        font-size: 12px;
+
+        line-height: 17px;
+    }
+
+}
+
+
+/* =========================================
+   ENLACES DE VÉASE TAMBIÉN
+========================================= */
+
+.enlace-opcion {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* Evita que el enlace cambie el diseño */
+
+.enlace-opcion:visited {
+    color: inherit;
+}
+
+
+/* Mantiene el tamaño de los elementos */
+
+.enlace-opcion .icono {
+    flex-shrink: 0;
+}
+
+
+/* Mantiene el efecto hover */
+
+.enlace-opcion:hover {
+    text-decoration: none;
+}
+
+/* =========================================
+   LOGO SPRINT MÁSTER
+========================================= */
+
+.logo-seccion {
+    width: 100%;
+    min-height: 485px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+}
+
+
+/* =========================================
+   CONTENEDOR DEL LOGO
+========================================= */
+
+.logo-contenedor {
+    width: 100%;
+    max-width: 520px;
+
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    box-shadow:
+        0 0 25px rgba(36, 68, 180, 0.25);
+
+    opacity: 0;
+
+    transform: translateY(25px) scale(0.97);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* =========================================
+   LOGO VISIBLE
+========================================= */
+
+.logo-contenedor.logo-visible {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+}
+
+
+/* =========================================
+   IMAGEN
+========================================= */
+
+.logo-imagen {
+    display: block;
+
+    width: 100%;
+    max-width: 430px;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+}
+
+
+/* =========================================
+   EFECTO AL PASAR EL MOUSE
+========================================= */
+
+.logo-contenedor:hover {
+    box-shadow:
+        0 0 35px rgba(36, 68, 180, 0.45);
+}
+
+.logo-contenedor:hover .logo-imagen {
+    transform: scale(1.03);
+}
+
+
+/* =========================================
+   TEXTO
+========================================= */
+
+.logo-texto {
+    width: 100%;
+
+    text-align: center;
+
+    margin-top: 10px;
+}
+
+.logo-texto h1 {
+    color: #10264a;
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 8px;
+}
+
+.logo-texto p {
+    color: #3f4857;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    margin: 0;
+}
+
+
+/* =========================================
+   ANIMACIÓN AL HACER CLICK
+========================================= */
+
+.logo-imagen.logo-click {
+    animation: logoPulso 0.5s ease;
+}
+
+@keyframes logoPulso {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.06);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .logo-seccion {
+        min-height: 400px;
+
+        padding: 20px;
+    }
+
+    .logo-contenedor {
+        padding: 20px;
+    }
+
+    .logo-imagen {
+        max-width: 100%;
+    }
+
+    .logo-texto h1 {
+        font-size: 22px;
+
+        letter-spacing: 3px;
+    }
+
+    .logo-texto p {
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+}

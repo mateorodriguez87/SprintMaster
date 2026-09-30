@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemas de Gestión de la Calidad de Software</title>
+
+    <!-- Tipografía Google Font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="../../../CSS/styleus2.css">
+</head>
+
+<body>
+
+    <!-- DECORACIÓN FONDO -->
+    <div class="puntos puntos-izquierda"></div>
+    <div class="puntos puntos-derecha"></div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="titulo">
+            <h1> GESTIÓN DE  LA CALIDAD DE SOFTWARE</h1>
+            <span>Inicio</span>
+        </div>
+
+        <!-- BOTÓN HAMBURGUESA -->
+        <button class="boton-menu" id="botonMenu" type="button" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- MENÚ LATERAL -->
+    <aside class="sidebar" id="sidebar">
+        <div class="opcion">
+            <div class="icono">GCS</div>
+            <p>Gestión de calidad de software</p>
+        </div>
+        <div class="opcion">
+            <div class="icono">PDS</div>
+            <p>Proceso de Desarrollo de Software</p>
+        </div>
+        <div class="opcion">
+            <div class="icono">MA</div>
+            <p>Metodologías Ágiles</p>
+        </div>
+        <div class="opcion">
+            <div class="icono">RA</div>
+            <p>Recursos y Aprendizaje</p>
+        </div>
+        <div class="opcion">
+            <div class="icono">CM</div>
+            <p>Comparador de Metodologías</p>
+        </div>
+        <div class="opcion">
+            <div class="icono">EPM</div>
+            <p>Encuesta de Preferencias<br>de Metodologías</p>
+        </div>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenedor-principal">
+
+        <!-- NAVEGACIÓN POR PESTAÑAS (TABS) -->
+        <nav class="tabs-header" role="tablist">
+            <button class="tab-btn active" data-tab="tab-calidad">Calidad</button>
+            <button class="tab-btn" data-tab="tab-normas">Normas ISO</button>
+            <button class="tab-btn" data-tab="tab-metricas">Métricas</button>
+        </nav>
+
+        <!-- PANEL DE CONTENIDO DE PESTAÑAS -->
+        <div class="tab-content-panel">
+
+            <!-- PESTAÑA 1: CALIDAD -->
+            <section id="tab-calidad" class="tab-pane active">
+                <p class="tab-desc">
+                    La calidad de software es el grado en el que un sistema, componente o proceso cumple con los requerimientos especificados y satisface las necesidades o expectativas implícitas de los usuarios y partes interesadas. En la ingeniería de software, este concepto abarca dos dimensiones fundamentales: la calidad del producto, que se refleja en su correcto funcionamiento, desempeño, seguridad y facilidad de uso, y la calidad del proceso, que se refiere a la eficiencia y disciplina con la que se construye, evalúa y mantiene dicho sistema a lo largo de su ciclo de vida.
+                </p>
+
+                <h2 class="concepts-title">Algunos conceptos importantes:</h2>
+
+                <div class="concept-list">
+                    <p class="concept-item">
+                        <strong>Calidad de diseño:</strong> qué tan bien está diseñado el software para cumplir con las necesidades previstas.
+                    </p>
+                    <p class="concept-item">
+                        <strong>Calidad de conformidad:</strong> qué tanto el producto desarrollado cumple con el diseño, los requisitos y las especificaciones establecidas
+                    </p>
+                    <p class="concept-item">
+                        <strong>Requisitos:</strong> condiciones que el sistema debe cumplir.
+                    </p>
+                    <p class="concept-item">
+                        <strong>Buenas prácticas:</strong> formas recomendadas de desarrollar software para reducir errores y mejorar su calidad.
+                    </p>
+                    <p class="concept-item">
+                        <strong>Satisfacción del usuario:</strong> qué tan conforme está el usuario con el sistema.
+                    </p>
+                    <p class="concept-item">
+                        <strong>Defecto:</strong> error o problema del software que hace que no cumpla con un requisito o comportamiento esperado.
+                    </p>
+                    
+                </div>
+            </section>
+
+            <!-- PESTAÑA 2: NORMAS ISO (ACORDEONES DINÁMICOS) -->
+            <section id="tab-normas" class="tab-pane">
+                <p class="tab-desc">
+                    Las normas ISO establecen requisitos y directrices para garantizar la calidad, seguridad y eficiencia de los productos, servicios y sistemas de gestión en las empresas
+                </p>
+
+                <div class="iso-grid">
+                    <!-- Tarjeta ISO 9126 -->
+                    <article class="iso-card">
+                        <div>
+                            <h3>ISO/IEC 9126</h3>
+                            <p>
+                                Fue el estándar pionero en clasificar la calidad del software en atributos estructurados. Dividía la calidad en tres vistas: interna, externa y en uso. En ISO 9126 la seguridad era solo una subcaracterística dentro de Funcionalidad.
+                            </p>
+                        </div>
+                        <button class="accordion-btn" type="button">Más información abajo y así</button>
+                        <div class="accordion-content">
+                            <p><strong>Detalles clave:</strong> Define 6 características principales: Funcionalidad, Fiabilidad, Usabilidad, Eficiencia, Mantenibilidad y Portabilidad.</p>
+                        </div>
+                    </article>
+
+                    <!-- Tarjeta ISO 25000 -->
+                    <article class="iso-card">
+                        <div>
+                            <h3>ISO/IEC 25000</h3>
+                            <p>
+                                Conocido como SQuaRE (Software Product Quality Requirements and Evaluation), sustituyó a ISO 9126. Reorganizó las normas dispersas sobre calidad y requisitos en una sola familia unificada.
+                            </p>
+                        </div>
+                        <button class="accordion-btn" type="button">Más información abajo y así</button>
+                        <div class="accordion-content">
+                            <p><strong>Detalles clave:</strong> Estructurado en 5 divisiones. Incorpora la Seguridad y Compatibilidad como características independientes.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+           <!-- PESTAÑA 3: MÉTRICAS -->
+<section id="tab-metricas" class="tab-pane">
+
+    <p class="tab-desc">
+        Una métrica es una medida que permite evaluar alguna característica del software.
+    </p>
+
+    <div class="metrics-grid">
+
+        <!-- DISPONIBILIDAD -->
+        <div class="metric-box">
+            <div class="metric-front">
+                <div class="metric-title">Disponibilidad</div>
+                <p>Cuánto tiempo permanece funcionando</p>
+            </div>
+
+            <div class="metric-back">
+                <h3>Disponibilidad</h3>
+
+                <p>
+                    <strong>Definición:</strong>
+                    Indica la proporción de tiempo que un sistema permanece
+                    operativo y accesible para los usuarios en relación con
+                    el tiempo total previsto para su funcionamiento.
+                </p>
+
+                <p>
+                    <strong>Importancia:</strong>
+                    Es crítica para garantizar los acuerdos de nivel de
+                    servicio (SLA) y asegurar que el sistema esté disponible
+                    cuando los usuarios o el negocio lo necesiten.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- MANTENIBILIDAD -->
+        <div class="metric-box">
+            <div class="metric-front">
+                <div class="metric-title">Mantenibilidad</div>
+                <p>Qué tan fácil es modificar o corregir el software</p>
+            </div>
+
+            <div class="metric-back">
+                <h3>Mantenibilidad</h3>
+
+                <p>
+                    <strong>Definición:</strong>
+                    Grado de facilidad con el que el código fuente puede ser
+                    modificado para corregir errores, mejorar el rendimiento
+                    o adaptarlo a nuevos requerimientos.
+                </p>
+
+                <p>
+                    <strong>Importancia:</strong>
+                    Un software con alta mantenibilidad reduce
+                    considerablemente los costos de desarrollo a largo plazo
+                    y permite evolucionar el producto sin introducir fallos
+                    imprevistos.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- USABILIDAD -->
+        <div class="metric-box">
+            <div class="metric-front">
+                <div class="metric-title">Usabilidad</div>
+                <p>Qué tan fácil es utilizarlo</p>
+            </div>
+
+            <div class="metric-back">
+                <h3>Usabilidad</h3>
+
+                <p>
+                    <strong>Definición:</strong>
+                    Medida cualitativa y cuantitativa de la facilidad con la
+                    que los usuarios pueden interactuar con el software para
+                    alcanzar sus objetivos de manera eficiente y satisfactoria.
+                </p>
+
+                <p>
+                    <strong>Importancia:</strong>
+                    Determina el nivel de adopción por parte de los usuarios,
+                    reduce la curva de aprendizaje y disminuye la tasa de
+                    abandono de la aplicación.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="metrics-grid-bottom">
+
+        <!-- CANTIDAD DE ERRORES -->
+        <div class="metric-box">
+            <div class="metric-front">
+                <div class="metric-title">Cantidad de errores</div>
+                <p>Cuántos errores tiene el sistema</p>
+            </div>
+
+            <div class="metric-back">
+                <h3>Cantidad de errores</h3>
+
+                <p>
+                    <strong>Definición:</strong>
+                    Mide el número total de defectos, inconsistencias o
+                    desviaciones con respecto a las especificaciones que
+                    residen en la base de código del sistema.
+                </p>
+
+                <p>
+                    <strong>Importancia:</strong>
+                    Ayuda a evaluar la calidad interna del desarrollo y
+                    permite enfocar los esfuerzos de refactorización y
+                    corrección antes o después del despliegue.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- CANTIDAD DE FALLOS -->
+        <div class="metric-box">
+            <div class="metric-front">
+                <div class="metric-title">Cantidad de fallos</div>
+                <p>Frecuencia con la que falla</p>
+            </div>
+
+            <div class="metric-back">
+                <h3>Cantidad de fallos</h3>
+
+                <p>
+                    <strong>Definición:</strong>
+                    Mide la frecuencia con la que ocurren interrupciones o
+                    comportamientos incorrectos durante la ejecución del
+                    sistema en tiempo real.
+                </p>
+
+                <p>
+                    <strong>Importancia:</strong>
+                    Es un indicador directo de la fiabilidad del software
+                    en entornos de producción, ya que refleja el impacto
+                    real que percibe el usuario final.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- TIEMPO DE RESPUESTA -->
+        <div class="metric-box">
+            <div class="metric-front">
+                <div class="metric-title">Tiempo de respuesta</div>
+                <p>Qué tan rápido responde</p>
+            </div>
+
+            <div class="metric-back">
+                <h3>Tiempo de respuesta</h3>
+
+                <p>
+                    <strong>Definición:</strong>
+                    Es el intervalo de tiempo que transcurre desde que un
+                    usuario o proceso realiza una solicitud hasta que el
+                    sistema procesa y entrega la respuesta.
+                </p>
+
+                <p>
+                    <strong>Importancia:</strong>
+                    Afecta directamente la experiencia del usuario; tiempos
+                    de respuesta altos provocan frustración, pérdida de
+                    conversiones y percepción de lentitud general.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- COBERTURA DE PRUEBAS -->
+        <div class="metric-box">
+            <div class="metric-front">
+                <div class="metric-title">Cobertura de pruebas</div>
+                <p>Cuánto del sistema fue probado</p>
+            </div>
+
+            <div class="metric-back">
+                <h3>Cobertura de pruebas</h3>
+
+                <p>
+                    <strong>Definición:</strong>
+                    Porcentaje del código fuente que resulta ejecutado y
+                    verificado cuando se corren las suites de pruebas
+                    automatizadas.
+                </p>
+
+                <p>
+                    <strong>Importancia:</strong>
+                    Aporta confianza al equipo sobre la estabilidad del
+                    sistema, asegurando que gran parte del software ha sido
+                    validado y previniendo regresiones al añadir nuevos
+                    cambios.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+        </div>
+
+    
+    </main>
+
+    <!-- BOTÓN INFERIOR -->
+    <div class="parte-inferior">
+        <div class="linea-inferior"></div>
+        <button class="sobre-nosotros" type="button">Sobre nosotros</button>
+    </div>
+
+    <!-- JavaScript Externo -->
+    <script src="../../../JS/us2.js"></script>
+</body>
+
+</html>

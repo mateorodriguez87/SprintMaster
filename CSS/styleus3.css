@@ -1,0 +1,1769 @@
+/* =========================================
+   PRIMER FRAGMENTO
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    background: #03061f;
+
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   FONDO DE PUNTOS
+========================================= */
+
+.puntos {
+    position: fixed;
+
+    width: 340px;
+    height: 340px;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    opacity: 0.65;
+
+    background-image: radial-gradient(
+        circle,
+        #30449b 2px,
+        transparent 3px
+    );
+
+    background-size: 14px 14px;
+}
+
+
+/* Puntos izquierda */
+
+.puntos-izquierda {
+    top: 0;
+    left: 0;
+
+    mask-image: linear-gradient(
+        135deg,
+        black,
+        transparent 80%
+    );
+}
+
+
+/* Puntos derecha */
+
+.puntos-derecha {
+    right: 0;
+    bottom: 0;
+
+    mask-image: linear-gradient(
+        315deg,
+        black,
+        transparent 80%
+    );
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    width: 100%;
+    height: 127px;
+
+    border-bottom: 1px solid #14266e;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    z-index: 100;
+}
+
+
+.titulo {
+    text-align: center;
+}
+
+
+.titulo h1 {
+    color: #2850bd;
+
+    font-size: 28px;
+
+    font-weight: bold;
+}
+
+
+.titulo span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #182a6e;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   BOTÓN HAMBURGUESA
+========================================= */
+
+.boton-menu {
+    position: absolute;
+
+    top: 32px;
+    right: 50px;
+
+    width: 52px;
+    height: 52px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background: #2445ad;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px rgba(48, 79, 200, 0.5);
+
+    z-index: 110;
+}
+
+
+.boton-menu span {
+    width: 24px;
+    height: 3px;
+
+    background: white;
+
+    border-radius: 5px;
+
+    transition: 0.3s;
+}
+
+
+/* =========================================
+   HAMBURGUESA → X
+========================================= */
+
+.boton-menu.activo span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.boton-menu.activo span:nth-child(2) {
+    opacity: 0;
+}
+
+.boton-menu.activo span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* =========================================
+   MENÚ LATERAL
+========================================= */
+
+.sidebar {
+    position: fixed;
+
+    top: 0;
+    right: -440px;
+
+    width: 440px;
+    height: 100vh;
+
+    padding-top: 127px;
+
+    background: #02051b;
+
+    border-left: 1px solid #15276d;
+
+    transition: right 0.4s ease;
+
+    z-index: 90;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+/* MENÚ ABIERTO */
+
+.sidebar.abierto {
+    right: 0;
+}
+
+
+/* =========================================
+   OVERLAY
+========================================= */
+
+.overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 0.3s;
+
+    z-index: 80;
+}
+
+
+.overlay.activo {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* =========================================
+   OPCIONES DEL MENÚ
+========================================= */
+
+.sidebar .opcion {
+
+    width: 100%;
+    height: 87px;
+    min-height: 87px;
+
+    padding: 0 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    text-decoration: none;
+
+    border-bottom: 1px solid #111f58;
+
+    transition: background 0.25s ease;
+
+}
+
+
+.sidebar .opcion:first-child {
+    border-top: 1px solid #111f58;
+}
+
+
+.sidebar .opcion:hover {
+
+    background: #080d2d;
+
+    padding-left: 50px;
+
+}
+
+
+/* =========================================
+   ICONOS DEL MENÚ
+========================================= */
+
+.sidebar .icono {
+
+    width: 56px;
+    height: 56px;
+
+    min-width: 56px;
+    min-height: 56px;
+
+    max-width: 56px;
+    max-height: 56px;
+
+    flex-shrink: 0;
+
+    border-radius: 17px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    background: linear-gradient(
+        135deg,
+        #7450d8,
+        #5969dc,
+        #b5bb4c
+    );
+
+    box-shadow:
+        inset 0 0 15px rgba(255,255,255,0.15),
+        0 0 10px rgba(87,70,220,0.25);
+}
+
+
+/* =========================================
+   TEXTO DEL MENÚ
+========================================= */
+
+.sidebar .opcion p {
+
+    margin-left: 15px;
+
+    color: #eeeeee;
+
+    font-size: 13px;
+
+    line-height: 18px;
+
+    max-width: 230px;
+
+}
+
+
+/* =========================================
+   CONTENIDO PRINCIPAL
+========================================= */
+
+main {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    padding: 30px 4% 70px;
+
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+main h2 {
+
+    text-align: center;
+
+    color: #2850bd;
+
+    font-size: 34px;
+
+    margin-bottom: 35px;
+
+}
+
+
+/* =========================================
+   CONTENEDOR DE TABLA
+========================================= */
+
+.tabla-contenedor {
+
+    width: 94%;
+
+    margin: 0 auto;
+
+    overflow-x: auto;
+
+    border: 4px solid #173ca8;
+
+    border-radius: 55px;
+
+    box-shadow:
+        0 0 15px rgba(20, 55, 180, 0.15);
+
+}
+
+
+/* =========================================
+   TABLA
+========================================= */
+
+table {
+
+    width: 100%;
+
+    min-width: 900px;
+
+    border-collapse: collapse;
+
+    table-layout: fixed;
+
+}
+
+
+/* =========================================
+   ENCABEZADOS
+========================================= */
+
+thead th {
+
+    height: 95px;
+
+    padding: 15px;
+
+    color: #2850bd;
+
+    font-size: 27px;
+
+    font-weight: bold;
+
+    text-align: left;
+
+    border-right: 4px solid #173ca8;
+
+    border-bottom: 4px solid #173ca8;
+
+}
+
+
+thead th:last-child {
+    border-right: none;
+}
+
+
+/* =========================================
+   COLUMNAS
+========================================= */
+
+thead th:nth-child(1),
+tbody td:nth-child(1) {
+
+    width: 18%;
+}
+
+
+thead th:nth-child(2),
+tbody td:nth-child(2) {
+
+    width: 22%;
+}
+
+
+thead th:nth-child(3),
+tbody td:nth-child(3) {
+
+    width: 25%;
+}
+
+
+thead th:nth-child(4),
+tbody td:nth-child(4) {
+
+    width: 35%;
+}
+
+
+/* =========================================
+   CELDAS
+========================================= */
+
+tbody td {
+
+    padding: 18px 25px;
+
+    min-height: 130px;
+
+    color: #eeeeee;
+
+    font-size: 18px;
+
+    line-height: 24px;
+
+    vertical-align: middle;
+
+    border-right: 4px solid #173ca8;
+
+    border-bottom: 4px solid #173ca8;
+
+}
+
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+tbody td:last-child {
+    border-right: none;
+}
+
+
+/* =========================================
+   NOMBRES DE HERRAMIENTAS
+========================================= */
+
+tbody td strong {
+
+    color: #eeeeee;
+
+    font-size: 22px;
+
+    line-height: 28px;
+
+}
+
+
+/* =========================================
+   EFECTO HOVER DE LAS FILAS
+========================================= */
+
+tbody tr {
+
+    transition: background 0.25s ease;
+
+}
+
+
+tbody tr:hover {
+
+    background: rgba(30, 60, 160, 0.12);
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .titulo h1 {
+        font-size: 22px;
+    }
+
+    .boton-menu {
+        right: 25px;
+    }
+
+    main {
+        padding: 30px 2% 60px;
+    }
+
+    main h2 {
+        font-size: 28px;
+    }
+
+    .tabla-contenedor {
+        width: 98%;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .sidebar {
+        width: 350px;
+
+        right: -350px;
+    }
+
+    .sidebar.abierto {
+        right: 0;
+    }
+
+    .sidebar .opcion {
+        padding: 0 30px;
+    }
+
+    .sidebar .opcion:hover {
+        padding-left: 30px;
+    }
+
+    .tabla-contenedor {
+        border-radius: 30px;
+    }
+
+}
+
+/* =========================================
+   SEGUNDO FRAGMENTO
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    background: #03061f;
+
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   FONDO DE PUNTOS
+========================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 300px;
+    height: 300px;
+
+    pointer-events: none;
+
+    background-image: radial-gradient(
+        circle,
+        #30449b 2px,
+        transparent 3px
+    );
+
+    background-size: 14px 14px;
+
+    opacity: 0.65;
+
+    mask-image: linear-gradient(
+        135deg,
+        black,
+        transparent 80%
+    );
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    right: 0;
+    bottom: 0;
+
+    width: 330px;
+    height: 330px;
+
+    pointer-events: none;
+
+    background-image: radial-gradient(
+        circle,
+        #30449b 2px,
+        transparent 3px
+    );
+
+    background-size: 14px 14px;
+
+    opacity: 0.65;
+
+    mask-image: linear-gradient(
+        315deg,
+        black,
+        transparent 80%
+    );
+}
+
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+========================================= */
+
+.pruebas {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 60px 7% 80px;
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.pruebas h1 {
+    text-align: center;
+
+    color: #2850bd;
+
+    font-size: 36px;
+
+    margin-bottom: 150px;
+}
+
+
+/* =========================================
+   CONTENEDOR DE LAS CARDS
+========================================= */
+
+.flip-container {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 50px;
+}
+
+
+/* =========================================
+   FLIP CARD
+========================================= */
+
+.flip-card {
+    width: 375px;
+    height: 355px;
+
+    perspective: 1000px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   PARTE INTERNA
+========================================= */
+
+.flip-card-inner {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    transition: transform 0.7s ease;
+
+    transform-style: preserve-3d;
+}
+
+
+/* =========================================
+   CARD GIRADA
+========================================= */
+
+.flip-card.girada .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+
+/* =========================================
+   FRENTE Y REVERSO
+========================================= */
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 95px;
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 45px;
+
+    background: #080f69;
+
+    border: 1px solid #101c88;
+
+    box-shadow:
+        0 0 25px rgba(20, 40, 160, 0.15);
+}
+
+
+/* =========================================
+   FRENTE
+========================================= */
+
+.flip-card-front {
+    text-align: center;
+}
+
+.flip-card-front h2 {
+    color: white;
+
+    font-size: 32px;
+
+    margin-bottom: 35px;
+
+    font-weight: bold;
+}
+
+.flip-card-front p {
+    color: white;
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    line-height: 28px;
+}
+
+
+/* =========================================
+   REVERSO
+========================================= */
+
+.flip-card-back {
+    transform: rotateY(180deg);
+
+    align-items: flex-start;
+
+    justify-content: flex-start;
+
+    text-align: left;
+
+    padding: 45px 55px;
+}
+
+.flip-card-back h2 {
+    width: 100%;
+
+    color: white;
+
+    font-size: 27px;
+
+    text-align: center;
+
+    margin-bottom: 28px;
+}
+
+.flip-card-back p {
+    color: white;
+
+    font-size: 17px;
+
+    line-height: 23px;
+
+    margin-bottom: 25px;
+}
+
+.flip-card-back strong {
+    color: white;
+}
+
+
+/* =========================================
+   EFECTO AL PASAR EL MOUSE
+========================================= */
+
+.flip-card:hover {
+    transform: translateY(-5px);
+}
+
+.flip-card-front::after,
+.flip-card-back::after {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    right: -35px;
+    top: -35px;
+
+    border-radius: 50%;
+
+    background: rgba(55, 80, 200, 0.15);
+
+    filter: blur(20px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1200px) {
+
+    .flip-container {
+        gap: 25px;
+    }
+
+    .flip-card {
+        width: 31%;
+        height: 340px;
+    }
+
+    .flip-card-front h2 {
+        font-size: 28px;
+    }
+
+    .flip-card-front p {
+        font-size: 18px;
+    }
+
+    .flip-card-back {
+        padding: 35px;
+    }
+
+    .flip-card-back p {
+        font-size: 15px;
+        line-height: 21px;
+    }
+}
+
+
+@media (max-width: 850px) {
+
+    .pruebas h1 {
+        margin-bottom: 70px;
+        font-size: 30px;
+    }
+
+    .flip-container {
+        flex-direction: column;
+    }
+
+    .flip-card {
+        width: 380px;
+        max-width: 90%;
+        height: 330px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .pruebas {
+        padding: 40px 20px;
+    }
+
+    .pruebas h1 {
+        font-size: 25px;
+        margin-bottom: 50px;
+    }
+
+    .flip-card {
+        width: 100%;
+        height: 320px;
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        border-radius: 65px;
+    }
+
+    .flip-card-front h2 {
+        font-size: 25px;
+    }
+
+    .flip-card-front p {
+        font-size: 17px;
+    }
+
+    .flip-card-back {
+        padding: 35px;
+    }
+
+    .flip-card-back h2 {
+        font-size: 23px;
+    }
+
+    .flip-card-back p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
+
+/* =========================================
+   FRAGMENTO 3
+========================================= */
+/* =====================================================
+   TÉCNICAS DE DISEÑO DE PRUEBAS
+   CSS AISLADO
+===================================================== */
+
+
+/* =====================================================
+   CONTENEDOR PRINCIPAL
+===================================================== */
+
+.qa-tech-container {
+    position: relative;
+
+    width: 90%;
+    max-width: 500px;
+
+    margin: 40px auto;
+
+    padding: 40px 30px;
+
+    background: #111836;
+
+    border: 1px solid #1e295b;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.5);
+
+    transition:
+        all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+    z-index: 10;
+}
+
+
+/* =====================================================
+   VISTA PRINCIPAL
+===================================================== */
+
+.qa-tech-main-view {
+    width: 100%;
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.qa-tech-title {
+    color: #3b82f6;
+
+    font-size: 1.3rem;
+
+    margin-bottom: 15px;
+}
+
+
+/* =====================================================
+   DESCRIPCIÓN
+===================================================== */
+
+.qa-tech-description {
+    color: #cbd5e1;
+
+    font-style: italic;
+
+    line-height: 1.5;
+
+    margin-bottom: 30px;
+}
+
+
+/* =====================================================
+   BOTÓN ABRIR
+===================================================== */
+
+.qa-tech-btn-action {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 28px;
+
+    border-radius: 25px;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 15px rgba(37, 99, 235, 0.4);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.qa-tech-btn-action:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 20px rgba(37, 99, 235, 0.6);
+}
+
+
+.qa-tech-btn-action:active {
+    transform: translateY(1px);
+}
+
+
+/* =====================================================
+   CONTENIDO DETALLADO
+===================================================== */
+
+.qa-tech-content-detail {
+    opacity: 0;
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    text-align: left;
+
+    transition:
+        opacity 0.5s ease 0.3s;
+}
+
+
+/* =====================================================
+   TÍTULO DE LA VISTA DETALLADA
+===================================================== */
+
+.qa-tech-detail-title {
+    font-size: 2rem;
+
+    color: #ffffff;
+
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+   TÍTULOS DE SECCIÓN
+===================================================== */
+
+.qa-tech-section-title {
+    color: #60a5fa;
+
+    font-weight: bold;
+
+    margin-top: 15px;
+
+    margin-bottom: 8px;
+
+    font-size: 1.1rem;
+}
+
+
+/* =====================================================
+   TEXTOS
+===================================================== */
+
+.qa-tech-text {
+    color: #e2e8f0;
+
+    margin-bottom: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   BOTÓN CERRAR
+===================================================== */
+
+.qa-tech-btn-close {
+    display: none;
+
+    position: fixed;
+
+    top: 30px;
+
+    right: 30px;
+
+    background:
+        rgba(255, 255, 255, 0.1);
+
+    border: none;
+
+    color: white;
+
+    font-size: 1.5rem;
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s;
+
+    z-index: 120;
+}
+
+
+.qa-tech-btn-close:hover {
+    background:
+        rgba(255, 255, 255, 0.25);
+}
+
+
+/* =====================================================
+   ESTADO PANTALLA COMPLETA
+===================================================== */
+
+.qa-tech-container.qa-tech-fullscreen {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    max-width: none;
+
+    margin: 0;
+
+    padding: 60px 10%;
+
+    border-radius: 0;
+
+    background: #0d1329;
+
+    overflow-y: auto;
+
+    /*
+       Menor que el sidebar del menú hamburguesa.
+       Tu sidebar usa z-index: 90.
+       El botón del menú usa z-index: 110.
+    */
+
+    z-index: 70;
+}
+
+
+/* =====================================================
+   OCULTAR VISTA PRINCIPAL AL EXPANDIR
+===================================================== */
+
+.qa-tech-container.qa-tech-fullscreen
+.qa-tech-main-view {
+
+    display: none;
+}
+
+
+/* =====================================================
+   MOSTRAR CONTENIDO DETALLADO
+===================================================== */
+
+.qa-tech-container.qa-tech-fullscreen
+.qa-tech-content-detail {
+
+    opacity: 1;
+
+    max-height: 2000px;
+}
+
+
+/* =====================================================
+   MOSTRAR BOTÓN CERRAR
+===================================================== */
+
+.qa-tech-container.qa-tech-fullscreen
+.qa-tech-btn-close {
+
+    display: block;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .qa-tech-container {
+
+        width: 92%;
+
+        padding: 30px 20px;
+
+        margin: 30px auto;
+    }
+
+
+    .qa-tech-title {
+
+        font-size: 1.3rem;
+    }
+
+
+    .qa-tech-description {
+
+        font-size: 0.95rem;
+    }
+
+
+    .qa-tech-btn-action {
+
+        font-size: 0.9rem;
+
+        padding: 11px 22px;
+    }
+
+
+    .qa-tech-container.qa-tech-fullscreen {
+
+        padding: 70px 25px 40px;
+    }
+
+
+    .qa-tech-detail-title {
+
+        font-size: 1.5rem;
+
+        padding-right: 30px;
+    }
+
+
+    .qa-tech-section-title {
+
+        font-size: 1rem;
+    }
+
+
+    .qa-tech-text {
+
+        font-size: 0.9rem;
+
+        line-height: 1.5;
+    }
+
+
+    .qa-tech-btn-close {
+
+        top: 20px;
+
+        right: 20px;
+    }
+}
+/* =========================================
+   TÉCNICAS DE PRUEBAS
+========================================= */
+
+.testing-section {
+    width: 100%;
+
+    padding: 40px 7% 70px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.testing-title {
+    color: #2850bd;
+
+    font-size: 30px;
+
+    text-align: center;
+
+    margin-bottom: 12px;
+}
+
+
+.testing-description {
+    max-width: 750px;
+
+    margin: 0 auto 35px;
+
+    color: #eeeeee;
+
+    font-size: 14px;
+
+    line-height: 20px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.testing-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 30px;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   TARJETA
+========================================= */
+
+.testing-card {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 500px;
+
+    perspective: 1200px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   FRENTE Y PARTE TRASERA
+========================================= */
+
+.testing-front,
+.testing-back {
+    width: 100%;
+
+    min-height: 500px;
+
+    border-radius: 25px;
+
+    padding: 35px;
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+
+    transition:
+        transform 0.7s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* =========================================
+   FRENTE
+========================================= */
+
+.testing-front {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background: linear-gradient(
+        145deg,
+        #122b83,
+        #080d2d
+    );
+
+    border: 1px solid #1e3995;
+
+    box-shadow:
+        0 0 20px rgba(30, 60, 170, 0.3);
+
+    transform: rotateY(0deg);
+}
+
+
+/* =========================================
+   NÚMERO
+========================================= */
+
+.testing-number {
+    color: #6b7bc0;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================
+   TÍTULO DE LA TARJETA
+========================================= */
+
+.testing-front h3 {
+    color: white;
+
+    font-size: 26px;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   SUBTÍTULO
+========================================= */
+
+.testing-subtitle {
+    color: #8196e9;
+
+    font-size: 13px;
+
+    font-style: italic;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   DESCRIPCIÓN
+========================================= */
+
+.testing-front p {
+    max-width: 420px;
+
+    color: #eeeeee;
+
+    font-size: 15px;
+
+    line-height: 22px;
+
+    margin: 0;
+}
+
+
+/* =========================================
+   INDICACIÓN
+========================================= */
+
+.testing-hint {
+    margin-top: 35px;
+
+    color: #687bc4;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   PARTE TRASERA
+========================================= */
+
+.testing-back {
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    overflow-y: auto;
+
+    background: linear-gradient(
+        145deg,
+        #0b1748,
+        #05091f
+    );
+
+    border: 1px solid #4164d1;
+
+    box-shadow:
+        0 0 25px rgba(42, 76, 200, 0.45);
+
+    transform: rotateY(180deg);
+}
+
+
+/* =========================================
+   TÍTULO TRASERO
+========================================= */
+
+.testing-back h3 {
+    color: #6f8df5;
+
+    font-size: 23px;
+
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   INFORMACIÓN
+========================================= */
+
+.testing-info h4 {
+    color: #9aaeff;
+
+    font-size: 15px;
+
+    margin-top: 18px;
+
+    margin-bottom: 8px;
+}
+
+
+.testing-info h4:first-child {
+    margin-top: 0;
+}
+
+
+.testing-info p {
+    color: #eeeeee;
+
+    font-size: 12px;
+
+    line-height: 18px;
+
+    margin-bottom: 10px;
+}
+
+
+.testing-info strong {
+    color: #b5c3ff;
+}
+
+
+/* =========================================
+   EFECTO FLIP
+========================================= */
+
+.testing-card:hover .testing-front {
+    transform: rotateY(-180deg);
+}
+
+
+.testing-card:hover .testing-back {
+    transform: rotateY(0deg);
+}
+
+
+.testing-card:hover {
+    z-index: 5;
+}
+
+
+/* =========================================
+   BARRA DE DESPLAZAMIENTO
+========================================= */
+
+.testing-back::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+.testing-back::-webkit-scrollbar-track {
+    background: #05091f;
+
+    border-radius: 10px;
+}
+
+
+.testing-back::-webkit-scrollbar-thumb {
+    background: #304da5;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 850px) {
+
+    .testing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testing-card {
+        min-height: 480px;
+    }
+
+    .testing-front,
+    .testing-back {
+        min-height: 480px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .testing-section {
+        padding: 30px 5% 50px;
+    }
+
+    .testing-title {
+        font-size: 25px;
+    }
+
+    .testing-front,
+    .testing-back {
+        padding: 25px;
+
+        min-height: 520px;
+    }
+
+    .testing-front h3 {
+        font-size: 22px;
+    }
+}
