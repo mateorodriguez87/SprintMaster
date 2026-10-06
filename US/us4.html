@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Herramientas de Calidad</title>
+
+   
+    <link
+        rel="stylesheet"
+        href="../CSS/styleus4.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         FONDO DECORATIVO
+    ========================================== -->
+
+    <div class="puntos puntos-izquierda"></div>
+
+    <div class="puntos puntos-derecha"></div>
+
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="header">
+
+        <h1>
+            SISTEMAS DE GESTIÓN DE CALIDAD
+        </h1>
+
+        <a
+            href="#"
+            class="inicio"
+        >
+            inicio
+        </a>
+
+
+        <!-- Decoraciones -->
+
+        <div class="decoracion decoracion-1">
+            +
+        </div>
+
+        <div class="decoracion decoracion-2">
+            +
+        </div>
+
+        <div class="decoracion decoracion-3">
+            +
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         FILTRADOR
+    ========================================== -->
+
+    <div class="filtro-contenedor">
+
+    <button
+        type="button"
+        class="filtro-principal"
+        id="filtroPrincipal"
+    >
+        <span id="textoFiltro">
+            Todas
+        </span>
+
+        <span class="flecha">
+            ▼
+        </span>
+    </button>
+
+
+    <div
+        class="filtro-menu"
+        id="filtroMenu"
+    >
+
+        <button
+            type="button"
+            class="opcion-filtro"
+            data-categoria="test-management"
+        >
+            Test Management
+        </button>
+
+        <button
+            type="button"
+            class="opcion-filtro"
+            data-categoria="linters"
+        >
+            Linters
+        </button>
+
+        <button
+            type="button"
+            class="opcion-filtro"
+            data-categoria="bug-trackers"
+        >
+            Bug Trackers
+        </button>
+
+    </div>
+
+</div>
+
+
+        <!-- =====================================
+             MINI MENÚ
+        ====================================== -->
+
+        <div
+            class="filtro-menu"
+            id="filtroMenu"
+        >
+
+            <button
+                type="button"
+                class="opcion-filtro"
+                data-categoria="test-management"
+            >
+                Test Management
+            </button>
+
+
+            <button
+                type="button"
+                class="opcion-filtro"
+                data-categoria="linters"
+            >
+                Linters
+            </button>
+
+
+            <button
+                type="button"
+                class="opcion-filtro"
+                data-categoria="bug-trackers"
+            >
+                Bug Trackers
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         CONTENIDO PRINCIPAL
+    ========================================== -->
+
+    <main class="contenedor">
+
+
+        <section class="herramientas">
+
+
+            <!-- =================================
+                 TÍTULO
+            ================================== -->
+
+            <h2>
+                Herramientas de Calidad
+            </h2>
+
+
+            <p class="descripcion">
+
+                Sección interactiva para explorar
+                herramientas esenciales de gestión
+                de pruebas, seguimiento de defectos
+                y análisis de calidad.
+
+            </p>
+
+
+
+            <!-- =================================
+                 CATEGORÍA ACTUAL
+            ================================== -->
+
+            <div class="categoria-header">
+
+
+                <div class="categoria-icono">
+                    ⚒
+                </div>
+
+
+                <h3 id="tituloCategoria">
+
+                    Todas las Herramientas
+
+                </h3>
+
+
+            </div>
+
+
+
+            <!-- Línea -->
+
+            <div class="linea"></div>
+
+
+
+            <!-- Descripción -->
+
+            <p
+                class="descripcion-categoria"
+                id="descripcionCategoria"
+            >
+
+                Vista consolidada de todas las herramientas
+                de gestión y pruebas de calidad.
+
+            </p>
+
+
+
+            <!-- =================================
+                 GRILLA DE HERRAMIENTAS
+            ================================== -->
+
+            <div
+                class="herramientas-grid"
+                id="herramientasGrid"
+            >
+
+
+
+                <!-- =================================
+                     BUG TRACKERS
+                ================================== -->
+
+
+                <!-- JIRA -->
+
+                <article
+                    class="herramienta-card"
+                    data-categoria="bug-trackers"
+                >
+
+                    <div
+                        class="herramienta-icono jira"
+                    >
+                        J
+                    </div>
+
+                    <h4>
+                        Jira
+                    </h4>
+
+                </article>
+
+
+
+                <!-- BUGZILLA -->
+
+                <article
+                    class="herramienta-card"
+                    data-categoria="bug-trackers"
+                >
+
+                    <div
+                        class="herramienta-icono bugzilla"
+                    >
+                        🐞
+                    </div>
+
+                    <h4>
+                        Bugzilla
+                    </h4>
+
+                </article>
+
+
+
+                <!-- GITHUB ISSUES -->
+
+                <article
+                    class="herramienta-card"
+                    data-categoria="bug-trackers"
+                >
+
+                    <div
+                        class="herramienta-icono github"
+                    >
+                        ●
+                    </div>
+
+                    <h4>
+                        GitHub Issues
+                    </h4>
+
+                </article>
+
+
+
+                <!-- REDMINE -->
+
+                <article
+                    class="herramienta-card"
+                    data-categoria="bug-trackers"
+                >
+
+                    <div
+                        class="herramienta-icono redmine"
+                    >
+                        R
+                    </div>
+
+                    <h4>
+                        Redmine
+                    </h4>
+
+                </article>
+
+
+
+                <!-- MANTISBT -->
+
+                <article
+                    class="herramienta-card"
+                    data-categoria="bug-trackers"
+                >
+
+                    <div
+                        class="herramienta-icono mantis"
+                    >
+                        🦗
+                    </div>
+
+                    <h4>
+                        MantisBT
+                    </h4>
+
+                </article>
+
+
+
+                <!-- =================================
+                     LINTERS
+                ================================== -->
+
+
+                <!-- ESLINT -->
+
+                <article
+                    class="herramienta-card"
+                    data-categoria="linters"
+                >
+
+                    <div
+                        class="herramienta-icono eslint"
+                    >
+                        E
+                    </div>
+
+                    <h4>
+                        ESLint
+                    </h4>
+
+                </article>
+
+
+
+                <!-- SONARQUBE -->
+
+                <article
+                    class="herramienta-card"
+                    data-categoria="linters"
+                >
+
+                    <div
+                        class="herramienta-icono sonar"
+                    >
+                        S
+                    </div>
+
+                    <h4>
+                        SonarQube
+                    </h4>
+
+                </article>
+
+
+
+                <!-- PRETTIER -->
+
+                <article
+                    class="herramienta-card"
+                    data-categoria="linters"
+                >
+
+                    <div
+                        class="herramienta-icono prettier"
+                    >
+                        P
+                    </div>
+
+                    <h4>
+                        Prettier
+                    </h4>
+
+                </article>
+
+
+
+                <!-- STYLELINT -->
+
+                <article
+                    class="herramienta-card"
+                    data-categoria="linters"
+                >
+
+                    <div
+                        class="herramienta-icono stylelint"
+                    >
+                        &lt;S&gt;
+                    </div>
+
+                    <h4>
+                        Stylelint
+                    </h4>
+
+                </article>
+
+
+
+                <!-- =================================
+                     TEST MANAGEMENT
+                ================================== -->
+
+
+                <!-- JUNIT -->
+
+                <article
+                    class="herramienta-card"
+                    data-categoria="test-management"
+                >
+
+                    <div
+                        class="herramienta-icono junit"
+                    >
+                        J
+                    </div>
+
+                    <h4>
+                        JUnit
+                    </h4>
+
+                </article>
+
+
+
+                <!-- SELENIUM -->
+
+                <article
+                    class="herramienta-card"
+                    data-categoria="test-management"
+                >
+
+                    <div
+                        class="herramienta-icono selenium"
+                    >
+                        ✓
+                    </div>
+
+                    <h4>
+                        Selenium
+                    </h4>
+
+                </article>
+
+
+
+                <!-- POSTMAN -->
+
+                <article
+                    class="herramienta-card"
+                    data-categoria="test-management"
+                >
+
+                    <div
+                        class="herramienta-icono postman"
+                    >
+                        ➤
+                    </div>
+
+                    <h4>
+                        Postman
+                    </h4>
+
+                </article>
+
+
+
+                <!-- TESTRAIL -->
+
+                <article
+                    class="herramienta-card"
+                    data-categoria="test-management"
+                >
+
+                    <div
+                        class="herramienta-icono testrail"
+                    >
+                        T
+                    </div>
+
+                    <h4>
+                        TestRail
+                    </h4>
+
+                </article>
+
+
+
+                <!-- CUCUMBER -->
+
+                <article
+                    class="herramienta-card"
+                    data-categoria="test-management"
+                >
+
+                    <div
+                        class="herramienta-icono cucumber"
+                    >
+                        🥒
+                    </div>
+
+                    <h4>
+                        Cucumber
+                    </h4>
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+
+    <script
+        src="../JS/us4.js"
+    ></script>
+
+
+</body>
+
+</html>

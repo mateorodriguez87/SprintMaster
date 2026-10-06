@@ -1,0 +1,786 @@
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    background: #020827;
+
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   FONDO DE PUNTOS
+========================================= */
+
+.puntos {
+    position: fixed;
+
+    width: 330px;
+    height: 330px;
+
+    pointer-events: none;
+
+    opacity: 0.65;
+
+    z-index: 0;
+
+    background-image: radial-gradient(
+        circle,
+        #304da5 2px,
+        transparent 3px
+    );
+
+    background-size: 14px 14px;
+}
+
+.puntos-izquierda {
+    top: 0;
+    left: 0;
+
+    mask-image: linear-gradient(
+        135deg,
+        black,
+        transparent 80%
+    );
+}
+
+.puntos-derecha {
+    right: 0;
+    bottom: 0;
+
+    mask-image: linear-gradient(
+        315deg,
+        black,
+        transparent 80%
+    );
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    padding-top: 25px;
+
+    text-align: center;
+}
+
+.header h1 {
+    color: #3970d5;
+
+    font-size: 32px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
+}
+
+.inicio {
+    color: #5578c7;
+
+    text-decoration: none;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   DECORACIONES
+========================================= */
+
+.decoracion {
+    position: absolute;
+
+    color: #1761d9;
+
+    font-size: 38px;
+
+    font-weight: bold;
+}
+
+.decoracion-1 {
+    left: 13%;
+    top: 35px;
+
+    transform: rotate(20deg);
+}
+
+.decoracion-2 {
+    right: 13%;
+    top: 45px;
+
+    transform: rotate(-15deg);
+}
+
+.decoracion-3 {
+    right: 16%;
+    top: 105px;
+
+    font-size: 30px;
+
+    transform: rotate(20deg);
+}
+
+
+/* =========================================
+   BOTONES DE FILTRO
+========================================= */
+
+.filtros {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    padding: 45px 20px 18px;
+}
+
+.filtro {
+    min-width: 220px;
+
+    padding: 13px 30px;
+
+    border-radius: 12px;
+
+    border: 1px solid #244a9d;
+
+    background: linear-gradient(
+        145deg,
+        #0b225e,
+        #071642
+    );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.filtro:hover {
+    border-color: #3478e9;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 15px rgba(31, 102, 230, 0.35);
+}
+
+.filtro.activo {
+    background: linear-gradient(
+        135deg,
+        #1d69ed,
+        #0955d8
+    );
+
+    border-color: #4288ff;
+
+    box-shadow:
+        0 0 20px rgba(29, 105, 237, 0.65);
+}
+
+
+/* =========================================
+   CONTENEDOR
+========================================= */
+
+.contenedor {
+    position: relative;
+
+    z-index: 2;
+
+    width: 87%;
+
+    max-width: 1100px;
+
+    margin: 0 auto 60px;
+
+    padding: 28px 40px 35px;
+
+    border: 1px solid #183b82;
+
+    border-radius: 22px;
+
+    background: rgba(5, 22, 63, 0.78);
+
+    box-shadow:
+        0 0 30px rgba(17, 64, 160, 0.2);
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.herramientas h2 {
+    color: white;
+
+    font-size: 38px;
+
+    margin-bottom: 12px;
+}
+
+.descripcion {
+    color: #f0f2fa;
+
+    font-size: 18px;
+
+    line-height: 25px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   CATEGORÍA
+========================================= */
+
+.categoria-header {
+    display: flex;
+
+    align-items: center;
+
+    width: fit-content;
+
+    min-width: 250px;
+
+    padding-right: 35px;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        90deg,
+        #0b3c9d,
+        #07327d,
+        transparent
+    );
+}
+
+.categoria-icono {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-right: 12px;
+
+    border-radius: 14px;
+
+    background: #10439b;
+
+    font-size: 28px;
+}
+
+.categoria-header h3 {
+    color: white;
+
+    font-size: 21px;
+}
+
+
+/* =========================================
+   LÍNEA
+========================================= */
+
+.linea {
+    width: 100%;
+
+    height: 2px;
+
+    margin-top: -2px;
+
+    margin-bottom: 17px;
+
+    background: linear-gradient(
+        90deg,
+        #2767df,
+        #173e91,
+        #173e91
+    );
+}
+
+
+/* =========================================
+   DESCRIPCIÓN DE CATEGORÍA
+========================================= */
+
+.descripcion-categoria {
+    color: #eeeeee;
+
+    font-size: 17px;
+
+    margin: 0 25px 18px;
+}
+
+
+/* =========================================
+   GRILLA
+========================================= */
+
+.herramientas-grid {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 12px;
+}
+
+
+/* =========================================
+   TARJETAS
+========================================= */
+
+.herramienta-card {
+    min-height: 170px;
+
+    padding: 18px 12px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    border: 1px solid #1b418c;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        145deg,
+        #092665,
+        #071b4b
+    );
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.herramienta-card:hover {
+    transform: translateY(-7px);
+
+    border-color: #3478e9;
+
+    box-shadow:
+        0 0 25px rgba(23, 91, 220, 0.45);
+}
+
+
+/* =========================================
+   ICONOS
+========================================= */
+
+.herramienta-icono {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 12px;
+
+    border-radius: 16px;
+
+    background: #0b2d72;
+
+    color: white;
+
+    font-size: 35px;
+
+    font-weight: bold;
+}
+
+
+/* Colores representativos */
+
+.jira {
+    color: #3185ff;
+    font-size: 42px;
+}
+
+.bugzilla {
+    font-size: 31px;
+}
+
+.github {
+    background: #111827;
+    font-size: 38px;
+}
+
+.redmine {
+    color: #e34b4b;
+    font-size: 42px;
+}
+
+.mantis {
+    font-size: 31px;
+}
+
+.eslint {
+    color: #f5a642;
+    font-family: Georgia, serif;
+    font-size: 43px;
+}
+
+.sonar {
+    color: #42b4e8;
+    font-size: 43px;
+}
+
+.prettier {
+    color: #69d3e8;
+    font-size: 38px;
+}
+
+.stylelint {
+    color: #a56cff;
+    font-size: 25px;
+}
+
+.junit {
+    color: #d44d7b;
+    font-family: Georgia, serif;
+    font-size: 44px;
+}
+
+.selenium {
+    color: white;
+    font-size: 43px;
+}
+
+.postman {
+    color: #ff7440;
+    font-size: 40px;
+}
+
+.testrail {
+    color: #a8bdc9;
+    font-size: 35px;
+}
+
+.cucumber {
+    font-size: 30px;
+}
+
+
+/* =========================================
+   NOMBRE
+========================================= */
+
+.herramienta-card h4 {
+    color: white;
+
+    font-size: 17px;
+}
+
+
+/* =========================================
+   OCULTAR TARJETAS
+========================================= */
+
+.herramienta-card.oculta {
+    display: none;
+}
+
+
+/* =========================================
+   ANIMACIÓN
+========================================= */
+
+.herramienta-card.mostrando {
+    animation: aparecer 0.35s ease;
+}
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* =========================================
+   SIN RESULTADOS
+========================================= */
+
+.sin-resultados {
+    display: none;
+
+    padding: 35px;
+
+    color: #8fa5df;
+
+    text-align: center;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .herramientas-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .filtro {
+        min-width: 160px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .header h1 {
+        font-size: 24px;
+    }
+
+    .filtros {
+        flex-wrap: wrap;
+
+        padding-top: 30px;
+    }
+
+    .filtro {
+        min-width: 150px;
+
+        font-size: 14px;
+    }
+
+    .contenedor {
+        width: 94%;
+
+        padding: 25px 18px;
+    }
+
+    .herramientas h2 {
+        font-size: 30px;
+    }
+
+    .descripcion {
+        font-size: 15px;
+    }
+
+    .herramientas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .decoracion {
+        display: none;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .herramientas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filtro {
+        width: 100%;
+    }
+
+    .categoria-header {
+        width: 100%;
+    }
+}
+/* =========================================
+   FILTRADOR
+========================================= */
+
+.filtro-contenedor {
+    position: relative;
+    width: 280px;
+    margin: 20px auto;
+    z-index: 20;
+}
+
+
+/* BOTÓN PRINCIPAL */
+
+.filtro-principal {
+    width: 100%;
+    height: 52px;
+
+    border: 1px solid #2850bd;
+    border-radius: 12px;
+
+    background: #07184d;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+
+    transition: 0.3s ease;
+}
+
+.filtro-principal:hover {
+    background: #0d2b75;
+
+    box-shadow:
+        0 0 20px rgba(40, 80, 189, 0.5);
+}
+
+
+/* FLECHA */
+
+.flecha {
+    font-size: 12px;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* =========================================
+   MINI MENÚ
+========================================= */
+
+.filtro-menu {
+    position: absolute;
+
+    top: 58px;
+    left: 0;
+
+    width: 100%;
+
+    background: #07143d;
+
+    border: 1px solid #2850bd;
+
+    border-radius: 12px;
+
+    padding: 8px;
+
+    display: none;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+
+/* MENÚ ABIERTO */
+
+.filtro-menu.activo {
+    display: flex;
+}
+
+
+/* OPCIONES */
+
+.opcion-filtro {
+    width: 100%;
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding: 13px 15px;
+
+    background: transparent;
+
+    color: white;
+
+    text-align: left;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.opcion-filtro:hover {
+    background: #1558d6;
+
+    box-shadow:
+        0 0 12px rgba(21, 88, 214, 0.5);
+}
+
+
+/* =========================================
+   GRILLA
+========================================= */
+
+.herramientas-grid {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 14px;
+
+    width: 100%;
+}
+
+
+/* =========================================
+   TARJETAS OCULTAS
+========================================= */
+
+.herramienta-card.oculta {
+    display: none;
+}
