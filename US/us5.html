@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistemas de Gestión de Calidad - SDLC</title>
+  <link rel="stylesheet" href="../CSS/styleus5.css">
+</head>
+<body>
+
+  <!-- Fondo dinámico con patrón -->
+  <div class="bg-pattern"></div>
+
+  <main class="container">
+    <!-- Encabezado superior -->
+    <header class="main-header">
+      <span class="subtitle">SISTEMAS DE GESTIÓN DE CALIDAD</span>
+      <span class="nav-link">Inicio</span>
+    </header>
+
+    <!-- Título principal -->
+    <h1 class="main-title">Ciclo de Vida del Software (SDLC)</h1>
+
+    <!-- Timeline Horizontal / Vertical Responsive -->
+    <section class="timeline-wrapper">
+      <div class="timeline-container" id="timelineContainer">
+        
+        <div class="timeline-item active" data-phase="requisitos">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <h3>Requisitos</h3>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-phase="diseno">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <h3>Diseño</h3>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-phase="desarrollo">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <h3>Desarrollo</h3>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-phase="pruebas">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <h3>Pruebas</h3>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-phase="implementacion">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <h3>Implementación</h3>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-phase="mantenimiento">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <h3>Mantenimiento</h3>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contenido Dinámico que cambia según la fase seleccionada -->
+    <article id="contentBody" class="content-body">
+      <!-- El contenido se cargará dinámicamente mediante el JS -->
+    </article>
+  </main>
+
+  <script src="..//JS/us5.js"></script>
+</body>
+</html>
