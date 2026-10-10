@@ -1,0 +1,680 @@
+
+/* =========================================================
+   1. CONFIGURACIÓN GENERAL
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background: #03061f;
+    color: #ffffff;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+/* Fondo decorativo de puntos */
+
+.faq-puntos {
+    position: fixed;
+    width: 320px;
+    height: 320px;
+
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.65;
+
+    background-image:
+        radial-gradient(circle, #30449b 2px, transparent 3px);
+
+    background-size: 14px 14px;
+}
+
+.faq-puntos-izquierda {
+    top: 0;
+    left: 0;
+
+    mask-image:
+        linear-gradient(135deg, black, transparent 85%);
+    -webkit-mask-image:
+        linear-gradient(135deg, black, transparent 85%);
+}
+
+.faq-puntos-derecha {
+    right: 0;
+    bottom: 0;
+
+    mask-image:
+        linear-gradient(315deg, black, transparent 85%);
+    -webkit-mask-image:
+        linear-gradient(315deg, black, transparent 85%);
+}
+
+
+/* =========================================================
+   2. ENCABEZADO
+   ========================================================= */
+
+.faq-header {
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+    min-height: 168px;
+    padding: 25px 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 1px solid #14266e;
+}
+
+.faq-encabezado {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.faq-encabezado h1 {
+    color: #2850bd;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+}
+
+.faq-inicio {
+    display: inline-block;
+
+    margin-top: 6px;
+
+    color: #68708d;
+    font-size: 13px;
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.faq-inicio:hover {
+    color: #9b8ce6;
+}
+
+
+/* =========================================================
+   3. CRUCES DECORATIVAS
+   ========================================================= */
+
+.faq-decoracion {
+    position: absolute;
+
+    color: #2850bd;
+
+    font-size: 58px;
+    font-weight: 300;
+    line-height: 1;
+
+    pointer-events: none;
+
+    text-shadow:
+        0 0 15px rgba(40, 80, 189, 0.3);
+}
+
+.faq-cruz-izquierda {
+    left: 12%;
+    top: 45px;
+
+    transform: rotate(15deg);
+}
+
+.faq-cruz-derecha {
+    right: 12%;
+    top: 45px;
+
+    transform: rotate(-15deg);
+}
+
+
+/* =========================================================
+   4. BOTÓN HAMBURGUESA
+   ========================================================= */
+
+.faq-menu-boton {
+    position: absolute;
+
+    top: 32px;
+    right: 45px;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 5px;
+
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+    z-index: 20;
+}
+
+.faq-menu-boton:hover {
+    background: rgba(40, 80, 189, 0.12);
+
+    box-shadow:
+        0 0 15px rgba(40, 80, 189, 0.2);
+}
+
+.faq-menu-boton span {
+    display: block;
+
+    width: 20px;
+    height: 2px;
+
+    background: #6878bd;
+    border-radius: 5px;
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease,
+        background 0.3s ease;
+}
+
+.faq-menu-boton:hover span {
+    background: #ffffff;
+}
+
+/* Animación del icono al pulsar el botón */
+
+.faq-menu-boton.activo span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.faq-menu-boton.activo span:nth-child(2) {
+    opacity: 0;
+}
+
+.faq-menu-boton.activo span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* =========================================================
+   5. CONTENIDO PRINCIPAL
+   ========================================================= */
+
+.faq-main {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+    padding: 48px 30px 70px;
+}
+
+.faq-titulo {
+    margin-bottom: 22px;
+
+    color: #ffffff;
+
+    font-size: 32px;
+    font-weight: bold;
+
+    line-height: 1.3;
+    text-align: center;
+
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================================
+   6. CONTENEDOR EXTERIOR DEL ACORDEÓN
+   ========================================================= */
+
+.faq-contenedor {
+    width: 100%;
+
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 32, 95, 0.92),
+            rgba(8, 13, 39, 0.96)
+        );
+
+    border: 3px solid #2850bd;
+    border-radius: 48px;
+
+    box-shadow:
+        0 0 18px rgba(40, 80, 189, 0.45),
+        0 0 40px rgba(40, 80, 189, 0.15),
+        inset 0 0 20px rgba(40, 80, 189, 0.12);
+}
+
+
+/* =========================================================
+   7. ELEMENTOS INDIVIDUALES DEL ACORDEÓN
+   ========================================================= */
+
+.faq-item {
+    width: 100%;
+
+    overflow: hidden;
+
+    border: 2px solid #2850bd;
+    border-radius: 34px;
+
+    background: rgba(18, 32, 95, 0.65);
+
+    box-shadow:
+        0 0 10px rgba(40, 80, 189, 0.12);
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: #4164d1;
+
+    box-shadow:
+        0 0 18px rgba(40, 80, 189, 0.28);
+}
+
+.faq-item.activo {
+    border-color: #4164d1;
+
+    box-shadow:
+        0 0 18px rgba(40, 80, 189, 0.25);
+}
+
+
+/* =========================================================
+   8. BOTÓN DE CADA PREGUNTA
+   ========================================================= */
+
+.faq-pregunta {
+    position: relative;
+
+    width: 100%;
+    min-height: 64px;
+
+    padding: 15px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+
+    border: none;
+    outline: none;
+
+    background:
+        linear-gradient(
+            110deg,
+            #122b83,
+            #151c50
+        );
+
+    color: #ffffff;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+
+    line-height: 1.4;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.faq-pregunta:hover {
+    background:
+        linear-gradient(
+            110deg,
+            #193895,
+            #1a245e
+        );
+}
+
+.faq-pregunta:focus-visible {
+    outline: 2px solid #9b8ce6;
+    outline-offset: -5px;
+}
+
+/* Pregunta abierta */
+
+.faq-item.activo .faq-pregunta {
+    background:
+        linear-gradient(
+            110deg,
+            #172b75,
+            #1a2057
+        );
+}
+
+/* Texto de la pregunta */
+
+.faq-pregunta > span:first-child {
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   9. ICONOS + Y -
+   ========================================================= */
+
+.faq-icono {
+    flex-shrink: 0;
+
+    width: 30px;
+    min-width: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #ffffff;
+
+    font-size: 32px;
+    font-weight: normal;
+    line-height: 1;
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+.faq-item.activo .faq-icono {
+    color: #ffffff;
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   10. RESPUESTAS Y ANIMACIÓN DE APERTURA/CIERRE
+   ========================================================= */
+
+.faq-respuesta {
+    display: grid;
+    grid-template-rows: 0fr;
+
+    opacity: 0;
+
+    transition:
+        grid-template-rows 0.4s ease,
+        opacity 0.3s ease;
+}
+
+.faq-respuesta-contenido {
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Texto de las respuestas */
+
+.faq-respuesta p {
+    padding: 20px 28px 25px;
+
+    color: #eeeeee;
+
+    font-size: 16px;
+    font-weight: normal;
+
+    line-height: 1.5;
+    text-align: left;
+}
+
+/* Panel desplegado */
+
+.faq-item.activo .faq-respuesta {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+
+/* =========================================================
+   11. EFECTOS VISUALES DE LA RESPUESTA ACTIVA
+   ========================================================= */
+
+.faq-item.activo .faq-respuesta-contenido {
+    border-top: 1px solid rgba(65, 100, 209, 0.25);
+}
+
+
+/* =========================================================
+   12. RESPONSIVE: TABLETS
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .faq-header {
+        min-height: 145px;
+        padding: 25px 80px;
+    }
+
+    .faq-encabezado h1 {
+        font-size: 24px;
+    }
+
+    .faq-cruz-izquierda {
+        left: 5%;
+    }
+
+    .faq-cruz-derecha {
+        right: 5%;
+    }
+
+    .faq-menu-boton {
+        right: 20px;
+    }
+
+    .faq-main {
+        max-width: 850px;
+        padding: 40px 25px 60px;
+    }
+
+    .faq-titulo {
+        font-size: 28px;
+    }
+
+    .faq-contenedor {
+        padding: 20px;
+        border-radius: 38px;
+    }
+
+    .faq-pregunta {
+        font-size: 17px;
+    }
+
+    .faq-respuesta p {
+        font-size: 15px;
+    }
+}
+
+
+/* =========================================================
+   13. RESPONSIVE: CELULARES
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .faq-header {
+        min-height: 125px;
+        padding: 25px 65px 20px 20px;
+    }
+
+    .faq-encabezado h1 {
+        font-size: 18px;
+        letter-spacing: 0;
+    }
+
+    .faq-inicio {
+        font-size: 12px;
+    }
+
+    .faq-decoracion {
+        font-size: 35px;
+    }
+
+    .faq-cruz-izquierda {
+        top: 8px;
+        left: 8px;
+    }
+
+    .faq-cruz-derecha {
+        top: 8px;
+        right: 65px;
+    }
+
+    .faq-menu-boton {
+        top: 25px;
+        right: 12px;
+
+        width: 40px;
+        height: 40px;
+    }
+
+    .faq-main {
+        padding: 32px 15px 45px;
+    }
+
+    .faq-titulo {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    .faq-contenedor {
+        padding: 12px;
+        gap: 10px;
+
+        border-width: 2px;
+        border-radius: 28px;
+    }
+
+    .faq-item {
+        border-radius: 23px;
+    }
+
+    .faq-pregunta {
+        min-height: 58px;
+        padding: 14px 15px;
+
+        gap: 10px;
+
+        font-size: 15px;
+        line-height: 1.4;
+    }
+
+    .faq-icono {
+        width: 24px;
+        min-width: 24px;
+        font-size: 27px;
+    }
+
+    .faq-respuesta p {
+        padding: 16px 15px 20px;
+
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .faq-puntos {
+        width: 200px;
+        height: 200px;
+        opacity: 0.4;
+    }
+}
+
+
+/* =========================================================
+   14. RESPONSIVE: CELULARES PEQUEÑOS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .faq-encabezado h1 {
+        font-size: 16px;
+    }
+
+    .faq-titulo {
+        font-size: 21px;
+    }
+
+    .faq-contenedor {
+        padding: 9px;
+    }
+
+    .faq-pregunta {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .faq-respuesta p {
+        padding: 14px 12px 17px;
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   15. ACCESIBILIDAD
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
