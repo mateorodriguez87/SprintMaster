@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Formulario de contacto de Sistemas de Gestión de Calidad."
+    >
+
+    <title>Contacto | Sistemas de Gestión de Calidad</title>
+
+    <link rel="stylesheet" href="..//CSS/styleus17.css">
+</head>
+
+<body>
+
+    <!-- Decoración del fondo -->
+    <div class="contacto-puntos contacto-puntos-izquierda"></div>
+    <div class="contacto-puntos contacto-puntos-derecha"></div>
+
+    <!-- Encabezado -->
+    <header class="contacto-header">
+
+        <div class="contacto-cruz contacto-cruz-izquierda">+</div>
+
+        <div class="contacto-encabezado">
+            <h1>SISTEMAS DE GESTIÓN DE CALIDAD</h1>
+            <a href="index.html" class="contacto-inicio">Contacto</a>
+        </div>
+
+        <div class="contacto-cruz contacto-cruz-derecha">+</div>
+
+        <!-- Botón hamburguesa -->
+        <button
+            class="contacto-menu-boton"
+            id="contactoMenuBoton"
+            type="button"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </header>
+
+    <!-- Menú lateral -->
+    <div class="contacto-overlay" id="contactoOverlay"></div>
+
+    <nav
+        class="contacto-sidebar"
+        id="contactoSidebar"
+        aria-label="Navegación principal"
+        inert
+    >
+        <a href="index.html" class="contacto-enlace-menu">Inicio</a>
+        <a href="contacto.html" class="contacto-enlace-menu">Contacto</a>
+        <a href="faq.html" class="contacto-enlace-menu">Preguntas frecuentes</a>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="contacto-main">
+
+        <h2 class="contacto-titulo">Formulario de Contacto</h2>
+
+        <section class="contacto-tarjeta" aria-label="Formulario de contacto">
+
+            <form id="formularioContacto" class="contacto-formulario">
+
+                <!-- Columna izquierda -->
+                <div class="contacto-columna-izquierda">
+
+                    <!-- Nombre -->
+                    <div class="contacto-campo">
+                        <label for="nombre">nombre</label>
+
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            placeholder="escriba su nombre aquí"
+                            autocomplete="name"
+                            minlength="2"
+                            maxlength="80"
+                            required
+                        >
+                    </div>
+
+                    <!-- Email -->
+                    <div class="contacto-campo">
+                        <label for="email">email</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="escriba su correo aquí"
+                            autocomplete="email"
+                            maxlength="254"
+                            required
+                        >
+                    </div>
+
+                    <!-- Botón de envío -->
+                    <button
+                        type="submit"
+                        class="contacto-boton-enviar"
+                        id="contactoBotonEnviar"
+                    >
+                        enviar
+                    </button>
+
+                </div>
+
+                <!-- Columna derecha -->
+                <div class="contacto-columna-derecha">
+
+                    <div class="contacto-mensaje">
+
+                        <label for="mensaje">Consulta/Feedback</label>
+
+                        <textarea
+                            id="mensaje"
+                            name="mensaje"
+                            placeholder="escriba su mensaje aquí"
+                            minlength="10"
+                            maxlength="3000"
+                            required
+                        ></textarea>
+
+                        <div class="contacto-contador">
+                            <span id="contactoContador">0</span>/3000
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Mensajes del formulario -->
+                <div
+                    class="contacto-estado"
+                    id="contactoEstado"
+                    role="status"
+                    aria-live="polite"
+                    aria-atomic="true"
+                    tabindex="-1"
+                    hidden
+                ></div>
+
+            </form>
+
+        </section>
+
+    </main>
+<script src="..//JS/us17.js" ></script>
+</body>
+</html>
