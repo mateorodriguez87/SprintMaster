@@ -1,0 +1,783 @@
+
+/* =====================================================
+   CONFIGURACIÓN GENERAL
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background: #03061f;
+    color: #ffffff;
+
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+
+/* =====================================================
+   FONDO DECORATIVO
+   ===================================================== */
+
+.ej-puntos {
+    position: fixed;
+    width: 330px;
+    height: 330px;
+
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.65;
+
+    background-image:
+        radial-gradient(circle, #393a94 2px, transparent 3px);
+
+    background-size: 14px 14px;
+}
+
+.ej-puntos-izquierda {
+    top: 0;
+    left: 0;
+
+    mask-image: linear-gradient(135deg, black, transparent 85%);
+    -webkit-mask-image: linear-gradient(135deg, black, transparent 85%);
+}
+
+.ej-puntos-derecha {
+    right: 0;
+    bottom: 0;
+
+    mask-image: linear-gradient(315deg, black, transparent 85%);
+    -webkit-mask-image: linear-gradient(315deg, black, transparent 85%);
+}
+
+
+/* =====================================================
+   ENCABEZADO
+   ===================================================== */
+
+.ej-header {
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+    min-height: 210px;
+    padding: 30px 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 1px solid #14266e;
+}
+
+.ej-encabezado {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.ej-encabezado h1 {
+    color: #2850bd;
+
+    font-size: clamp(20px, 2.4vw, 34px);
+    font-weight: 800;
+
+    line-height: 1.3;
+    letter-spacing: -0.6px;
+}
+
+.ej-subtitulo {
+    display: inline-block;
+    margin-top: 8px;
+
+    color: #eeeeee;
+    font-size: 16px;
+
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.ej-subtitulo:hover {
+    color: #9e9bf2;
+}
+
+
+/* Cruces decorativas */
+
+.ej-cruz {
+    position: absolute;
+
+    color: #2850bd;
+    font-size: 60px;
+    font-weight: 300;
+    line-height: 1;
+
+    pointer-events: none;
+}
+
+.ej-cruz-izquierda {
+    top: 40px;
+    left: 13%;
+    transform: rotate(15deg);
+}
+
+.ej-cruz-derecha {
+    top: 40px;
+    right: 13%;
+    transform: rotate(-15deg);
+}
+
+
+/* =====================================================
+   MENÚ HAMBURGUESA
+   ===================================================== */
+
+.ej-menu-boton {
+    position: absolute;
+    top: 75px;
+    right: 45px;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: transparent;
+    cursor: pointer;
+    z-index: 30;
+
+    transition: background 0.3s ease;
+}
+
+.ej-menu-boton:hover {
+    background: rgba(40, 80, 189, 0.15);
+}
+
+.ej-menu-boton span {
+    width: 21px;
+    height: 2px;
+
+    display: block;
+    border-radius: 5px;
+
+    background: #344b9c;
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease,
+        background 0.3s ease;
+}
+
+.ej-menu-boton:hover span {
+    background: #ffffff;
+}
+
+.ej-menu-boton.activo span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.ej-menu-boton.activo span:nth-child(2) {
+    opacity: 0;
+}
+
+.ej-menu-boton.activo span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* Menú lateral */
+
+.ej-sidebar {
+    position: fixed;
+    top: 0;
+    right: -360px;
+
+    width: min(360px, 85vw);
+    height: 100vh;
+
+    padding: 150px 25px 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #02051b;
+    border-left: 1px solid #1e3995;
+
+    z-index: 20;
+
+    transition: right 0.35s ease;
+}
+
+.ej-sidebar.abierto {
+    right: 0;
+}
+
+.ej-enlace-menu {
+    padding: 20px;
+
+    color: #eeeeee;
+    font-size: 15px;
+    text-decoration: none;
+
+    border-bottom: 1px solid #14266e;
+
+    transition:
+        background 0.3s ease,
+        padding-left 0.3s ease,
+        color 0.3s ease;
+}
+
+.ej-enlace-menu:hover {
+    padding-left: 28px;
+    background: #080d2d;
+    color: #9e9bf2;
+}
+
+.ej-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 15;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.ej-overlay.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =====================================================
+   CONTENIDO PRINCIPAL
+   ===================================================== */
+
+.ej-main {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1500px;
+
+    margin: 0 auto;
+    padding: 65px 7% 70px;
+}
+
+.ej-titulo {
+    margin-bottom: 15px;
+
+    color: #eeeeee;
+    font-size: clamp(29px, 3.4vw, 46px);
+    font-weight: 500;
+    font-style: italic;
+
+    line-height: 1.25;
+    text-align: center;
+
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
+}
+
+.ej-introduccion {
+    max-width: 780px;
+    margin: 0 auto 38px;
+
+    color: #9ba8d1;
+    font-size: 15px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+
+/* =====================================================
+   CUADRÍCULA DE EJERCICIOS
+   ===================================================== */
+
+.ej-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    align-items: start;
+    gap: 35px 8%;
+
+    width: 100%;
+}
+
+
+/* =====================================================
+   TARJETAS
+   ===================================================== */
+
+.ej-tarjeta {
+    position: relative;
+
+    min-width: 0;
+    padding: 35px 34px 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 5px solid #0c36df;
+    border-radius: 48px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #07195c 0%,
+            #041344 100%
+        );
+
+    box-shadow: 0 0 12px rgba(0, 42, 255, 0.08);
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.ej-tarjeta:hover {
+    border-color: #2452f2;
+    box-shadow: 0 0 18px rgba(24, 71, 255, 0.15);
+}
+
+.ej-tarjeta.abierta {
+    border-color: #0c36df;
+}
+
+.ej-tarjeta.abierta:has(.ej-boton-solucion:hover) {
+    border-color: #5598ff;
+    box-shadow: 0 0 22px rgba(63, 137, 255, 0.25);
+}
+
+
+/* =====================================================
+   TÍTULOS Y ENUNCIADOS
+   ===================================================== */
+
+.ej-tarjeta-titulo {
+    margin-bottom: 8px;
+
+    color: #ffffff;
+    font-size: clamp(19px, 1.65vw, 25px);
+    font-weight: 700;
+
+    line-height: 1.35;
+    letter-spacing: -0.5px;
+}
+
+.ej-categoria {
+    margin-bottom: 14px;
+
+    color: #718bd9;
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.ej-enunciado {
+    margin-bottom: 30px;
+
+    color: #f1f3ff;
+    font-size: 17px;
+    font-weight: 400;
+
+    line-height: 1.48;
+    overflow-wrap: anywhere;
+}
+
+
+/* =====================================================
+   BOTÓN SOLUCIÓN
+   ===================================================== */
+
+.ej-boton-solucion {
+    position: relative;
+
+    width: 100%;
+    min-height: 43px;
+    margin-top: auto;
+    padding: 8px 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    border: 4px solid #0c36df;
+    border-radius: 25px;
+
+    background: #041344;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.ej-boton-solucion:hover {
+    background: #082bb5;
+    border-color: #5598ff;
+    color: #a9d5ff;
+
+    box-shadow: 0 0 15px rgba(60, 130, 255, 0.28);
+}
+
+.ej-boton-solucion:focus-visible {
+    outline: 3px solid #9e9bf2;
+    outline-offset: 4px;
+}
+
+.ej-icono-ojo {
+    position: absolute;
+    left: 16px;
+
+    width: 21px;
+    height: 21px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    flex-shrink: 0;
+}
+
+.ej-ojo-cruz {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.ej-boton-solucion[aria-expanded="true"] .ej-ojo-cruz {
+    opacity: 1;
+}
+
+.ej-texto-boton {
+    text-align: center;
+}
+
+
+/* =====================================================
+   PANEL DESPLEGABLE DE SOLUCIÓN
+   ===================================================== */
+
+.ej-solucion {
+    display: grid;
+    grid-template-rows: 0fr;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        grid-template-rows 0.4s ease,
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.ej-solucion-contenido {
+    min-height: 0;
+    overflow: hidden;
+
+    border: 0 solid #0c36df;
+    border-radius: 0 0 18px 18px;
+
+    background: rgba(2, 13, 57, 0.6);
+
+    transition:
+        border-width 0.3s ease,
+        padding 0.3s ease;
+}
+
+.ej-tarjeta.abierta .ej-solucion {
+    grid-template-rows: 1fr;
+
+    opacity: 1;
+    visibility: visible;
+}
+
+.ej-tarjeta.abierta .ej-solucion-contenido {
+    border-width: 0 4px 4px;
+    padding: 12px 18px 20px;
+}
+
+
+/* Estado de visibilidad */
+
+.ej-estado {
+    margin-bottom: 12px;
+
+    color: #8e9bae;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.ej-estado span {
+    color: #a9d5ff;
+}
+
+
+/* Lista de soluciones */
+
+.ej-solucion ol {
+    padding-left: 20px;
+
+    color: #eeeeff;
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+.ej-solucion li {
+    padding-left: 2px;
+    margin-bottom: 20px;
+}
+
+.ej-solucion li:last-child {
+    margin-bottom: 0;
+}
+
+.ej-solucion code {
+    color: #a9d5ff;
+
+    font-family: Consolas, Monaco, monospace;
+    font-size: 0.95em;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =====================================================
+   PIE DE PÁGINA
+   ===================================================== */
+
+.ej-pie {
+    margin-top: 35px;
+
+    color: #6878bd;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+
+/* =====================================================
+   TABLETS
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .ej-header {
+        min-height: 160px;
+        padding: 25px 75px;
+    }
+
+    .ej-cruz-izquierda {
+        left: 5%;
+    }
+
+    .ej-cruz-derecha {
+        right: 5%;
+    }
+
+    .ej-menu-boton {
+        top: 55px;
+        right: 15px;
+    }
+
+    .ej-main {
+        padding: 45px 5% 60px;
+    }
+
+    .ej-grid {
+        gap: 25px;
+    }
+
+    .ej-tarjeta {
+        padding: 27px 23px 24px;
+        border-radius: 36px;
+        border-width: 4px;
+    }
+
+    .ej-tarjeta-titulo {
+        font-size: 20px;
+    }
+
+    .ej-enunciado {
+        font-size: 15px;
+    }
+
+    .ej-boton-solucion {
+        font-size: 16px;
+    }
+}
+
+
+/* =====================================================
+   CELULARES
+   ===================================================== */
+
+@media (max-width: 650px) {
+
+    .ej-header {
+        min-height: 125px;
+        padding: 20px 55px 20px 15px;
+    }
+
+    .ej-encabezado h1 {
+        font-size: 18px;
+    }
+
+    .ej-subtitulo {
+        font-size: 13px;
+    }
+
+    .ej-cruz {
+        font-size: 36px;
+    }
+
+    .ej-cruz-izquierda {
+        top: 5px;
+        left: 5px;
+    }
+
+    .ej-cruz-derecha {
+        top: 5px;
+        right: 55px;
+    }
+
+    .ej-menu-boton {
+        top: 38px;
+        right: 8px;
+
+        width: 40px;
+        height: 40px;
+    }
+
+    .ej-main {
+        padding: 35px 17px 45px;
+    }
+
+    .ej-titulo {
+        margin-bottom: 13px;
+        font-size: 29px;
+    }
+
+    .ej-introduccion {
+        margin-bottom: 28px;
+        font-size: 14px;
+    }
+
+    .ej-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .ej-tarjeta {
+        padding: 27px 23px 23px;
+        border-radius: 32px;
+    }
+
+    .ej-tarjeta-titulo {
+        font-size: 21px;
+    }
+
+    .ej-enunciado {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .ej-boton-solucion {
+        min-height: 45px;
+        font-size: 17px;
+    }
+
+    .ej-solucion ol {
+        font-size: 13px;
+    }
+}
+
+
+/* =====================================================
+   CELULARES PEQUEÑOS
+   ===================================================== */
+
+@media (max-width: 380px) {
+
+    .ej-encabezado h1 {
+        font-size: 16px;
+    }
+
+    .ej-titulo {
+        font-size: 25px;
+    }
+
+    .ej-tarjeta {
+        padding: 23px 17px 19px;
+        border-radius: 27px;
+    }
+
+    .ej-tarjeta-titulo {
+        font-size: 19px;
+    }
+
+    .ej-enunciado {
+        font-size: 14px;
+    }
+
+    .ej-solucion-contenido {
+        overflow-wrap: anywhere;
+    }
+}
+
+
+/* =====================================================
+   MOVIMIENTO REDUCIDO
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+}

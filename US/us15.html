@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Ejercicios y casos prácticos de Sistemas de Gestión de Calidad.">
+
+    <title>Ejercicios y Casos Prácticos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="..//CSS/styleus15.css">
+</head>
+
+<body>
+
+    <!-- Decoración del fondo -->
+    <div class="ej-puntos ej-puntos-izquierda"></div>
+    <div class="ej-puntos ej-puntos-derecha"></div>
+
+    <!-- Encabezado -->
+    <header class="ej-header">
+
+        <span class="ej-cruz ej-cruz-izquierda">+</span>
+
+        <div class="ej-encabezado">
+            <h1>SISTEMAS DE GESTIÓN DE CALIDAD</h1>
+        </div>
+
+        <span class="ej-cruz ej-cruz-derecha">+</span>
+
+        <button
+            type="button"
+            class="ej-menu-boton"
+            id="ejMenuBoton"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            aria-controls="ejSidebar"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </header>
+
+    <!-- Menú lateral -->
+    <div class="ej-overlay" id="ejOverlay"></div>
+
+    <nav class="ej-sidebar" id="ejSidebar" aria-label="Navegación principal" inert>
+        <a href="index.html" class="ej-enlace-menu">Inicio</a>
+        <a href="ejercicios.html" class="ej-enlace-menu">Ejercicios</a>
+        <a href="contacto.html" class="ej-enlace-menu">Contacto</a>
+        <a href="faq.html" class="ej-enlace-menu">Preguntas frecuentes</a>
+    </nav>
+
+    <!-- Contenido -->
+    <main class="ej-main">
+
+        <h2 class="ej-titulo">Ejercicios y Casos Prácticos</h2>
+
+        <p class="ej-introduccion">
+            Analizá cada situación y consultá la solución para revisar los pasos
+            propuestos y los criterios de evaluación.
+        </p>
+
+        <section class="ej-grid" aria-label="Lista de ejercicios">
+
+            <!-- EJERCICIO 1 -->
+            <article class="ej-tarjeta abierta">
+
+                <h3 class="ej-tarjeta-titulo">
+                    Ejercicio 1: Modelos de Gestión de Calidad
+                </h3>
+
+                <p class="ej-categoria">UI/UX Review</p>
+
+                <p class="ej-enunciado">
+                    Revisar la interfaz del "Punto de situación" para evaluar su
+                    usabilidad y verificar la adherencia a la lista de chequeo
+                    de Design QA, comparando los mockups de Figma contra el
+                    código maquetado.
+                </p>
+
+                <button
+                    class="ej-boton-solucion"
+                    type="button"
+                    aria-expanded="true"
+                    aria-label="Ocultar solución del ejercicio 1"
+                >
+                    <svg class="ej-icono-ojo" viewBox="0 0 24 24" aria-hidden="true">
+                        <path class="ej-ojo-contorno" d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/>
+                        <circle class="ej-ojo-pupila" cx="12" cy="12" r="3"/>
+                        <path class="ej-ojo-cruz" d="M4 20 20 4"/>
+                    </svg>
+
+                    <span class="ej-texto-boton">solución</span>
+                </button>
+
+                <div class="ej-solucion">
+                    <div class="ej-solucion-contenido">
+
+                        <p class="ej-estado">
+                            Estado: <span>Solución visible</span>
+                        </p>
+
+                        <ol>
+                            <li>Crear la lista de chequeo (checklist) de Design QA.</li>
+                            <li>Revisar correspondencia entre Figma y código: colores, espaciados y componentes.</li>
+                            <li>Probar usabilidad con usuarios reales, evaluando interacciones, estados y respuesta responsive.</li>
+                        </ol>
+
+                    </div>
+                </div>
+
+            </article>
+
+            <!-- EJERCICIO 2 -->
+            <article class="ej-tarjeta">
+
+                <h3 class="ej-tarjeta-titulo">
+                    Ejercicio 2: Configuración de Métricas Clave
+                </h3>
+
+                <p class="ej-categoria">Métricas</p>
+
+                <p class="ej-enunciado">
+                    Definir un conjunto de métricas clave de calidad de software
+                    para un proyecto de e-commerce con los objetivos de
+                    "Mejora Continua" y "Detección Temprana".
+                </p>
+
+                <button
+                    class="ej-boton-solucion"
+                    type="button"
+                    aria-expanded="false"
+                    aria-label="Mostrar solución del ejercicio 2"
+                >
+                    <svg class="ej-icono-ojo" viewBox="0 0 24 24" aria-hidden="true">
+                        <path class="ej-ojo-contorno" d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/>
+                        <circle class="ej-ojo-pupila" cx="12" cy="12" r="3"/>
+                        <path class="ej-ojo-cruz" d="M4 20 20 4"/>
+                    </svg>
+
+                    <span class="ej-texto-boton">solución</span>
+                </button>
+
+                <div class="ej-solucion">
+                    <div class="ej-solucion-contenido">
+
+                        <p class="ej-estado">
+                            Estado: <span>Solución oculta</span>
+                        </p>
+
+                        <ol>
+                            <li>Medir la densidad de defectos: errores detectados por módulo o Sprint.</li>
+                            <li>Evaluar la cobertura de pruebas: porcentaje de código o requisitos cubiertos.</li>
+                            <li>Calcular la tasa de reapertura de bugs y el tiempo medio de resolución (MTTR).</li>
+                        </ol>
+
+                    </div>
+                </div>
+
+            </article>
+
+            <!-- EJERCICIO 3 -->
+            <article class="ej-tarjeta">
+
+                <h3 class="ej-tarjeta-titulo">
+                    Ejercicio 3: Automatización en Integración Continua
+                </h3>
+
+                <p class="ej-categoria">DevOps / QA · CI/CD</p>
+
+                <p class="ej-enunciado">
+                    Configurar un pipeline en GitHub Actions que ejecute
+                    automáticamente las pruebas unitarias y de integración tras
+                    cada Pull Request hacia la rama principal.
+                </p>
+
+                <button
+                    class="ej-boton-solucion"
+                    type="button"
+                    aria-expanded="false"
+                    aria-label="Mostrar solución del ejercicio 3"
+                >
+                    <svg class="ej-icono-ojo" viewBox="0 0 24 24" aria-hidden="true">
+                        <path class="ej-ojo-contorno" d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/>
+                        <circle class="ej-ojo-pupila" cx="12" cy="12" r="3"/>
+                        <path class="ej-ojo-cruz" d="M4 20 20 4"/>
+                    </svg>
+
+                    <span class="ej-texto-boton">solución</span>
+                </button>
+
+                <div class="ej-solucion">
+                    <div class="ej-solucion-contenido">
+
+                        <p class="ej-estado">
+                            Estado: <span>Solución oculta</span>
+                        </p>
+
+                        <ol>
+                            <li>Crear el archivo de flujo de trabajo <code>.github/workflows/test.yml</code>.</li>
+                            <li>Definir los disparadores para eventos <code>pull_request</code> dirigidos a la rama <code>main</code>.</li>
+                            <li>Configurar la instalación de dependencias, la ejecución del linter y la suite de pruebas, generando un reporte de cobertura.</li>
+                        </ol>
+
+                    </div>
+                </div>
+
+            </article>
+
+            <!-- EJERCICIO 4 -->
+            <article class="ej-tarjeta">
+
+                <h3 class="ej-tarjeta-titulo">
+                    Ejercicio 4: Estrategia de Pruebas de Carga y Estrés
+                </h3>
+
+                <p class="ej-categoria">Rendimiento</p>
+
+                <p class="ej-enunciado">
+                    Diseñar un escenario de pruebas de rendimiento utilizando
+                    JMeter para validar la capacidad de respuesta del sistema
+                    durante un evento de alta concurrencia, como CyberMonday.
+                </p>
+
+                <button
+                    class="ej-boton-solucion"
+                    type="button"
+                    aria-expanded="false"
+                    aria-label="Mostrar solución del ejercicio 4"
+                >
+                    <svg class="ej-icono-ojo" viewBox="0 0 24 24" aria-hidden="true">
+                        <path class="ej-ojo-contorno" d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/>
+                        <circle class="ej-ojo-pupila" cx="12" cy="12" r="3"/>
+                        <path class="ej-ojo-cruz" d="M4 20 20 4"/>
+                    </svg>
+
+                    <span class="ej-texto-boton">solución</span>
+                </button>
+
+                <div class="ej-solucion">
+                    <div class="ej-solucion-contenido">
+
+                        <p class="ej-estado">
+                            Estado: <span>Solución oculta</span>
+                        </p>
+
+                        <ol>
+                            <li>Establecer la línea base de usuarios concurrentes simultáneos, por ejemplo, 5.000 usuarios.</li>
+                            <li>Configurar un Thread Group en JMeter con una rampa de carga progresiva (ramp-up) de 10 minutos.</li>
+                            <li>Definir umbrales de aceptación: tiempo de respuesta inferior a 2 segundos y tasa de error HTTP inferior al 1 %.</li>
+                        </ol>
+
+                    </div>
+                </div>
+
+            </article>
+
+        </section>
+
+        <p class="ej-pie">
+            Seleccioná «solución» para mostrar u ocultar la respuesta de cada ejercicio.
+        </p>
+
+    </main>
+<script src="../JS/us15.js"></script>
+</body>
+</html>
