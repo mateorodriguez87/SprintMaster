@@ -55,55 +55,60 @@ document.addEventListener("DOMContentLoaded", () => {
         estado.className = "contacto-estado " + tipo;
         estado.hidden = false;
     }
+// =========================================
+// ENVÍO DEL FORMULARIO
+// =========================================
 
-    // =========================================
-    // ENVÍO DEL FORMULARIO
-    // =========================================
+formulario.addEventListener("submit", (evento) => {
+    evento.preventDefault();
 
-    formulario.addEventListener("submit", (evento) => {
-        evento.preventDefault();
+    campoNombre.value = campoNombre.value.trim();
+    campoEmail.value = campoEmail.value.trim();
+    campoMensaje.value = campoMensaje.value.trim();
 
-        campoNombre.value = campoNombre.value.trim();
-        campoEmail.value = campoEmail.value.trim();
-        campoMensaje.value = campoMensaje.value.trim();
+    actualizarContador();
 
-        actualizarContador();
+    // Comprobar los campos obligatorios
+    if (!formulario.checkValidity()) {
+        formulario.reportValidity();
+        return;
+    }
 
-        if (!formulario.checkValidity()) {
-            formulario.reportValidity();
-            return;
-        }
-
-        if (campoNombre.value.length < 2) {
-            campoNombre.setCustomValidity(
-                "El nombre debe contener al menos 2 caracteres."
-            );
-
-            campoNombre.reportValidity();
-            campoNombre.focus();
-            return;
-        }
-
-        if (campoMensaje.value.length < 10) {
-            campoMensaje.setCustomValidity(
-                "El mensaje debe contener al menos 10 caracteres."
-            );
-
-            campoMensaje.reportValidity();
-            campoMensaje.focus();
-            return;
-        }
-
-        campoMensaje.setCustomValidity("");
-
-        // Confirmación local: todavía no se envía a un servidor.
-        mostrarEstado(
-            "El formulario se completó correctamente. Para enviar tu consulta realmente, es necesario conectar el formulario con un servidor o servicio de correo.",
-            "exito"
+    // Validar el nombre
+    if (campoNombre.value.length < 2) {
+        campoNombre.setCustomValidity(
+            "El nombre debe contener al menos 2 caracteres."
         );
 
-        estado.focus();
-    });
+        campoNombre.reportValidity();
+        campoNombre.focus();
+        return;
+    }
+
+    campoNombre.setCustomValidity("");
+
+    // Validar el mensaje
+    if (campoMensaje.value.length < 10) {
+        campoMensaje.setCustomValidity(
+            "El mensaje debe contener al menos 10 caracteres."
+        );
+
+        campoMensaje.reportValidity();
+        campoMensaje.focus();
+        return;
+    }
+
+    campoMensaje.setCustomValidity("");
+
+    // Mostrar cartel verde
+    mostrarEstado("✓ Enviado", "exito");
+
+    estado.focus();
+
+    // Limpiar los campos después de mostrar la confirmación
+    formulario.reset();
+    actualizarContador();
+});
 
     // =========================================
     // MENÚ HAMBURGUESA
