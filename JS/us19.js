@@ -1,142 +1,357 @@
+
 /**
  * US-19: Encuesta de Preferencias Metodológicas
- * Algoritmo de cómputo de puntaje y lógica del asistente por pasos (Wizard)
+ * Encuesta de 6 preguntas y recomendación entre 6 modelos.
  */
 
 const surveyData = {
   intro: {
     title: "Introducción",
-    subtitle: "Responde a continuación a 6 preguntas clave sobre tu proyecto para obtener una sugerencia automatizada sobre qué metodología (Scrum, Kanban o Cascada) es la más adecuada."
+    subtitle: "Responde las 6 preguntas sobre tu proyecto para obtener una recomendación entre Scrum, Kanban, Cascada, Incremental, Modelo en V y XP."
   },
+
   questions: [
     {
       step: 1,
       title: "Claridad y Estabilidad de los Requisitos",
       question: "1) ¿Qué tan definidos y estables están los requisitos de tu proyecto desde el inicio?",
       options: [
-        { letter: "A", text: "Están 100% claros, documentados y no cambiarán a lo largo del proyecto.", value: "Cascada" },
-        { letter: "B", text: "Son cambiantes e inciertos; necesitamos iterar y adaptarlos según las entregas del producto.", value: "Scrum" },
-        { letter: "C", text: "Llegan de forma continua e imprevista como solicitudes de trabajo o tareas entrantes.", value: "Kanban" }
+        {
+          letter: "A",
+          text: "Están completamente claros, documentados y no cambiarán durante el proyecto.",
+          value: "Cascada"
+        },
+        {
+          letter: "B",
+          text: "Son cambiantes y necesitamos adaptarlos durante ciclos de trabajo.",
+          value: "Scrum"
+        },
+        {
+          letter: "C",
+          text: "Llegan continuamente como solicitudes o tareas imprevistas.",
+          value: "Kanban"
+        },
+        {
+          letter: "D",
+          text: "Están definidos en general, pero podemos agregar requisitos por etapas.",
+          value: "Incremental"
+        },
+        {
+          letter: "E",
+          text: "Necesitamos requisitos claros y una planificación detallada de las pruebas.",
+          value: "Modelo en V"
+        },
+        {
+          letter: "F",
+          text: "Cambian frecuentemente y necesitamos trabajar junto al cliente para aclararlos.",
+          value: "XP"
+        }
       ]
     },
+
     {
       step: 2,
       title: "Ritmo de Trabajo y Planificación",
       question: "2) ¿Cómo prefieres estructurar el tiempo y las entregas del equipo?",
       options: [
-        { letter: "A", text: "Seguir un plan rígido y secuencial por fases fijas (análisis, diseño, desarrollo, pruebas).", value: "Cascada" },
-        { letter: "B", text: "Trabajar en ciclos fijos de tiempo (Sprints de 1 a 4 semanas) con un compromiso de entregables predefinido.", value: "Scrum" },
-        { letter: "C", text: "Trabajar con un flujo continuo e interrumpido, priorizando tareas a medida que entran sin ciclos de tiempo fijos.", value: "Kanban" }
+        {
+          letter: "A",
+          text: "Seguir un plan secuencial por fases: análisis, diseño, desarrollo y pruebas.",
+          value: "Cascada"
+        },
+        {
+          letter: "B",
+          text: "Trabajar en ciclos fijos llamados Sprints, con entregas al finalizar cada ciclo.",
+          value: "Scrum"
+        },
+        {
+          letter: "C",
+          text: "Trabajar con un flujo continuo de tareas, sin ciclos fijos.",
+          value: "Kanban"
+        },
+        {
+          letter: "D",
+          text: "Dividir el desarrollo en varias entregas que agreguen funcionalidades progresivamente.",
+          value: "Incremental"
+        },
+        {
+          letter: "E",
+          text: "Planificar las fases de desarrollo junto con las actividades de prueba correspondientes.",
+          value: "Modelo en V"
+        },
+        {
+          letter: "F",
+          text: "Realizar entregas pequeñas y frecuentes, con pruebas continuas.",
+          value: "XP"
+        }
       ]
     },
+
     {
       step: 3,
       title: "Gestión de Cambios y Flexibilidad",
       question: "3) ¿Qué tan flexible es el proyecto para incorporar cambios imprevistos durante la ejecución?",
       options: [
-        { letter: "A", text: "Muy poco flexible; cualquier cambio afecta el alcance, tiempo y presupuesto iniciales.", value: "Cascada" },
-        { letter: "B", text: "Flexible entre iteraciones; los cambios se reordenan en la Pila del Producto para el siguiente Sprint.", value: "Scrum" },
-        { letter: "C", text: "Altamente flexible e inmediato; se puede cambiar la prioridad de una tarea en cualquier momento si la capacidad del equipo lo permite.", value: "Kanban" }
+        {
+          letter: "A",
+          text: "Muy poco flexible: los cambios pueden afectar el alcance, el tiempo y el presupuesto.",
+          value: "Cascada"
+        },
+        {
+          letter: "B",
+          text: "Flexible entre Sprints, reorganizando las prioridades para los ciclos siguientes.",
+          value: "Scrum"
+        },
+        {
+          letter: "C",
+          text: "Muy flexible: podemos modificar las prioridades de las tareas según la capacidad del equipo.",
+          value: "Kanban"
+        },
+        {
+          letter: "D",
+          text: "Podemos incorporar cambios y funcionalidades en los siguientes incrementos.",
+          value: "Incremental"
+        },
+        {
+          letter: "E",
+          text: "Los cambios deben evaluarse cuidadosamente porque pueden requerir revisar el diseño y las pruebas.",
+          value: "Modelo en V"
+        },
+        {
+          letter: "F",
+          text: "Necesitamos adaptarnos rápidamente mediante la comunicación frecuente con el cliente.",
+          value: "XP"
+        }
       ]
     },
+
     {
       step: 4,
       title: "Organización y Roles del Equipo",
       question: "4) ¿Cómo está estructurado el equipo de trabajo y cómo se gestionan los roles?",
       options: [
-        { letter: "A", text: "Con roles tradicionales bien definidos y jerárquicos (Gerente de Proyecto, Analista, Desarrollador, Tester) coordinados por un líder de proyecto.", value: "Cascada" },
-        { letter: "B", text: "Como un equipo multifuncional y autogestionado con roles específicos del marco (Propietario del Producto, Scrum Master, Equipo de Desarrollo).", value: "Scrum" },
-        { letter: "C", text: "Como un equipo flexible con roles existentes que se organiza según el flujo de tareas, sin necesidad de cambiar los roles actuales.", value: "Kanban" }
+        {
+          letter: "A",
+          text: "Con roles tradicionales y fases coordinadas por un responsable del proyecto.",
+          value: "Cascada"
+        },
+        {
+          letter: "B",
+          text: "Con un equipo autogestionado y roles definidos, como Product Owner y Scrum Master.",
+          value: "Scrum"
+        },
+        {
+          letter: "C",
+          text: "Con los roles actuales, organizando el trabajo según el flujo de tareas.",
+          value: "Kanban"
+        },
+        {
+          letter: "D",
+          text: "Con un equipo que desarrolla y entrega partes funcionales del sistema progresivamente.",
+          value: "Incremental"
+        },
+        {
+          letter: "E",
+          text: "Con responsabilidades definidas para desarrollar el sistema y verificar que cumpla los requisitos.",
+          value: "Modelo en V"
+        },
+        {
+          letter: "F",
+          text: "Con colaboración estrecha, comunicación constante y trabajo conjunto entre desarrolladores.",
+          value: "XP"
+        }
       ]
     },
+
     {
       step: 5,
       title: "Capacidad y Control del Flujo de Trabajo",
       question: "5) ¿Cómo gestiona el equipo la carga de trabajo en simultáneo?",
       options: [
-        { letter: "A", text: "Se asigna todo el volumen de trabajo al inicio basándose en la estimación del proyecto completo.", value: "Cascada" },
-        { letter: "B", text: "El equipo selecciona un lote cerrado de trabajo que se compromete a completar durante cada ciclo (Sprint).", value: "Scrum" },
-        { letter: "C", text: "Se limita la cantidad de tareas en progreso en simultáneo (Límite de WIP) para evitar sobrecargar al equipo y optimizar el flujo.", value: "Kanban" }
+        {
+          letter: "A",
+          text: "Se planifica el volumen de trabajo del proyecto completo desde el inicio.",
+          value: "Cascada"
+        },
+        {
+          letter: "B",
+          text: "El equipo selecciona un conjunto de tareas para completar durante cada Sprint.",
+          value: "Scrum"
+        },
+        {
+          letter: "C",
+          text: "Se limita la cantidad de tareas en progreso para evitar la sobrecarga.",
+          value: "Kanban"
+        },
+        {
+          letter: "D",
+          text: "Se organiza el trabajo en partes, priorizando las funcionalidades de cada entrega.",
+          value: "Incremental"
+        },
+        {
+          letter: "E",
+          text: "Se controla el avance y se realizan pruebas planificadas en las diferentes fases.",
+          value: "Modelo en V"
+        },
+        {
+          letter: "F",
+          text: "Se trabaja en tareas pequeñas, con pruebas frecuentes e integración continua.",
+          value: "XP"
+        }
       ]
     },
+
     {
       step: 6,
       title: "Entregas al Cliente y Retroalimentación",
       question: "6) ¿Con qué frecuencia necesita el cliente ver avances del producto?",
       options: [
-        { letter: "A", text: "Únicamente al final del proyecto cuando todo el sistema esté terminado e implementado.", value: "Cascada" },
-        { letter: "B", text: "De forma periódica al final de cada ciclo (Sprint) mediante una demostración del incremento funcional.", value: "Scrum" },
-        { letter: "C", text: "De forma continua; tan pronto como una tarea o característica individual se finalice, se puede desplegar o entregar.", value: "Kanban" }
+        {
+          letter: "A",
+          text: "Al final del proyecto, cuando el sistema completo esté terminado.",
+          value: "Cascada"
+        },
+        {
+          letter: "B",
+          text: "Al finalizar cada Sprint, mediante una demostración del incremento funcional.",
+          value: "Scrum"
+        },
+        {
+          letter: "C",
+          text: "De forma continua, a medida que se terminan las tareas.",
+          value: "Kanban"
+        },
+        {
+          letter: "D",
+          text: "En cada entrega progresiva, incorporando nuevas funcionalidades al sistema.",
+          value: "Incremental"
+        },
+        {
+          letter: "E",
+          text: "Mediante entregas verificadas con pruebas planificadas para comprobar los requisitos.",
+          value: "Modelo en V"
+        },
+        {
+          letter: "F",
+          text: "Con entregas pequeñas y frecuentes, acompañadas de retroalimentación del cliente.",
+          value: "XP"
+        }
       ]
     }
   ],
+
   justifications: {
     Scrum: {
-      question: "¿Por qué Scrum es la mejor opción para tu proyecto?",
+      question: "¿Por qué Scrum puede ser una buena opción para tu proyecto?",
       paragraphs: [
-        "Las respuestas seleccionadas indican que tu proyecto se desarrolla en un entorno dinámico, donde los requisitos no están completamente consolidados desde el inicio y es probable que evolucionen. Scrum es el marco ideal para este escenario, ya que permite abordar la complejidad mediante un enfoque iterativo e incremental basado en ciclos de tiempo fijos (Sprints).",
-        "Esta metodología permitirá a tu equipo autogestionarse, priorizar continuamente las necesidades de mayor valor en la Pila del Producto y entregar un incremento de software totalmente funcional al finalizar cada ciclo. De este modo, el cliente podrá validar el avance de forma constante y ajustar el rumbo sin generar sobrecostos ni retrasos drásticos en la planificación."
+        "Scrum es un marco de trabajo ágil que organiza el desarrollo mediante ciclos de tiempo fijos llamados Sprints. Permite revisar periódicamente los avances, adaptar las prioridades y trabajar sobre las funcionalidades que aportan mayor valor.",
+        "Es una alternativa adecuada cuando los requisitos pueden cambiar y el equipo necesita recibir retroalimentación frecuente del cliente. Al finalizar cada Sprint se busca obtener un incremento funcional del producto."
       ]
     },
+
     Kanban: {
-      question: "¿Por qué Kanban es la mejor opción para tu proyecto?",
+      question: "¿Por qué Kanban puede ser una buena opción para tu proyecto?",
       paragraphs: [
-        "Tu proyecto se caracteriza por una llegada constante e imprevista de solicitudes, requerimientos o tareas con prioridades altamente variables. Kanban se adapta perfectamente a esta dinámica al centrarse en la gestión del flujo continuo de trabajo, sin obligar al equipo a encasillarse en ciclos de tiempo fijos o en la sobreestructura de roles rígidos.",
-        "Mediante la visualización del estado de las tareas en un tablero y la limitación del trabajo en progreso (Límite de WIP), tu equipo reducirá los cuellos de botella, evitará la sobrecarga y logrará entregas continuas y eficientes al cliente tan pronto como una funcionalidad o corrección esté lista para producción."
+        "Kanban se centra en visualizar y gestionar el flujo de trabajo. Las tareas pueden representarse en un tablero para conocer su estado, detectar dificultades y organizar las prioridades sin depender de ciclos de tiempo fijos.",
+        "Resulta útil cuando las solicitudes llegan continuamente. Limitar el trabajo en progreso ayuda a evitar la sobrecarga del equipo y a mejorar el flujo de entrega."
       ]
     },
+
     Cascada: {
-      question: "¿Por qué Cascada es la mejor opción para tu proyecto?",
+      question: "¿Por qué el modelo Cascada puede ser una buena opción para tu proyecto?",
       paragraphs: [
-        "Tus respuestas reflejan que el proyecto cuenta con un alcance claramente definido, requisitos estables que difícilmente cambiarán a lo largo del tiempo y una baja tolerancia al riesgo o a la improvisación. En este contexto, el modelo Cascada ofrece la estructura, previsibilidad y control técnico requeridos.",
-        "Al avanzar a través de etapas secuenciales y bien delimitadas (análisis, diseño, desarrollo, pruebas e implementación), este enfoque permite mantener una documentación rigurosa, una estimación precisa de tiempos y costos desde el inicio, y un seguimiento claro del cumplimiento del plan trazado hasta la entrega final del producto."
+        "Cascada organiza el desarrollo en etapas secuenciales, como análisis, diseño, desarrollo, pruebas e implementación. Cada fase se planifica antes de avanzar hacia las siguientes.",
+        "Puede resultar adecuado cuando los requisitos están claramente definidos y se espera que permanezcan estables. Su estructura facilita la planificación, la documentación y el seguimiento de las etapas del proyecto."
+      ]
+    },
+
+    Incremental: {
+      question: "¿Por qué el Modelo Incremental puede ser una buena opción para tu proyecto?",
+      paragraphs: [
+        "El Modelo Incremental permite desarrollar el software mediante varias entregas. Cada incremento agrega funcionalidades al producto, de manera que el sistema crece progresivamente en lugar de esperar hasta el final para disponer de una versión funcional.",
+        "Puede ser útil cuando el proyecto se puede dividir en partes. Las primeras entregas permiten recibir comentarios y realizar mejoras en los incrementos siguientes."
+      ]
+    },
+
+    "Modelo en V": {
+      question: "¿Por qué el Modelo en V puede ser una buena opción para tu proyecto?",
+      paragraphs: [
+        "El Modelo en V relaciona las etapas de definición y diseño con actividades de verificación y validación. De esta manera, las pruebas se planifican desde etapas tempranas del desarrollo.",
+        "Puede ser adecuado para proyectos que necesitan requisitos bien definidos, documentación y controles de calidad rigurosos. Su enfoque permite comprobar si el sistema cumple las especificaciones establecidas."
+      ]
+    },
+
+    XP: {
+      question: "¿Por qué XP puede ser una buena opción para tu proyecto?",
+      paragraphs: [
+        "Extreme Programming (XP) es una metodología ágil que promueve la colaboración con el cliente, las entregas pequeñas y la adaptación a los cambios. Busca mantener una comunicación frecuente durante el desarrollo.",
+        "Entre sus prácticas se encuentran la programación en pareja, el desarrollo guiado por pruebas y la integración continua. Estas prácticas ayudan a detectar errores anticipadamente y a mejorar progresivamente la calidad del software."
       ]
     }
   }
 };
 
+// Estado de la encuesta
 let currentStep = 0;
 const userAnswers = {};
 
+// Elementos del HTML
 const wizardBody = document.getElementById("wizardBody");
 const btnAnterior = document.getElementById("btnAnterior");
 const btnSiguiente = document.getElementById("btnSiguiente");
 const progressFill = document.getElementById("progressFill");
 const stepNodes = document.querySelectorAll(".step-node");
 
+// Inicio
 document.addEventListener("DOMContentLoaded", () => {
   renderStep();
+
   btnAnterior.addEventListener("click", goPrevious);
   btnSiguiente.addEventListener("click", goNext);
 });
 
+// Mostrar introducción, preguntas o resultados
 function renderStep() {
   wizardBody.innerHTML = "";
   updateProgressBar();
 
   if (currentStep === 0) {
     btnAnterior.disabled = true;
-    btnSiguiente.textContent = "Siguiente";
+    btnSiguiente.textContent = "Comenzar";
     btnSiguiente.disabled = false;
 
     wizardBody.innerHTML = `
       <h2 class="step-title">${surveyData.intro.title}</h2>
       <p class="step-subtitle">${surveyData.intro.subtitle}</p>
     `;
+
     return;
   }
 
-  if (currentStep >= 1 && currentStep <= surveyData.questions.length) {
+  if (
+    currentStep >= 1 &&
+    currentStep <= surveyData.questions.length
+  ) {
     btnAnterior.disabled = false;
     btnSiguiente.textContent = "Siguiente";
-    
+
     const qData = surveyData.questions[currentStep - 1];
+
     btnSiguiente.disabled = !userAnswers[currentStep];
 
     const optionsHTML = qData.options.map(opt => {
-      const isSelected = userAnswers[currentStep] === opt.value ? "selected" : "";
+      const isSelected =
+        userAnswers[currentStep] === opt.value ? "selected" : "";
+
       return `
-        <div class="option-card ${isSelected}" data-value="${opt.value}" data-letter="${opt.letter}">
+        <div
+          class="option-card ${isSelected}"
+          data-value="${opt.value}"
+          data-letter="${opt.letter}"
+          role="button"
+          tabindex="0"
+          aria-pressed="${isSelected ? "true" : "false"}"
+        >
           <p class="option-text">${opt.text}</p>
         </div>
       `;
@@ -149,14 +364,29 @@ function renderStep() {
     `;
 
     document.querySelectorAll(".option-card").forEach(card => {
-      card.addEventListener("click", () => {
-        const val = card.getAttribute("data-value");
-        userAnswers[currentStep] = val;
-        
-        document.querySelectorAll(".option-card").forEach(c => c.classList.remove("selected"));
+      function selectOption() {
+        const value = card.getAttribute("data-value");
+
+        userAnswers[currentStep] = value;
+
+        document.querySelectorAll(".option-card").forEach(option => {
+          option.classList.remove("selected");
+          option.setAttribute("aria-pressed", "false");
+        });
+
         card.classList.add("selected");
-        
+        card.setAttribute("aria-pressed", "true");
+
         btnSiguiente.disabled = false;
+      }
+
+      card.addEventListener("click", selectOption);
+
+      card.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          selectOption();
+        }
       });
     });
 
@@ -172,20 +402,28 @@ function renderStep() {
   }
 }
 
+// Actualizar barra y pasos de progreso
 function updateProgressBar() {
   const totalQuestions = surveyData.questions.length;
 
   if (currentStep === 0 || currentStep > totalQuestions) {
     progressFill.style.width = "0%";
-    stepNodes.forEach(node => node.classList.remove("active", "completed"));
+
+    stepNodes.forEach(node => {
+      node.classList.remove("active", "completed");
+    });
+
     return;
   }
 
-  const percentage = ((currentStep - 1) / (totalQuestions - 1)) * 100;
+  const percentage =
+    ((currentStep - 1) / (totalQuestions - 1)) * 100;
+
   progressFill.style.width = `${percentage}%`;
 
   stepNodes.forEach((node, idx) => {
     const nodeStep = idx + 1;
+
     if (nodeStep < currentStep) {
       node.classList.add("completed");
       node.classList.remove("active");
@@ -198,55 +436,105 @@ function updateProgressBar() {
   });
 }
 
+// Calcular puntajes, porcentajes y recomendación
 function calculateResults() {
-  const counts = { Scrum: 0, Kanban: 0, Cascada: 0 };
-  const totalAnswers = Object.keys(userAnswers).length;
-
-  Object.values(userAnswers).forEach(val => {
-    if (counts[val] !== undefined) counts[val]++;
-  });
-
-  const percentages = {
-    Scrum: Math.round((counts.Scrum / totalAnswers) * 100) || 0,
-    Kanban: Math.round((counts.Kanban / totalAnswers) * 100) || 0,
-    Cascada: Math.round((counts.Cascada / totalAnswers) * 100) || 0
+  const counts = {
+    Scrum: 0,
+    Kanban: 0,
+    Cascada: 0,
+    Incremental: 0,
+    "Modelo en V": 0,
+    XP: 0
   };
 
-  let winner = "Scrum";
-  if (counts.Kanban > counts.Scrum && counts.Kanban >= counts.Cascada) winner = "Kanban";
-  else if (counts.Cascada > counts.Scrum && counts.Cascada > counts.Kanban) winner = "Cascada";
+  const totalAnswers = surveyData.questions.length;
 
+  Object.values(userAnswers).forEach(value => {
+    if (Object.prototype.hasOwnProperty.call(counts, value)) {
+      counts[value]++;
+    }
+  });
+
+  const percentages = {};
+
+  Object.keys(counts).forEach(modelo => {
+    percentages[modelo] = Math.round(
+      (counts[modelo] / totalAnswers) * 100
+    );
+  });
+
+  // Seleccionar el modelo con mayor cantidad de respuestas.
+  // Si hay empate, se muestran todos los modelos empatados.
+  const maxCount = Math.max(...Object.values(counts));
+
+  const winners = Object.keys(counts).filter(
+    modelo => counts[modelo] === maxCount
+  );
+
+  const winner = winners[0];
   const justData = surveyData.justifications[winner];
+
+  const resultadosHTML = Object.keys(counts).map(modelo => `
+    <span class="badge">
+      ${modelo}: <strong>${percentages[modelo]}%</strong>
+    </span>
+  `).join("");
+
+  const empateHTML = winners.length > 1
+    ? `
+      <p class="result-subtitle">
+        Hay un empate entre: ${winners.join(", ")}.
+        La explicación corresponde a ${winner}.
+      </p>
+    `
+    : "";
 
   wizardBody.innerHTML = `
     <div class="result-container">
-      <h3 class="result-header-title">Su metodología ideal es...</h3>
+      <h3 class="result-header-title">
+        Tu metodología o modelo recomendado es...
+      </h3>
+
       <h1 class="winner-title">${winner}</h1>
 
+      ${empateHTML}
+
       <div class="percentages-bar">
-        <span class="badge">Scrum: <strong>${percentages.Scrum}%</strong></span>
-        <span class="badge">Kanban: <strong>${percentages.Kanban}%</strong></span>
-        <span class="badge">Cascada: <strong>${percentages.Cascada}%</strong></span>
+        ${resultadosHTML}
       </div>
 
       <div class="justification-box">
         <h4>${justData.question}</h4>
-        ${justData.paragraphs.map(p => `<p>${p}</p>`).join("")}
+        ${justData.paragraphs.map(parrafo => `<p>${parrafo}</p>`).join("")}
       </div>
     </div>
   `;
 }
 
+// Avanzar a la siguiente pantalla
 function goNext() {
   if (currentStep > surveyData.questions.length) {
+    // Reiniciar la encuesta
     currentStep = 0;
-    for (let key in userAnswers) delete userAnswers[key];
+
+    Object.keys(userAnswers).forEach(key => {
+      delete userAnswers[key];
+    });
+  } else if (currentStep === 0) {
+    currentStep = 1;
   } else {
+    // No avanzar si la pregunta actual no fue respondida
+    if (!userAnswers[currentStep]) {
+      return;
+    }
+
     currentStep++;
   }
+
   renderStep();
 }
 
+// Volver a la pantalla anterior
 function goPrevious() {
   if (currentStep > 0) {
     currentStep--;
