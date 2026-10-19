@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>US-18: Comparador Interactivo de Metodologías</title>
+  <link rel="stylesheet" href="../CSS/styleus18.css">
+</head>
+<body>
+  <div class="fondo-puntos puntos-izquierda" aria-hidden="true"></div>
+  <div class="fondo-puntos puntos-derecha" aria-hidden="true"></div>
+
+  <header class="encabezado-principal">
+    <div class="decoracion decoracion-izquierda" aria-hidden="true">
+      <span>+</span><span>+</span>
+    </div>
+
+    <div class="encabezado-contenido">
+      <h1>SISTEMAS DE GESTIÓN DE CALIDAD</h1>
+      <a class="enlace-inicio" href="../index.html">Inicio</a>
+    </div>
+
+    <div class="decoracion decoracion-derecha" aria-hidden="true">
+      <span>+</span><span>+</span>
+    </div>
+
+    <button class="boton-menu" type="button"
+      aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main class="pagina-comparador">
+    <section class="introduccion">
+      <h2>US-18: Comparador Interactivo de Metodologías</h2>
+      <p>
+        Como usuario, quiero usar un “Comparador de Metodologías”
+        interactivo para seleccionar dos o más metodologías y ver
+        una tabla comparativa con sus características clave.
+      </p>
+    </section>
+
+    <section class="comparador-layout"
+      aria-label="Comparador de metodologías">
+
+      <aside class="panel-seleccion">
+        <h3>Seleccionar Metodologías:</h3>
+        <p class="ayuda-seleccion">
+          Selecciona al menos dos opciones.
+        </p>
+
+        <div id="listaMetodologias"
+          class="lista-metodologias"></div>
+
+        <p id="mensajeSeleccion"
+          class="mensaje-seleccion"
+          role="status"
+          aria-live="polite"></p>
+      </aside>
+
+      <section class="panel-tabla"
+        aria-label="Tabla comparativa">
+        <div class="tabla-scroll">
+          <table id="tablaComparativa">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+    </section>
+  </main>
+
+  <script src="../JS/us18.js"></script>
+</body>
+</html>
