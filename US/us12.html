@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Glosario interactivo de calidad y pruebas de software">
+  <title>Glosario Interactivo | Sistemas de Gestión de Calidad</title>
+
+  <link rel="stylesheet" href="../CSS/styleus12.css">
+</head>
+<body>
+
+  <div class="fondo-puntos puntos-izquierda" aria-hidden="true"></div>
+  <div class="fondo-puntos puntos-derecha" aria-hidden="true"></div>
+
+  <header class="encabezado-principal">
+    <div class="decoracion decoracion-izquierda" aria-hidden="true">
+      <span>+</span><span>+</span>
+    </div>
+
+    <div class="encabezado-contenido">
+      <h1>SISTEMAS DE GESTIÓN DE CALIDAD</h1>
+      <a class="enlace-subtitulo" href="../index.html">
+        Enlaces de Interés
+      </a>
+    </div>
+
+    <div class="decoracion decoracion-derecha" aria-hidden="true">
+      <span>+</span><span>+</span>
+    </div>
+
+    <button
+      class="boton-menu"
+      id="botonMenu"
+      type="button"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="menuRapido">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="menu-rapido" id="menuRapido" hidden>
+      <a href="../index.html">Inicio</a>
+      <a href="#glosario">Glosario</a>
+    </nav>
+  </header>
+
+  <main class="contenedor-principal" id="glosario">
+    <section class="glosario-card" aria-labelledby="tituloGlosario">
+
+      <div class="glosario-cabecera">
+        <h2 id="tituloGlosario">Glosario Interactivo</h2>
+      </div>
+
+      <div class="glosario-contenido">
+        <div class="barra-lateral" aria-hidden="true">
+          <span></span>
+        </div>
+
+        <div class="contenido-glosario">
+
+          <form class="buscador" id="formBuscador" role="search">
+            <label class="solo-lectores" for="buscarTermino">
+              Buscar término
+            </label>
+
+            <input
+              id="buscarTermino"
+              type="search"
+              placeholder="Buscar término"
+              autocomplete="off">
+
+            <button type="submit" aria-label="Buscar término">
+              <span class="icono-lupa" aria-hidden="true"></span>
+            </button>
+
+            <button
+              class="limpiar-busqueda"
+              id="limpiarBusqueda"
+              type="button"
+              aria-label="Limpiar búsqueda"
+              hidden>×</button>
+          </form>
+
+          <nav
+            class="alfabeto"
+            id="alfabeto"
+            aria-label="Filtrar términos por letra">
+          </nav>
+
+          <p
+            class="estado-resultados"
+            id="estadoResultados"
+            role="status"
+            aria-live="polite"></p>
+
+          <div class="lista-terminos" id="listaTerminos"></div>
+
+          <p class="sin-resultados" id="sinResultados" hidden>
+            No se encontraron términos. Probá con otra palabra o letra.
+          </p>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog
+    class="modal-definicion"
+    id="modalDefinicion"
+    aria-labelledby="modalTitulo">
+
+    <div class="modal-cabecera">
+      <span class="modal-etiqueta">DEFINICIÓN</span>
+
+      <button
+        class="cerrar-modal"
+        id="cerrarModal"
+        type="button"
+        aria-label="Cerrar definición">×</button>
+    </div>
+
+    <h2 id="modalTitulo"></h2>
+    <p id="modalTexto"></p>
+
+    <button class="boton-entendido" id="botonEntendido" type="button">
+      Entendido
+    </button>
+  </dialog>
+
+  <script src="../JS/us12.js"></script>
+</body>
+</html>

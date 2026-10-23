@@ -28,17 +28,6 @@ const metodologias = {
     "Tiempo de Entrega": "Continuo, según el flujo"
   },
 
-  CMMI: {
-    "Enfoque de Proceso": "Proceso definido y optimizado",
-    "Planificación": "Procesos y niveles de madurez",
-    "Roles y Responsabilidades": "Roles y responsabilidades estructurados",
-    "Flexibilidad": "Más formal y controlada",
-    "Calidad y Mejora": "Evaluación y mejora de procesos",
-    "Entregables Clave": "Procesos documentados y evidencias",
-    "Métricas Principales": "Niveles de capacidad y desempeño",
-    "Tiempo de Entrega": "Depende del proceso y su planificación"
-  },
-
   Cascada: {
     "Enfoque de Proceso": "Secuencial por etapas",
     "Planificación": "Plan inicial dividido en fases",
