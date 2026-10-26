@@ -1,40 +1,39 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metodologías Ágiles | Gestión de Calidad</title>
+
+    <title>Metodologías Ágiles | Sistemas de Gestión de Calidad</title>
+
     <link rel="stylesheet" href="../CSS/styleus9.css">
 </head>
+
 <body>
 
-    <!-- Fondo decorativo -->
-    <div class="us9-puntos us9-puntos-izquierda"></div>
-    <div class="us9-puntos us9-puntos-derecha"></div>
+    <!-- ENCABEZADO -->
+    <header class="us9-header">
 
-    <!-- Encabezado -->
-    <header class="us9-encabezado">
-        <div class="us9-decoracion us9-decoracion-izquierda">
-            <span>+</span>
-            <span>+</span>
-        </div>
+        <div class="us9-decoracion us9-decoracion-izquierda"></div>
+        <div class="us9-decoracion us9-decoracion-derecha"></div>
 
-        <div class="us9-titulo-principal">
+        <span class="us9-cruz us9-cruz-uno">+</span>
+        <span class="us9-cruz us9-cruz-dos">+</span>
+        <span class="us9-cruz us9-cruz-tres">+</span>
+
+        <div class="us9-header-contenido">
             <h1>SISTEMAS DE GESTIÓN DE CALIDAD</h1>
-            <a href="../index.html">Inicio</a>
+            <p>Metodologías ágiles</p>
         </div>
 
-        <div class="us9-decoracion us9-decoracion-derecha">
-            <span>+</span>
-            <span>+</span>
-        </div>
-
-        <!-- Botón del menú -->
-        <button class="us9-menu-boton" id="us9MenuBoton"
-                aria-label="Abrir menú"
-                aria-expanded="false"
-                aria-controls="us9Menu">
+        <button
+            class="us9-menu-boton"
+            id="us9MenuBoton"
+            type="button"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            aria-controls="us9Menu"
+        >
             <span></span>
             <span></span>
             <span></span>
@@ -42,80 +41,160 @@
 
         <nav class="us9-menu" id="us9Menu" hidden>
             <a href="../index.html">Inicio</a>
-            <a href="#" data-metodologia="scrum">Ciclo Sprint</a>
-            <a href="#" data-metodologia="kanban">Flujo Kanban</a>
-            <a href="#" data-metodologia="xp">Programación XP</a>
+            <a href="us9.html">Metodologías ágiles</a>
+            <a href="#" data-us9-sin-navegacion>Otros recursos</a>
         </nav>
+
     </header>
 
-    <!-- Contenido -->
+
+    <!-- TARJETAS DE METODOLOGÍAS -->
     <main class="us9-contenedor">
 
-        <div class="us9-selector" aria-label="Seleccionar metodología">
-            <button class="us9-selector-boton activo"
-                    data-metodologia="scrum"
-                    type="button">
-                Ciclo Sprint
+        <!-- SCRUM -->
+        <button
+            class="us9-tarjeta-boton"
+            type="button"
+            data-metodologia="scrum"
+            aria-label="Abrir información de Ciclo Sprint"
+        >
+            <span class="us9-tarjeta-imagen">
+                <img
+                    src="../imagenes/Ciclo_sprint.jpeg"
+                    alt="Diagrama del ciclo Sprint"
+                    class="us9-imagen-tarjeta"
+                >
+            </span>
+
+            <span class="us9-tarjeta-contenido">
+                <span class="us9-tarjeta-titulo">Ciclo Sprint</span>
+
+                <span class="us9-tarjeta-descripcion">
+                    Es un marco de trabajo enfocado en la entrega
+                    iterativa e incremental de productos. El trabajo
+                    se organiza en ciclos cortos denominados Sprints.
+                </span>
+
+                <span class="us9-ver-mas">Ver información completa</span>
+            </span>
+        </button>
+
+
+        <!-- KANBAN -->
+        <button
+            class="us9-tarjeta-boton"
+            type="button"
+            data-metodologia="kanban"
+            aria-label="Abrir información de Flujo Kanban"
+        >
+            <span class="us9-tarjeta-imagen">
+                <!-- ESPACIO PARA AGREGAR LA IMAGEN DE KANBAN -->
+                <img
+                    src="../imagenes/Flujo_Kanban.jpeg"
+                    alt="Diagrama del flujo Kanban"
+                    class="us9-imagen-tarjeta"
+                />
+                
+
+                <span class="us9-imagen-pendiente">
+                    Espacio para imagen de Kanban
+                </span>
+            </span>
+
+            <span class="us9-tarjeta-contenido">
+                <span class="us9-tarjeta-titulo">Flujo Kanban</span>
+
+                <span class="us9-tarjeta-descripcion">
+                    Es un método de gestión visual del trabajo que
+                    permite optimizar el flujo continuo, organizar
+                    las tareas y evitar la sobrecarga del equipo.
+                </span>
+
+                <span class="us9-ver-mas">Ver información completa</span>
+            </span>
+        </button>
+
+
+        <!-- XP -->
+        <button
+            class="us9-tarjeta-boton"
+            type="button"
+            data-metodologia="xp"
+            aria-label="Abrir información de Programación Extrema XP"
+        >
+            <span class="us9-tarjeta-imagen">
+                <!-- ESPACIO PARA AGREGAR LA IMAGEN DE XP -->
+                <img
+                    src="../imagenes/Programacion_extrema.jpeg"
+                    alt="Diagrama de Programación Extrema"
+                    class="us9-imagen-tarjeta"
+                />
+            
+
+                <span class="us9-imagen-pendiente">
+                    Espacio para imagen de XP
+                </span>
+            </span>
+
+            <span class="us9-tarjeta-contenido">
+                <span class="us9-tarjeta-titulo">
+                    Programación Extrema (XP)
+                </span>
+
+                <span class="us9-tarjeta-descripcion">
+                    Es una metodología ágil que busca mejorar la
+                    calidad del software y responder rápidamente
+                    a los cambios mediante prácticas de ingeniería.
+                </span>
+
+                <span class="us9-ver-mas">Ver información completa</span>
+            </span>
+        </button>
+
+    </main>
+
+
+    <!-- VENTANA EMERGENTE -->
+    <div
+        class="us9-modal"
+        id="us9Modal"
+        hidden
+        aria-hidden="true"
+    >
+        <section
+            class="us9-modal-contenido"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="us9ModalTitulo"
+        >
+
+            <button
+                class="us9-modal-cerrar"
+                id="us9ModalCerrar"
+                type="button"
+                aria-label="Cerrar ventana"
+            >
+                &times;
             </button>
 
-            <button class="us9-selector-boton"
-                    data-metodologia="kanban"
-                    type="button">
-                Flujo Kanban
-            </button>
+            <div
+                class="us9-modal-imagen"
+                id="us9ModalImagen"
+            ></div>
 
-            <button class="us9-selector-boton"
-                    data-metodologia="xp"
-                    type="button">
-                Programación XP
-            </button>
-        </div>
-
-        <!-- Ventana principal -->
-        <section class="us9-panel" id="us9Panel">
-
-            <!-- Zona reservada para la imagen -->
-            <div class="us9-imagen-contenedor">
-                <button class="us9-cerrar" id="us9Cerrar"
-                        type="button" aria-label="Cerrar detalle">
-                    &times;
-                </button>
-
-                <!--
-                    ESPACIO PARA TU IMAGEN:
-                    Reemplazá el contenido de este div por tu imagen.
-
-                    Ejemplo:
-                    <img src="../IMG/ciclo-sprint.png"
-                         alt="Diagrama del ciclo Sprint"
-                         class="us9-imagen">
-                -->
-
-                <div class="us9-imagen-placeholder" id="us9ImagenPlaceholder">
-                    <div class="us9-placeholder-icono">＋</div>
-                    <h2>Espacio para la imagen</h2>
-                    <p id="us9ImagenAyuda">
-                        Colocá aquí el diagrama del ciclo Sprint.
-                    </p>
-                    <span>Reemplazá este bloque por tu etiqueta &lt;img&gt;</span>
-                </div>
-            </div>
-
-            <!-- Texto descriptivo -->
-            <div class="us9-descripcion">
-                <h2 id="us9Titulo">Ciclo Sprint</h2>
-                <div id="us9Texto">
-                    <!-- El contenido se genera con JavaScript -->
-                </div>
+            <div class="us9-modal-descripcion">
+                <h2 id="us9ModalTitulo"></h2>
+                <div id="us9ModalTexto"></div>
             </div>
 
         </section>
+    </div>
 
-        <p class="us9-ayuda">
-            Seleccioná una metodología para consultar su explicación.
-        </p>
 
-    </main>
- <script src="../JS/us9.js" ></script>
+    <!-- PIE DE PÁGINA -->
+    <footer class="us9-footer">
+        <p>Sistemas de Gestión de Calidad</p>
+    </footer>
+    <script src="../JS/us9.js" ></script>
 </body>
 </html>

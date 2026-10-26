@@ -1,226 +1,391 @@
-
-/* =========================================
+/* =====================================================
    US9 - METODOLOGÍAS ÁGILES
-========================================= */
+   JavaScript completo y corregido
+===================================================== */
+
+
+/* ================= DATOS ================= */
 
 const us9Metodologias = {
     scrum: {
         titulo: "Ciclo Sprint",
-        ayudaImagen: "Colocá aquí el diagrama del ciclo Sprint.",
+        imagen: "../imagenes/Ciclo_sprint.jpeg",
+        textoImagen: "Diagrama del ciclo Sprint",
 
-        parrafos: [
+        descripcion: [
             {
                 etiqueta: "",
                 texto: "Es un marco de trabajo enfocado en la entrega iterativa e incremental de productos. El trabajo se organiza en ciclos de tiempo fijos y cortos denominados Sprints, habitualmente de 1 a 4 semanas."
             },
             {
-                etiqueta: "Planificación (Sprint Planning): ",
-                texto: "El equipo selecciona del Product Backlog los elementos con mayor prioridad que se compromete a entregar al finalizar el ciclo."
+                etiqueta: "Planificación del Sprint: ",
+                texto: "El equipo selecciona los elementos de mayor prioridad de la Pila del Producto (Product Backlog) y define el trabajo que se compromete a completar durante el ciclo."
             },
             {
-                etiqueta: "Ejecución y Seguimiento Diario (Daily Scrum): ",
-                texto: "Durante el Sprint, el equipo realiza reuniones breves para sincronizar avances, coordinar actividades y detectar posibles bloqueos."
+                etiqueta: "Seguimiento diario: ",
+                texto: "Durante el Sprint, el equipo realiza reuniones breves para sincronizar los avances, coordinar actividades y detectar posibles bloqueos."
             },
             {
-                etiqueta: "Revisiones y Mejora (Review & Retrospective): ",
-                texto: "Al terminar la iteración, se presenta un incremento de software funcional para su revisión con las partes interesadas. Después, el equipo analiza su dinámica de trabajo para aplicar mejoras continuas en la siguiente iteración."
+                etiqueta: "Revisión del Sprint: ",
+                texto: "Al finalizar el ciclo, se presenta el incremento del producto para revisar el trabajo realizado y obtener retroalimentación."
+            },
+            {
+                etiqueta: "Retrospectiva: ",
+                texto: "El equipo analiza su forma de trabajar, identifica oportunidades de mejora y acuerda cambios para el siguiente Sprint."
             }
         ]
     },
 
     kanban: {
         titulo: "Flujo Kanban",
-        ayudaImagen: "Colocá aquí la imagen del tablero Kanban.",
+        imagen: "../Imagenes/Flujo_Kanban.jpeg",
+        textoImagen: "Diagrama del flujo Kanban",
 
-        parrafos: [
+        descripcion: [
             {
                 etiqueta: "",
-                texto: "Es un método de gestión visual del trabajo orientado a optimizar el flujo continuo y evitar la sobrecarga de tareas en el equipo. A diferencia de Scrum, no se basa necesariamente en ciclos de tiempo fijos, sino en la entrega constante de valor."
+                texto: "Kanban es un método de gestión visual del trabajo orientado a optimizar el flujo continuo y evitar la sobrecarga de tareas en el equipo. Permite observar el estado de cada actividad y detectar demoras."
             },
             {
-                etiqueta: "Tablero Visual: ",
-                texto: "Utiliza columnas que representan las distintas etapas por las que pasa una tarea, por ejemplo: Pendiente, En Curso y Hecho. Esto permite observar el estado del trabajo."
+                etiqueta: "Tablero visual: ",
+                texto: "Las tareas se representan en tarjetas que avanzan por distintas columnas. Un ejemplo sencillo de organización es Pendiente, En Curso y Hecho."
             },
             {
-                etiqueta: "Gestión del Trabajo en Proceso (WIP): ",
-                texto: "Limita la cantidad de tareas que se pueden realizar simultáneamente en cada columna. Esto ayuda a identificar cuellos de botella y reducir el tiempo necesario para completar una tarea desde que se inicia hasta que se entrega."
+                etiqueta: "Límite de trabajo en progreso (WIP): ",
+                texto: "Se establece una cantidad máxima de tareas que pueden estar en curso simultáneamente. Esto ayuda a reducir la sobrecarga y facilita la identificación de cuellos de botella."
             },
             {
                 etiqueta: "Flujo continuo: ",
-                texto: "Las tareas avanzan por las etapas del tablero a medida que el equipo tiene capacidad para realizarlas, facilitando la identificación de demoras y la mejora del proceso."
+                texto: "Las tareas se incorporan y avanzan según la capacidad del equipo, sin depender necesariamente de ciclos de tiempo fijos."
+            },
+            {
+                etiqueta: "Mejora del proceso: ",
+                texto: "La visualización del trabajo permite identificar problemas en el flujo y aplicar cambios para mejorar la eficiencia de las entregas."
             }
         ]
     },
 
     xp: {
-        titulo: "Programación Extrema (XP)",
-        ayudaImagen: "Colocá aquí la imagen o el diagrama de XP.",
+        titulo: "Programación Extrema (XP Programming)",
+        imagen: "../Imagenes/Programacion_extrema.jpeg",
+        textoImagen: "Diagrama de Programación Extrema",
 
-        parrafos: [
+        descripcion: [
             {
                 etiqueta: "",
-                texto: "Extreme Programming (XP) es una metodología ágil diseñada para optimizar la calidad del software y responder rápidamente a los cambios en los requisitos mediante prácticas de ingeniería sólidas y comunicación continua."
+                texto: "Extreme Programming (XP) es una metodología ágil diseñada para optimizar la calidad del software y responder rápidamente a los cambios en los requisitos mediante prácticas de ingeniería."
             },
             {
-                etiqueta: "Desarrollo Guiado por Pruebas (TDD): ",
-                texto: "Se escriben las pruebas automatizadas antes que el código de la funcionalidad. De esta manera, se comprueba el comportamiento esperado y se detectan errores durante el desarrollo."
+                etiqueta: "Planificación: ",
+                texto: "Se identifican las necesidades del cliente y se seleccionan las funcionalidades que se desarrollarán, considerando su prioridad."
             },
             {
-                etiqueta: "Programación en Pareja (Pair Programming): ",
-                texto: "Dos desarrolladores trabajan juntos en la misma estación de trabajo. Uno escribe el código mientras el otro revisa la lógica, lo que mejora la calidad y distribuye el conocimiento dentro del equipo."
+                etiqueta: "Programación en parejas: ",
+                texto: "Dos desarrolladores colaboran en una misma tarea. Uno escribe el código mientras el otro lo revisa, favoreciendo la detección temprana de errores."
             },
             {
-                etiqueta: "Integración Continua y Refactorización: ",
-                texto: "El código desarrollado se integra y prueba frecuentemente para detectar conflictos de forma temprana y mantener una estructura limpia y mantenible."
+                etiqueta: "Pruebas: ",
+                texto: "Se realizan pruebas frecuentes para comprobar que las funcionalidades se comporten como se espera y detectar defectos durante el desarrollo."
+            },
+            {
+                etiqueta: "Integración y mejora: ",
+                texto: "El código se integra de forma frecuente y se revisa para mantener su calidad, facilitar los cambios y reducir los problemas de integración."
             }
         ]
     }
 };
 
-/* ELEMENTOS HTML */
 
-const us9Titulo = document.getElementById("us9Titulo");
-const us9Texto = document.getElementById("us9Texto");
-const us9AyudaImagen = document.getElementById("us9ImagenAyuda");
-const us9Placeholder = document.getElementById("us9ImagenPlaceholder");
+/* ================= INICIALIZACIÓN ================= */
 
-const us9Panel = document.getElementById("us9Panel");
-const us9Cerrar = document.getElementById("us9Cerrar");
+document.addEventListener("DOMContentLoaded", function () {
 
-const us9BotonesSelector = document.querySelectorAll(
-    ".us9-selector-boton"
-);
+    const tarjetas = document.querySelectorAll(
+        ".us9-tarjeta-boton"
+    );
 
-const us9MenuBoton = document.getElementById("us9MenuBoton");
-const us9Menu = document.getElementById("us9Menu");
+    const modal = document.getElementById("us9Modal");
+    const modalContenido = document.querySelector(
+        ".us9-modal-contenido"
+    );
+    const modalTitulo = document.getElementById("us9ModalTitulo");
+    const modalTexto = document.getElementById("us9ModalTexto");
+    const modalImagen = document.getElementById("us9ModalImagen");
+    const botonCerrar = document.getElementById("us9ModalCerrar");
 
-let us9MetodologiaActual = "scrum";
+    const menuBoton = document.getElementById("us9MenuBoton");
+    const menu = document.getElementById("us9Menu");
 
-/* MOSTRAR UNA METODOLOGÍA */
+    let elementoAnterior = null;
 
-function us9MostrarMetodologia(nombre) {
-    const datos = us9Metodologias[nombre];
 
-    if (!datos) {
+    /* Comprobar que el modal exista */
+
+    if (
+        !modal ||
+        !modalContenido ||
+        !modalTitulo ||
+        !modalTexto ||
+        !modalImagen ||
+        !botonCerrar
+    ) {
+        console.error(
+            "Error US9: falta uno o más elementos del modal. Revisá los ID del HTML."
+        );
         return;
     }
 
-    us9MetodologiaActual = nombre;
 
-    // Actualizar el título.
-    us9Titulo.textContent = datos.titulo;
+    /* ================= ABRIR MODAL ================= */
 
-    // Actualizar la explicación.
-    us9Texto.innerHTML = datos.parrafos.map(parrafo => `
-        <p>
-            ${parrafo.etiqueta
-                ? `<strong>${parrafo.etiqueta}</strong>`
-                : ""}
-            ${parrafo.texto}
-        </p>
-    `).join("");
+    function abrirDetalle(nombre) {
 
-    // Actualizar el texto de ayuda del espacio para imágenes.
-    us9AyudaImagen.textContent = datos.ayudaImagen;
+        const metodologia = us9Metodologias[nombre];
 
-    // Marcar el botón seleccionado.
-    us9BotonesSelector.forEach(boton => {
-        const seleccionado =
-            boton.dataset.metodologia === nombre;
+        if (!metodologia) {
+            console.error(
+                "No se encontró la metodología:",
+                nombre
+            );
+            return;
+        }
 
-        boton.classList.toggle("activo", seleccionado);
-        boton.setAttribute(
-            "aria-pressed",
-            String(seleccionado)
-        );
-    });
+        elementoAnterior = document.activeElement;
 
-    // Mantener visible el espacio para colocar imágenes.
-    us9Placeholder.hidden = false;
-}
+        /* Título */
 
-/* BOTONES DE SELECCIÓN */
+        modalTitulo.textContent = metodologia.titulo;
 
-us9BotonesSelector.forEach(boton => {
-    boton.addEventListener("click", () => {
-        us9MostrarMetodologia(boton.dataset.metodologia);
-    });
-});
 
-/* BOTÓN CERRAR */
+        /* Descripción */
 
-us9Cerrar.addEventListener("click", () => {
-    // El botón oculta el panel y permite volver a abrirlo.
-    const estaOculto = us9Panel.hidden;
+        modalTexto.replaceChildren();
 
-    us9Panel.hidden = !estaOculto;
-    us9Cerrar.setAttribute(
-        "aria-label",
-        estaOculto ? "Cerrar detalle" : "Mostrar detalle"
-    );
-});
+        metodologia.descripcion.forEach(function (item) {
 
-/* MENÚ DESPLEGABLE */
+            const parrafo = document.createElement("p");
 
-us9MenuBoton.addEventListener("click", () => {
-    const abrir = us9Menu.hidden;
+            if (item.etiqueta) {
+                const negrita = document.createElement("strong");
 
-    us9Menu.hidden = !abrir;
-    us9MenuBoton.classList.toggle("activo", abrir);
+                negrita.textContent = item.etiqueta;
+                parrafo.appendChild(negrita);
+            }
 
-    us9MenuBoton.setAttribute(
-        "aria-expanded",
-        String(abrir)
-    );
+            parrafo.appendChild(
+                document.createTextNode(item.texto)
+            );
 
-    us9MenuBoton.setAttribute(
-        "aria-label",
-        abrir ? "Cerrar menú" : "Abrir menú"
-    );
-});
+            modalTexto.appendChild(parrafo);
 
-/* OPCIONES DEL MENÚ */
-
-us9Menu.querySelectorAll("[data-metodologia]").forEach(enlace => {
-    enlace.addEventListener("click", evento => {
-        evento.preventDefault();
-
-        const nombre = enlace.dataset.metodologia;
-
-        us9MostrarMetodologia(nombre);
-
-        // Si el panel estaba oculto, volver a mostrarlo.
-        us9Panel.hidden = false;
-
-        // Cerrar el menú.
-        us9Menu.hidden = true;
-        us9MenuBoton.classList.remove("activo");
-        us9MenuBoton.setAttribute("aria-expanded", "false");
-        us9MenuBoton.setAttribute("aria-label", "Abrir menú");
-
-        // Actualizar la vista.
-        document.querySelector(".us9-contenedor").scrollIntoView({
-            behavior: "smooth",
-            block: "start"
         });
-    });
-});
 
-/* CERRAR EL MENÚ AL HACER CLIC AFUERA */
 
-document.addEventListener("click", evento => {
-    if (
-        !us9Menu.hidden &&
-        !us9Menu.contains(evento.target) &&
-        !us9MenuBoton.contains(evento.target)
-    ) {
-        us9Menu.hidden = true;
-        us9MenuBoton.classList.remove("activo");
-        us9MenuBoton.setAttribute("aria-expanded", "false");
-        us9MenuBoton.setAttribute("aria-label", "Abrir menú");
+        /* Imagen */
+
+        modalImagen.replaceChildren();
+
+        if (metodologia.imagen && metodologia.imagen.trim() !== "") {
+
+            const imagen = document.createElement("img");
+
+            imagen.src = metodologia.imagen;
+            imagen.alt = metodologia.textoImagen;
+
+            imagen.addEventListener("error", function () {
+
+                const aviso = document.createElement("p");
+
+                aviso.className = "us9-modal-aviso-imagen";
+                aviso.textContent =
+                    "No se pudo cargar la imagen. Revisá la ruta del archivo.";
+
+                modalImagen.replaceChildren(aviso);
+
+                console.error(
+                    "Error al cargar la imagen:",
+                    metodologia.imagen
+                );
+
+            }, { once: true });
+
+            modalImagen.appendChild(imagen);
+
+        } else {
+
+            /* Conserva el espacio reservado si aún no hay imagen */
+
+            const espacio = document.createElement("div");
+
+            espacio.setAttribute("aria-hidden", "true");
+
+            modalImagen.appendChild(espacio);
+        }
+
+
+        /* Mostrar ventana */
+
+        modal.hidden = false;
+        modal.setAttribute("aria-hidden", "false");
+
+        document.body.classList.add("us9-modal-abierto");
+
+        botonCerrar.focus();
+
     }
+
+
+    /* ================= CERRAR MODAL ================= */
+
+    function cerrarDetalle() {
+
+        if (modal.hidden) {
+            return;
+        }
+
+        modal.hidden = true;
+        modal.setAttribute("aria-hidden", "true");
+
+        document.body.classList.remove("us9-modal-abierto");
+
+        if (
+            elementoAnterior &&
+            document.contains(elementoAnterior)
+        ) {
+            elementoAnterior.focus();
+        }
+
+    }
+
+
+    /* ================= EVENTOS DE LAS TARJETAS ================= */
+
+    tarjetas.forEach(function (tarjeta) {
+
+        tarjeta.addEventListener("click", function (evento) {
+
+            evento.preventDefault();
+
+            const nombre = tarjeta.getAttribute("data-metodologia");
+
+            console.log("Tarjeta seleccionada:", nombre);
+
+            if (!nombre || !us9Metodologias[nombre]) {
+                console.error(
+                    "La tarjeta no tiene un valor válido en data-metodologia:",
+                    nombre
+                );
+                return;
+            }
+
+            abrirDetalle(nombre);
+
+        });
+
+    });
+
+
+    /* ================= BOTÓN CERRAR ================= */
+
+    botonCerrar.addEventListener("click", cerrarDetalle);
+
+
+    /* Cerrar al hacer clic en el fondo oscuro */
+
+    modal.addEventListener("click", function (evento) {
+
+        if (evento.target === modal) {
+            cerrarDetalle();
+        }
+
+    });
+
+
+    /* Cerrar con Escape */
+
+    document.addEventListener("keydown", function (evento) {
+
+        if (evento.key === "Escape" && !modal.hidden) {
+            cerrarDetalle();
+        }
+
+    });
+
+
+    /* ================= MENÚ HAMBURGUESA ================= */
+
+    if (menuBoton && menu) {
+
+        menuBoton.addEventListener("click", function (evento) {
+
+            evento.stopPropagation();
+
+            const abrir = menu.hidden;
+
+            menu.hidden = !abrir;
+
+            menuBoton.classList.toggle("activo", abrir);
+
+            menuBoton.setAttribute(
+                "aria-expanded",
+                String(abrir)
+            );
+
+            menuBoton.setAttribute(
+                "aria-label",
+                abrir ? "Cerrar menú" : "Abrir menú"
+            );
+
+        });
+
+
+        /* Cerrar al seleccionar un enlace */
+
+        menu.querySelectorAll("a").forEach(function (enlace) {
+
+            enlace.addEventListener("click", function (evento) {
+
+                if (enlace.hasAttribute("data-us9-sin-navegacion")) {
+                    evento.preventDefault();
+                }
+
+                menu.hidden = true;
+                menuBoton.classList.remove("activo");
+
+                menuBoton.setAttribute("aria-expanded", "false");
+                menuBoton.setAttribute("aria-label", "Abrir menú");
+
+            });
+
+        });
+
+
+        /* Cerrar al hacer clic fuera del menú */
+
+        document.addEventListener("click", function (evento) {
+
+            if (
+                !menu.hidden &&
+                !menu.contains(evento.target) &&
+                !menuBoton.contains(evento.target)
+            ) {
+                menu.hidden = true;
+                menuBoton.classList.remove("activo");
+
+                menuBoton.setAttribute("aria-expanded", "false");
+                menuBoton.setAttribute("aria-label", "Abrir menú");
+            }
+
+        });
+
+    }
+
+
+    /* ================= MENSAJE DE INICIALIZACIÓN ================= */
+
+    console.log(
+        "US9 cargado correctamente. Tarjetas detectadas:",
+        tarjetas.length
+    );
+
 });
-
-/* INICIALIZAR */
-
-us9MostrarMetodologia(us9MetodologiaActual);

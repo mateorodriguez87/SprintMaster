@@ -1,14 +1,17 @@
 
-/* =========================================
+/* =====================================================
    US9 - METODOLOGÍAS ÁGILES
-   Estilos aislados con prefijo us9-
-========================================= */
+   CSS independiente para esta página
+===================================================== */
+
+/* ================= CONFIGURACIÓN GENERAL ================= */
 
 * {
     box-sizing: border-box;
 }
 
 html {
+    min-height: 100%;
     scroll-behavior: smooth;
 }
 
@@ -16,9 +19,15 @@ body {
     margin: 0;
     min-height: 100vh;
     overflow-x: hidden;
-    background: #03051a;
-    color: #f5f7ff;
+
     font-family: Arial, Helvetica, sans-serif;
+
+    color: #ffffff;
+    background: #03061f;
+}
+
+body.us9-modal-abierto {
+    overflow: hidden;
 }
 
 button,
@@ -26,130 +35,195 @@ a {
     font: inherit;
 }
 
-/* FONDO DECORATIVO */
-
-.us9-puntos {
-    position: fixed;
-    z-index: 0;
-    width: 310px;
-    height: 310px;
-    pointer-events: none;
-    opacity: .55;
-    background-image: radial-gradient(
-        circle,
-        #34439a 2px,
-        transparent 3px
-    );
-    background-size: 14px 14px;
+button {
+    -webkit-tap-highlight-color: transparent;
 }
 
-.us9-puntos-izquierda {
-    top: 0;
-    left: 0;
-    mask-image: linear-gradient(
-        135deg,
-        black,
-        transparent 78%
-    );
+/* El atributo hidden debe ocultar los elementos incluso
+   cuando tengan otras reglas de display. */
+
+[hidden] {
+    display: none !important;
 }
 
-.us9-puntos-derecha {
-    right: 0;
-    bottom: 0;
-    mask-image: linear-gradient(
-        315deg,
-        black,
-        transparent 78%
-    );
-}
 
-/* ENCABEZADO */
+/* ================= ENCABEZADO ================= */
 
-.us9-encabezado {
+.us9-header {
     position: relative;
-    z-index: 5;
+    isolation: isolate;
+
+    width: 100%;
     min-height: 190px;
-    padding: 42px 80px 30px;
+
     display: flex;
-    align-items: center;
     justify-content: center;
-    border-bottom: 1px solid rgba(36, 66, 180, .35);
+    align-items: center;
+
+    padding: 35px 70px;
+
+    border-bottom: 2px solid #14266e;
+
+    overflow: visible;
 }
 
-.us9-titulo-principal {
+.us9-header-contenido {
+    position: relative;
+    z-index: 2;
+
     text-align: center;
 }
 
-.us9-titulo-principal h1 {
+.us9-header-contenido h1 {
     margin: 0;
-    color: #2850c9;
-    font-size: clamp(20px, 2.5vw, 34px);
+
+    color: #244bdb;
+
+    font-size: clamp(22px, 3vw, 36px);
     font-weight: 800;
+    line-height: 1.3;
 }
 
-.us9-titulo-principal a {
-    display: inline-block;
-    margin-top: 9px;
-    color: #e8ecff;
-    text-decoration: none;
-    font-size: 15px;
+.us9-header-contenido p {
+    margin: 8px 0 0;
+
+    color: #2850bd;
+    font-size: 16px;
 }
 
-.us9-titulo-principal a:hover {
-    color: #64d9ff;
-}
+
+/* ================= DECORACIÓN DE PUNTOS ================= */
 
 .us9-decoracion {
     position: absolute;
-    display: flex;
-    gap: 45px;
-    color: #2848bb;
-    font-size: 55px;
-    font-weight: 300;
-}
+    z-index: -1;
 
-.us9-decoracion span {
-    display: inline-block;
-    transform: rotate(15deg);
+    width: 280px;
+    height: 280px;
+
+    pointer-events: none;
+    opacity: 0.55;
+
+    background-image: radial-gradient(
+        circle,
+        #3947a3 3px,
+        transparent 4px
+    );
+
+    background-size: 19px 19px;
 }
 
 .us9-decoracion-izquierda {
-    top: 35px;
-    left: 13%;
+    top: -95px;
+    left: -75px;
+
+    transform: rotate(-20deg);
+
+    mask-image: linear-gradient(
+        135deg,
+        #000000 20%,
+        transparent 85%
+    );
 }
 
 .us9-decoracion-derecha {
-    top: 35px;
-    right: 13%;
+    right: -100px;
+    bottom: -180px;
+
+    transform: rotate(-20deg);
+
+    mask-image: linear-gradient(
+        315deg,
+        #000000 20%,
+        transparent 85%
+    );
 }
 
-/* MENÚ */
+
+/* ================= CRUCES DECORATIVAS ================= */
+
+.us9-cruz {
+    position: absolute;
+    z-index: 1;
+
+    color: #244bdb;
+
+    font-size: 65px;
+    font-weight: 300;
+    line-height: 1;
+
+    pointer-events: none;
+}
+
+.us9-cruz-uno {
+    top: 25px;
+    left: 12%;
+
+    transform: rotate(15deg);
+}
+
+.us9-cruz-dos {
+    top: 85px;
+    left: 17%;
+
+    transform: rotate(15deg);
+}
+
+.us9-cruz-tres {
+    top: 30px;
+    right: 12%;
+
+    transform: rotate(15deg);
+}
+
+
+/* ================= MENÚ HAMBURGUESA ================= */
 
 .us9-menu-boton {
     position: absolute;
-    top: 57px;
-    right: 5%;
-    width: 40px;
-    height: 40px;
-    padding: 9px;
+    z-index: 20;
+
+    top: 30px;
+    right: 40px;
+
+    width: 42px;
+    height: 42px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 5px;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 8px;
+
     border: 0;
+    border-radius: 6px;
+
     background: transparent;
     cursor: pointer;
 }
 
+.us9-menu-boton:hover {
+    background: rgba(40, 80, 189, 0.15);
+}
+
 .us9-menu-boton span {
-    width: 100%;
+    width: 24px;
     height: 2px;
-    background: #3150b8;
-    transition: .2s;
+
+    display: block;
+
+    background: #2850bd;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
 }
 
 .us9-menu-boton.activo span:first-child {
-    transform: translateY(7px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
 }
 
 .us9-menu-boton.activo span:nth-child(2) {
@@ -157,376 +231,640 @@ a {
 }
 
 .us9-menu-boton.activo span:last-child {
-    transform: translateY(-7px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
 }
+
+
+/* Menú desplegable */
 
 .us9-menu {
     position: absolute;
-    top: 105px;
-    right: 5%;
-    z-index: 10;
-    min-width: 185px;
-    padding: 8px;
-    border: 1px solid #2849b9;
-    border-radius: 12px;
-    background: #07102d;
-    box-shadow: 0 0 25px #1643bd55;
+    z-index: 19;
+
+    top: 78px;
+    right: 35px;
+
+    width: 240px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px;
+
+    border: 1px solid #2850bd;
+    border-radius: 14px;
+
+    background: #081438;
+
+    box-shadow: 0 0 22px rgba(36, 75, 219, 0.4);
 }
 
 .us9-menu a {
     display: block;
-    padding: 11px 13px;
-    border-radius: 7px;
-    color: white;
+
+    padding: 13px 15px;
+
+    border-radius: 8px;
+
+    color: #ffffff;
     text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
 }
 
 .us9-menu a:hover {
-    background: #142b70;
+    color: #75aaff;
+    background: rgba(40, 80, 189, 0.2);
 }
 
-[hidden] {
-    display: none !important;
-}
 
-/* CONTENEDOR */
+/* ================= TARJETAS ================= */
 
 .us9-contenedor {
-    position: relative;
-    z-index: 1;
-    width: min(1180px, calc(100% - 48px));
-    margin: 45px auto 70px;
-}
+    width: min(1200px, 92%);
 
-/* SELECTOR DE METODOLOGÍAS */
+    margin: 45px auto 65px;
 
-.us9-selector {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 24px;
+    align-items: stretch;
+
+    gap: 28px;
 }
 
-.us9-selector-boton {
-    padding: 11px 20px;
-    border: 1px solid #294cc1;
-    border-radius: 25px;
-    background: #08102d;
-    color: #dce5ff;
-    cursor: pointer;
-    transition: background .2s, box-shadow .2s;
-}
 
-.us9-selector-boton:hover,
-.us9-selector-boton.activo {
-    background: #183ba9;
-    box-shadow: 0 0 15px #1749d977;
-    color: white;
-}
+/* Cada tarjeta es un botón completo */
 
-/* PANEL PRINCIPAL */
-
-.us9-panel {
-    overflow: hidden;
-    border: 3px solid #2049dc;
-    border-radius: 58px;
-    background: #041044;
-    box-shadow:
-        0 0 12px #164cff,
-        0 0 35px rgba(15, 63, 232, .65),
-        inset 0 0 20px rgba(23, 57, 190, .12);
-    transition: opacity .2s;
-}
-
-/* ZONA DE IMAGEN */
-
-.us9-imagen-contenedor {
+.us9-tarjeta-boton {
     position: relative;
-    min-height: 410px;
-    padding: 30px 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 3px solid #2049dc;
-}
 
-.us9-imagen-placeholder {
-    width: 100%;
-    min-height: 330px;
-    padding: 35px;
+    width: calc(50% - 14px);
+    max-width: 580px;
+    min-width: 0;
+
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 2px dashed #5e75b9;
-    border-radius: 38px;
-    background: #f8faff;
-    color: #0a1743;
-    text-align: center;
-}
 
-.us9-placeholder-icono {
-    width: 58px;
-    height: 58px;
-    margin-bottom: 14px;
-    display: grid;
-    place-items: center;
-    border: 2px solid #3155d5;
-    border-radius: 50%;
-    color: #3155d5;
-    font-size: 36px;
-}
+    padding: 0;
 
-.us9-imagen-placeholder h2 {
-    margin: 0 0 12px;
-    font-size: 24px;
-}
+    border: 4px solid #2148d8;
+    border-radius: 48px;
 
-.us9-imagen-placeholder p {
-    margin: 0 0 12px;
-    line-height: 1.6;
-}
+    overflow: hidden;
 
-.us9-imagen-placeholder span {
-    color: #58678b;
-    font-size: 13px;
-}
-
-/* Cuando agregues la imagen, usá esta clase */
-
-.us9-imagen {
-    display: block;
-    width: 100%;
-    max-width: 800px;
-    max-height: 370px;
-    object-fit: contain;
-    border-radius: 24px;
-    background: white;
-}
-
-/* BOTÓN CERRAR */
-
-.us9-cerrar {
-    position: absolute;
-    z-index: 2;
-    top: 25px;
-    right: 35px;
-    width: 48px;
-    height: 48px;
-    display: grid;
-    place-items: center;
-    border: none;
-    background: transparent;
-    color: white;
-    font-size: 50px;
-    font-weight: 300;
-    line-height: 1;
-    cursor: pointer;
-    transition: transform .2s, color .2s;
-}
-
-.us9-cerrar:hover {
-    color: #77cfff;
-    transform: rotate(90deg);
-}
-
-/* DESCRIPCIÓN */
-
-.us9-descripcion {
-    padding: 27px 60px 35px;
-}
-
-.us9-descripcion h2 {
-    margin: 0 0 14px;
-    color: #60a3ff;
-    font-size: 28px;
-    font-weight: 700;
-}
-
-.us9-descripcion p {
-    margin: 0 0 7px;
-    color: #f2f4ff;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.35;
-}
-
-.us9-descripcion strong {
     color: #ffffff;
-    font-weight: 700;
+    text-align: left;
+
+    background: #061344;
+
+    box-shadow: 0 0 13px rgba(28, 75, 255, 0.35);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
-.us9-descripcion ul {
-    margin: 8px 0 15px;
-    padding-left: 25px;
+.us9-tarjeta-boton:hover,
+.us9-tarjeta-boton:focus-visible {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 0 15px rgba(28, 75, 255, 0.75),
+        0 0 35px rgba(28, 75, 255, 0.35);
+
+    outline: none;
 }
 
-.us9-descripcion li {
-    margin-bottom: 8px;
-    color: #e4eaff;
-    font-size: 17px;
-    line-height: 1.5;
+.us9-tarjeta-boton:focus-visible {
+    outline: 2px solid #75aaff;
+    outline-offset: 5px;
 }
 
-.us9-ayuda {
-    margin: 20px 0;
-    color: #8da8ec;
+
+/* ================= IMAGEN DE LAS TARJETAS ================= */
+
+.us9-tarjeta-imagen {
+    position: relative;
+
+    width: 100%;
+    height: 230px;
+    min-height: 230px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+}
+
+.us9-imagen-tarjeta {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+.us9-imagen-pendiente {
+    padding: 12px;
+
+    color: #52617d;
+
     font-size: 14px;
     text-align: center;
 }
 
-/* ACCESIBILIDAD */
 
-.us9-selector-boton:focus-visible,
-.us9-menu-boton:focus-visible,
-.us9-cerrar:focus-visible {
-    outline: 2px solid #64d9ff;
-    outline-offset: 4px;
+/* ================= DESCRIPCIÓN DE LAS TARJETAS ================= */
+
+.us9-tarjeta-contenido {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 20px 25px 24px;
+
+    background: #061344;
 }
 
-/* TABLETS */
+.us9-tarjeta-titulo {
+    display: block;
 
-@media (max-width: 800px) {
-    .us9-encabezado {
-        min-height: 155px;
-        padding: 35px 60px 25px;
-    }
+    margin-bottom: 12px;
 
-    .us9-decoracion {
-        gap: 12px;
-        font-size: 35px;
-    }
+    color: #5b9cff;
 
-    .us9-decoracion-izquierda {
-        left: 3%;
-    }
-
-    .us9-decoracion-derecha {
-        right: 12%;
-    }
-
-    .us9-menu-boton {
-        top: 45px;
-        right: 3%;
-    }
-
-    .us9-contenedor {
-        width: calc(100% - 30px);
-        margin-top: 30px;
-    }
-
-    .us9-panel {
-        border-radius: 35px;
-    }
-
-    .us9-imagen-contenedor {
-        min-height: 300px;
-        padding: 25px;
-    }
-
-    .us9-imagen-placeholder {
-        min-height: 250px;
-        padding: 25px;
-        border-radius: 25px;
-    }
-
-    .us9-descripcion {
-        padding: 25px 30px 30px;
-    }
-
-    .us9-descripcion p {
-        font-size: 16px;
-    }
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
 }
 
-/* CELULARES */
+.us9-tarjeta-descripcion {
+    display: block;
 
-@media (max-width: 480px) {
-    .us9-encabezado {
-        min-height: 125px;
-        padding: 30px 48px 20px 15px;
-    }
+    color: #ffffff;
 
-    .us9-titulo-principal h1 {
-        font-size: 17px;
-    }
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+}
 
-    .us9-titulo-principal a {
-        font-size: 13px;
-    }
+.us9-ver-mas {
+    display: inline-block;
 
-    .us9-decoracion {
-        display: none;
-    }
+    margin-top: 15px;
 
-    .us9-menu-boton {
-        top: 10px;
-        right: 8px;
-    }
+    color: #75aaff;
 
-    .us9-menu {
-        top: 55px;
-        right: 10px;
-    }
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* ================= VENTANA EMERGENTE ================= */
+
+.us9-modal {
+    position: fixed;
+    z-index: 9999;
+
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.84);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.us9-modal[hidden] {
+    display: none !important;
+}
+
+
+/* Contenedor principal del modal */
+
+.us9-modal-contenido {
+    position: relative;
+
+    width: min(1300px, 95vw);
+    height: min(820px, 90vh);
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+
+    border: 4px solid #214cff;
+    border-radius: 60px;
+
+    background: #061344;
+
+    box-shadow:
+        0 0 20px rgba(24, 72, 255, 0.8),
+        0 0 45px rgba(24, 72, 255, 0.45);
+}
+
+
+/* ================= IMAGEN AMPLIADA ================= */
+
+.us9-modal-imagen {
+    position: relative;
+
+    flex: 0 0 48%;
+    min-height: 0;
+    min-width: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px 55px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+}
+
+
+/* La imagen no se estira ni se recorta */
+
+.us9-modal-imagen img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    min-width: 0;
+    min-height: 0;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+
+/* Mensaje opcional cuando no se cargó una imagen */
+
+.us9-modal-aviso-imagen {
+    max-width: 90%;
+
+    color: #14234e;
+
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+
+/* ================= BOTÓN CERRAR MODAL ================= */
+
+.us9-modal-cerrar {
+    position: absolute;
+    z-index: 10;
+
+    top: 10px;
+    right: 16px;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 50%;
+
+    color: #ffffff;
+    background: rgba(3, 6, 31, 0.12);
+
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.us9-modal-cerrar:hover {
+    color: #75aaff;
+    background: rgba(3, 6, 31, 0.3);
+
+    transform: scale(1.06);
+}
+
+.us9-modal-cerrar:focus-visible {
+    outline: 2px solid #75aaff;
+    outline-offset: 3px;
+}
+
+
+/* ================= TEXTO DEL MODAL ================= */
+
+.us9-modal-descripcion {
+    flex: 1 1 auto;
+
+    min-height: 0;
+    min-width: 0;
+
+    padding: 25px 35px 30px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    color: #ffffff;
+    background: #061344;
+
+    border-top: 3px solid #214cff;
+
+    overflow-wrap: anywhere;
+}
+
+.us9-modal-descripcion h2 {
+    margin: 0 0 18px;
+
+    color: #5b9cff;
+
+    font-size: 30px;
+    line-height: 1.3;
+}
+
+.us9-modal-descripcion p {
+    margin: 0 0 14px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+.us9-modal-descripcion strong {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+
+/* Barra de desplazamiento */
+
+.us9-modal-descripcion {
+    scrollbar-width: thin;
+    scrollbar-color: #2850bd #08102f;
+}
+
+.us9-modal-descripcion::-webkit-scrollbar {
+    width: 8px;
+}
+
+.us9-modal-descripcion::-webkit-scrollbar-track {
+    background: #08102f;
+}
+
+.us9-modal-descripcion::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #2850bd;
+}
+
+.us9-modal-descripcion::-webkit-scrollbar-thumb:hover {
+    background: #5b9cff;
+}
+
+
+/* ================= PIE DE PÁGINA ================= */
+
+.us9-footer {
+    padding: 20px;
+
+    color: #526dbb;
+
+    font-size: 13px;
+    text-align: center;
+
+    border-top: 1px solid #14266e;
+}
+
+.us9-footer p {
+    margin: 0;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 900px) {
 
     .us9-contenedor {
-        width: calc(100% - 20px);
-        margin-top: 24px;
+        width: 92%;
+        gap: 22px;
     }
 
-    .us9-selector {
-        gap: 8px;
+    .us9-tarjeta-boton {
+        width: calc(50% - 11px);
+        border-radius: 36px;
     }
 
-    .us9-selector-boton {
-        padding: 9px 12px;
-        font-size: 13px;
+    .us9-tarjeta-imagen {
+        height: 200px;
+        min-height: 200px;
     }
 
-    .us9-panel {
-        border-width: 2px;
-        border-radius: 25px;
+    .us9-modal-contenido {
+        width: 96vw;
+        height: 90vh;
+        border-radius: 40px;
     }
 
-    .us9-imagen-contenedor {
-        min-height: 240px;
-        padding: 20px 12px;
+    .us9-modal-imagen {
+        flex-basis: 45%;
+        padding: 15px 45px;
     }
 
-    .us9-imagen-placeholder {
-        min-height: 195px;
-        padding: 18px 12px;
-        border-radius: 18px;
+    .us9-modal-descripcion {
+        padding: 22px 25px;
     }
 
-    .us9-imagen-placeholder h2 {
-        font-size: 19px;
+}
+
+
+/* ================= CELULAR ================= */
+
+@media (max-width: 600px) {
+
+    .us9-header {
+        min-height: 150px;
+        padding: 25px 45px;
     }
 
-    .us9-imagen-placeholder p {
+    .us9-header-contenido h1 {
+        font-size: 20px;
+    }
+
+    .us9-header-contenido p {
         font-size: 14px;
     }
 
-    .us9-cerrar {
-        top: 8px;
-        right: 10px;
-        width: 36px;
-        height: 36px;
-        font-size: 37px;
+    .us9-menu-boton {
+        top: 12px;
+        right: 12px;
     }
 
-    .us9-descripcion {
-        padding: 22px 18px 25px;
+    .us9-menu {
+        top: 60px;
+        right: 12px;
+        width: min(240px, calc(100vw - 24px));
     }
 
-    .us9-descripcion h2 {
+    .us9-cruz {
+        font-size: 42px;
+    }
+
+    .us9-contenedor {
+        width: 90%;
+        margin-top: 25px;
+        gap: 24px;
+    }
+
+    .us9-tarjeta-boton {
+        width: 100%;
+        max-width: none;
+
+        border-radius: 30px;
+    }
+
+    .us9-tarjeta-imagen {
+        height: 210px;
+        min-height: 210px;
+    }
+
+    .us9-tarjeta-contenido {
+        padding: 18px 20px 22px;
+    }
+
+    .us9-tarjeta-titulo {
+        font-size: 20px;
+    }
+
+    .us9-tarjeta-descripcion {
+        font-size: 14px;
+    }
+
+    .us9-modal {
+        padding: 8px;
+    }
+
+    .us9-modal-contenido {
+        width: 100%;
+        height: 94vh;
+        height: 94dvh;
+
+        border-width: 3px;
+        border-radius: 28px;
+    }
+
+    .us9-modal-imagen {
+        flex: 0 0 40%;
+        padding: 15px 30px;
+    }
+
+    .us9-modal-cerrar {
+        top: 5px;
+        right: 7px;
+
+        width: 38px;
+        height: 38px;
+
+        font-size: 34px;
+    }
+
+    .us9-modal-descripcion {
+        padding: 20px 18px;
+    }
+
+    .us9-modal-descripcion h2 {
+        margin-bottom: 12px;
         font-size: 23px;
     }
 
-    .us9-descripcion p,
-    .us9-descripcion li {
-        font-size: 15px;
+    .us9-modal-descripcion p {
+        font-size: 14px;
         line-height: 1.5;
     }
+
+}
+
+
+/* ================= PANTALLAS BAJAS ================= */
+
+@media (max-height: 600px) {
+
+    .us9-modal-contenido {
+        height: 94vh;
+    }
+
+    .us9-modal-imagen {
+        flex-basis: 42%;
+    }
+
+    .us9-modal-descripcion {
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+
+    .us9-modal-descripcion h2 {
+        margin-bottom: 10px;
+        font-size: 23px;
+    }
+
+    .us9-modal-descripcion p {
+        margin-bottom: 9px;
+        font-size: 14px;
+    }
+
+}
+
+
+/* Reducir animaciones si el usuario lo prefiere */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
 }
