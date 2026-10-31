@@ -1,4 +1,7 @@
-/* --- VARIABLES Y RESET --- */
+/* =========================================
+   VARIABLES Y REINICIO
+========================================= */
+
 :root {
     --bg-dark: #050814;
     --card-bg: rgba(9, 16, 52, 0.9);
@@ -7,7 +10,7 @@
     --text-main: #ffffff;
     --text-sub: #b3c0e7;
     --accent-blue: #3b82f6;
-    --font-family: 'Inter', sans-serif;
+    --font-family: "Inter", sans-serif;
 }
 
 * {
@@ -16,154 +19,481 @@
     padding: 0;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 body {
-    font-family: var(--font-family);
-    background-color: var(--bg-dark);
-    color: var(--text-main);
     min-height: 100vh;
+    padding-bottom: 40px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
     position: relative;
     overflow-x: hidden;
-    padding-bottom: 40px;
+
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-family);
 }
 
-/* --- DECORACIÓN DE FONDO --- */
+
+/* =========================================
+   DECORACIÓN DEL FONDO
+========================================= */
+
 .puntos {
-    position: absolute;
+    position: fixed;
+
     width: 250px;
     height: 250px;
+
     background-image: radial-gradient(#1e2c60 2px, transparent 2px);
     background-size: 16px 16px;
-    z-index: -1;
-    opacity: 0.6;
-}
-.puntos-izquierda { top: 40px; left: -50px; }
-.puntos-derecha { top: 100px; right: -50px; }
 
-/* --- HEADER & TITULO --- */
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.puntos-izquierda {
+    top: 40px;
+    left: -50px;
+}
+
+.puntos-derecha {
+    top: 100px;
+    right: -50px;
+}
+
+
+/* =========================================
+   ENCABEZADO
+========================================= */
+
 .header {
+    position: relative;
+    z-index: 1;
+
     width: 100%;
-    max-width: 1000px;
-    padding: 20px;
+    max-width: 1100px;
+    min-height: 115px;
+
+    padding: 25px 30px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    gap: 20px;
 }
 
 .titulo h1 {
-    font-size: 1.5rem;
     color: var(--accent-blue);
+    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+    line-height: 1.35;
     letter-spacing: 1px;
 }
 
 .titulo span {
-    font-size: 0.85rem;
+    display: inline-block;
+    margin-top: 5px;
+
     color: var(--text-sub);
+    font-size: 0.85rem;
 }
 
+
+/* =========================================
+   BOTÓN HAMBURGUESA
+========================================= */
+
 .boton-menu {
-    background: transparent;
-    border: none;
-    cursor: pointer;
+    position: fixed;
+
+    top: 32px;
+    right: 50px;
+
+    width: 52px;
+    height: 52px;
+
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    background: rgba(9, 16, 52, 0.95);
+
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+
+    cursor: pointer;
+    z-index: 30;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.boton-menu:hover {
+    background: #112059;
+    border-color: var(--accent-blue);
 }
 
 .boton-menu span {
-    width: 25px;
+    display: block;
+
+    width: 24px;
     height: 3px;
+
     background-color: var(--text-main);
-    border-radius: 2px;
+    border-radius: 3px;
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
 }
 
-/* --- OVERLAY & SIDEBAR --- */
+/* Hamburguesa convertida en X */
+
+.boton-menu.activo span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.boton-menu.activo span:nth-child(2) {
+    opacity: 0;
+}
+
+.boton-menu.activo span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+
+/* =========================================
+   FONDO OSCURO DEL MENÚ
+========================================= */
+
 .overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: none;
-    z-index: 10;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.72);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+
+    z-index: 15;
 }
 
-.overlay.active { display: block; }
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* =========================================
+   MENÚ LATERAL
+========================================= */
 
 .sidebar {
     position: fixed;
     top: 0;
-    right: -300px;
-    width: 280px;
-    height: 100%;
-    background: #091034;
-    border-left: 1px solid var(--card-border);
-    padding: 30px 20px;
+    right: -460px;
+
+    width: 440px;
+    max-width: 90vw;
+    height: 100vh;
+    height: 100dvh;
+
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    transition: right 0.3s ease;
-    z-index: 20;
+    align-items: stretch;
+
+    gap: 10px;
+    padding: 127px 25px 30px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background: #091034;
+    border-left: 1px solid var(--card-border);
+
+    transition: right 0.35s ease;
+    z-index: 30;
 }
 
-.sidebar.active { right: 0; }
+.sidebar.active {
+    right: 0;
+}
 
-.sidebar .opcion {
+/* Barra de desplazamiento */
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #091034;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #203590;
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-blue);
+}
+
+/* =========================================
+   ENLACES DEL MENÚ
+========================================= */
+
+.enlace-menu {
     display: flex;
     align-items: center;
-    gap: 12px;
+
+    width: 100%;
+    min-height: 48px;
+    flex-shrink: 0;
+
+    padding: 12px 16px;
+
     color: var(--text-sub);
+    background: rgba(15, 26, 81, 0.45);
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    font-family: var(--font-family);
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 500;
+
+    text-decoration: none;
+    overflow-wrap: anywhere;
+
+    transition: 
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
 }
+
+/* Efecto al pasar el mouse */
+
+.enlace-menu:hover {
+    background: rgba(59, 130, 246, 0.12);
+    border-color: var(--accent-blue);
+    color: var(--text-main);
+
+    transform: translateX(-4px);
+}
+
+/* Página actual */
+
+.enlace-menu.activo {
+    background: rgba(59, 130, 246, 0.18);
+    border-color: var(--accent-blue);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* =========================================
+   OVERLAY DEL MENÚ
+========================================= */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 22;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* =========================================
+   RESPONSIVE DEL MENÚ
+========================================= */
+
+@media (max-width: 600px) {
+
+    .sidebar {
+        width: 340px;
+        max-width: 88vw;
+
+        padding: 90px 18px 25px;
+        gap: 8px;
+    }
+
+    .enlace-menu {
+        min-height: 44px;
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+}
+/* =========================================
+   OPCIONES DEL MENÚ
+========================================= */
+
+.sidebar .opcion {
+    width: 100%;
+    min-height: 65px;
+
+    padding: 12px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    color: var(--text-sub);
+
+    background: rgba(15, 26, 81, 0.45);
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.sidebar .opcion:hover {
+    background: rgba(59, 130, 246, 0.12);
+    border-color: var(--accent-blue);
+    transform: translateX(-4px);
+}
+
+
+/* =========================================
+   ICONOS DEL MENÚ
+========================================= */
 
 .sidebar .icono {
+    flex-shrink: 0;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background: #112059;
-    padding: 8px;
-    border-radius: 6px;
-    font-weight: bold;
+
+    border: 1px solid #203590;
+    border-radius: 8px;
+
     color: var(--accent-blue);
+
+    font-size: 13px;
+    font-weight: 700;
 }
 
-/* --- CONTENEDOR PRINCIPAL Y TABS --- */
+
+/* =========================================
+   TEXTO DEL MENÚ
+========================================= */
+
+.sidebar .opcion p {
+    margin: 0;
+
+    color: var(--text-sub);
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+========================================= */
+
 .contenedor-principal {
+    position: relative;
+    z-index: 1;
+
     width: 90%;
-    max-width: 900px;
+    max-width: 1000px;
+
     margin-top: 10px;
 }
 
+
+/* =========================================
+   PESTAÑAS
+========================================= */
+
 .tabs-header {
-    display: flex;
-    gap: 8px;
-    margin-bottom: -1px;
+    position: relative;
     z-index: 2;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-bottom: -1px;
 }
 
 .tab-btn {
+    padding: 10px 24px;
+
     background-color: rgba(13, 23, 71, 0.7);
+
     border: 1px solid var(--card-border);
     border-bottom: none;
-    color: var(--text-sub);
-    padding: 10px 24px;
     border-radius: 12px 12px 0 0;
+
+    color: var(--text-sub);
+    font-family: inherit;
     font-size: 0.95rem;
     font-weight: 600;
+
     cursor: pointer;
 }
 
 .tab-btn.active {
     background-color: var(--active-tab);
-    color: var(--text-main);
+
     border-color: #2a41a7;
+
+    color: var(--text-main);
 }
 
+
+/* =========================================
+   PANEL DE CONTENIDO
+========================================= */
+
 .tab-content-panel {
+    min-height: 380px;
+    padding: 30px;
+
     background: var(--card-bg);
+
     border: 1px solid #1a2f80;
     border-radius: 0 16px 16px 16px;
-    padding: 30px;
-    min-height: 380px;
+
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
@@ -176,143 +506,181 @@ body {
 }
 
 .tab-desc {
-    text-align: center;
-    font-size: 0.95rem;
-    color: #e0e6ed;
     margin-bottom: 20px;
+
+    color: #e0e6ed;
+
+    font-size: 0.95rem;
+    line-height: 1.7;
+
+    text-align: center;
 }
 
-/* --- CALIDAD --- */
+
+/* =========================================
+   PESTAÑA CALIDAD
+========================================= */
+
 .concepts-title {
-    text-align: center;
-    font-size: 1rem;
     margin-bottom: 12px;
+
+    font-size: 1rem;
+    text-align: center;
 }
 
 .concept-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
 
 .concept-item {
-    text-align: center;
-    font-size: 0.9rem;
     color: var(--text-sub);
+
+    font-size: 0.9rem;
+    line-height: 1.6;
+
+    text-align: center;
 }
 
-/* --- NORMAS ISO Y ACORDEÓN --- */
+.concept-item strong {
+    color: var(--text-main);
+}
+
+
+/* =========================================
+   PESTAÑA NORMAS ISO
+========================================= */
+
 .iso-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
 }
 
 .iso-card {
-    background: rgba(15, 26, 81, 0.6);
-    border: 1px solid #203590;
-    border-radius: 12px;
+    min-width: 0;
+
     padding: 18px;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 12px;
+
+    background: rgba(15, 26, 81, 0.6);
+
+    border: 1px solid #203590;
+    border-radius: 12px;
 }
 
 .iso-card h3 {
-    text-align: center;
-    font-size: 1rem;
     margin-bottom: 10px;
+
+    font-size: 1rem;
+    text-align: center;
 }
 
 .iso-card p {
-    font-size: 0.85rem;
-    color: var(--text-sub);
+    padding-left: 10px;
+
     border-left: 2px solid var(--accent-blue);
-    padding-left: 8px;
+
+    color: var(--text-sub);
+
+    font-size: 0.85rem;
+    line-height: 1.6;
 }
 
+
+/* =========================================
+   ACORDEONES ISO
+========================================= */
+
 .accordion-btn {
+    margin-top: 4px;
+    padding: 5px 0;
+
     background: none;
     border: none;
-    color: #ff5252;
-    font-size: 0.8rem;
-    margin-top: 12px;
-    cursor: pointer;
-    text-decoration: underline;
+
+    color: #ff7777;
+    font-family: inherit;
+    font-size: 0.85rem;
+
     text-align: left;
+    text-decoration: underline;
+
+    cursor: pointer;
 }
 
 .accordion-content {
     max-height: 0;
+
     overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-    font-size: 0.8rem;
-    color: #a0aec0;
+    padding: 0 8px;
+
     background: rgba(0, 0, 0, 0.2);
+
     border-radius: 6px;
+
+    color: #a0aec0;
+    font-size: 0.8rem;
+
+    transition:
+        max-height 0.3s ease,
+        padding 0.3s ease;
 }
 
 .accordion-content.open {
-    max-height: 120px;
+    max-height: 180px;
     padding: 8px;
-    margin-top: 6px;
 }
+
+.accordion-content p {
+    font-size: 0.8rem;
+}
+
+
 /* =========================================
-   MÉTRICAS
+   PESTAÑA MÉTRICAS
 ========================================= */
 
 .metrics-grid,
 .metrics-grid-bottom {
     display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
 }
 
-
-/* Primera fila: 3 tarjetas */
-
-.metrics-grid {
-    grid-template-columns: repeat(3, 1fr);
-}
-
-
-/* Segunda fila: 4 tarjetas */
-
 .metrics-grid-bottom {
-    grid-template-columns: repeat(4, 1fr);
-
     margin-top: 20px;
 }
 
 
 /* =========================================
-   TARJETA DE MÉTRICA
+   TARJETAS DE MÉTRICAS
 ========================================= */
 
 .metric-box {
     position: relative;
 
-    width: 100%;
-    min-height: 230px;
+    min-width: 0;
+    min-height: 250px;
 
     perspective: 1000px;
 
     cursor: pointer;
 }
 
-
-/* =========================================
-   CARA DELANTERA Y TRASERA
-========================================= */
-
 .metric-front,
 .metric-back {
     width: 100%;
-    height: 100%;
-    min-height: 230px;
+    min-height: 250px;
+
+    padding: 22px;
 
     border-radius: 20px;
-
-    padding: 25px;
 
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -324,7 +692,7 @@ body {
 
 
 /* =========================================
-   PARTE DELANTERA
+   CARA DELANTERA
 ========================================= */
 
 .metric-front {
@@ -332,7 +700,6 @@ body {
 
     display: flex;
     flex-direction: column;
-
     justify-content: center;
     align-items: center;
 
@@ -346,50 +713,37 @@ body {
 
     border: 1px solid #1e3995;
 
-    box-shadow:
-        0 0 20px rgba(30, 60, 170, 0.25);
+    box-shadow: 0 0 20px rgba(30, 60, 170, 0.25);
 
     transform: rotateY(0deg);
 }
 
-
-/* =========================================
-   TÍTULO DE LA MÉTRICA
-========================================= */
-
 .metric-title {
+    margin-bottom: 12px;
+
     color: white;
 
-    font-size: 21px;
-
-    font-weight: bold;
-
-    margin-bottom: 12px;
+    font-size: 19px;
+    font-weight: 700;
 }
 
-
-/* Descripción corta */
-
 .metric-front p {
+    margin: 0;
+
     color: #cdd4ee;
 
     font-size: 14px;
-
-    line-height: 20px;
-
-    margin: 0;
+    line-height: 1.5;
 }
 
 
 /* =========================================
-   PARTE TRASERA
+   CARA TRASERA
 ========================================= */
 
 .metric-back {
     position: absolute;
-
-    top: 0;
-    left: 0;
+    inset: 0;
 
     overflow-y: auto;
 
@@ -401,40 +755,27 @@ body {
 
     border: 1px solid #4164d1;
 
-    box-shadow:
-        0 0 25px rgba(42, 76, 200, 0.4);
+    box-shadow: 0 0 25px rgba(42, 76, 200, 0.4);
 
     transform: rotateY(180deg);
 }
 
-
-/* =========================================
-   TÍTULO TRASERO
-========================================= */
-
 .metric-back h3 {
-    color: #6f8df5;
-
-    font-size: 19px;
-
     margin-bottom: 15px;
 
+    color: #6f8df5;
+
+    font-size: 18px;
     text-align: center;
 }
 
-
-/* =========================================
-   TEXTO TRASERO
-========================================= */
-
 .metric-back p {
+    margin-bottom: 12px;
+
     color: #eeeeee;
 
     font-size: 12px;
-
-    line-height: 18px;
-
-    margin-bottom: 12px;
+    line-height: 1.6;
 }
 
 .metric-back strong {
@@ -443,123 +784,169 @@ body {
 
 
 /* =========================================
-   EFECTO FLIP
+   EFECTO DE GIRO DE LAS MÉTRICAS
 ========================================= */
 
-.metric-box:hover .metric-front {
+.metric-box:hover .metric-front,
+.metric-box.girada .metric-front {
     transform: rotateY(-180deg);
 }
 
-.metric-box:hover .metric-back {
+.metric-box:hover .metric-back,
+.metric-box.girada .metric-back {
     transform: rotateY(0deg);
 }
 
-
-/* =========================================
-   HOVER
-========================================= */
-
-.metric-box:hover {
+.metric-box:hover,
+.metric-box.girada {
     z-index: 5;
 }
 
 
 /* =========================================
-   RESPONSIVE
+   PIE DE PÁGINA
 ========================================= */
 
-@media (max-width: 1000px) {
-
-    .metrics-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .metrics-grid-bottom {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-
-@media (max-width: 600px) {
-
-    .metrics-grid,
-    .metrics-grid-bottom {
-        grid-template-columns: 1fr;
-    }
-
-    .metric-box {
-        min-height: 250px;
-    }
-
-    .metric-front,
-    .metric-back {
-        min-height: 250px;
-    }
-}
-
-/* --- VÉASE TAMBIÉN --- */
-.vease {
-    margin-top: 40px;
-}
-
-.vease h2 {
-    font-size: 1.1rem;
-    margin-bottom: 6px;
-}
-
-.vease .linea {
-    width: 100%;
-    height: 1px;
-    background: var(--card-border);
-    margin-bottom: 15px;
-}
-
-.vease .opciones {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
-}
-
-.enlace-opcion {
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--card-bg);
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid var(--card-border);
-}
-
-/* --- BOTÓN INFERIOR --- */
 .parte-inferior {
-    width: 100%;
-    max-width: 900px;
+    position: relative;
+    z-index: 1;
+
+    width: 90%;
+    max-width: 1000px;
+
     margin-top: 30px;
+
     text-align: center;
 }
 
 .linea-inferior {
     width: 100%;
     height: 1px;
-    background: var(--card-border);
+
     margin-bottom: 15px;
+
+    background: var(--card-border);
 }
 
 .sobre-nosotros {
-    background: transparent;
-    border: 1px solid var(--card-border);
-    color: var(--text-sub);
     padding: 8px 20px;
+
+    background: transparent;
+
+    border: 1px solid var(--card-border);
     border-radius: 20px;
+
+    color: var(--text-sub);
+    font-family: inherit;
+
     cursor: pointer;
+
+    transition:
+        border-color 0.3s ease,
+        color 0.3s ease;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .iso-grid, .metrics-grid, .metrics-grid-bottom {
-        grid-template-columns: 1fr;
-        max-width: 100%;
+.sobre-nosotros:hover {
+    border-color: var(--accent-blue);
+    color: var(--text-main);
+}
+
+
+/* =========================================
+   RESPONSIVE: TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .metrics-grid,
+    .metrics-grid-bottom {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+}
+
+
+/* =========================================
+   RESPONSIVE: CELULARES
+========================================= */
+
+@media (max-width: 768px) {
+
+    .header {
+        min-height: 100px;
+        padding: 20px;
+    }
+
+    .boton-menu {
+        top: 20px;
+        right: 20px;
+
+        width: 46px;
+        height: 46px;
+    }
+
+    .contenedor-principal {
+        width: 94%;
+    }
+
+    .tab-content-panel {
+        padding: 22px 18px;
+    }
+
+    .iso-grid,
+    .metrics-grid,
+    .metrics-grid-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .metric-box,
+    .metric-front,
+    .metric-back {
+        min-height: 230px;
+    }
+
+    .parte-inferior {
+        width: 94%;
+    }
+
+}
+
+
+/* =========================================
+   RESPONSIVE: CELULARES PEQUEÑOS
+========================================= */
+
+@media (max-width: 480px) {
+
+    .titulo h1 {
+        max-width: 75%;
+        font-size: 1rem;
+    }
+
+    .tab-btn {
+        flex: 1 1 auto;
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+
+    .sidebar {
+        width: 340px;
+        max-width: 88vw;
+
+        padding: 100px 20px 25px;
+    }
+
+    .sidebar .opcion {
+        min-height: 58px;
+    }
+
+    .sidebar .icono {
+        width: 42px;
+        height: 42px;
+    }
+
+    .sidebar .opcion p {
+        font-size: 13px;
+    }
+
 }
