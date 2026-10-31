@@ -1,6 +1,33 @@
 /**
  * Información completa de cada fase del Ciclo de Vida del Software (SDLC)
  */
+// =========================================
+// MENÚ LATERAL
+// =========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const botonMenu = document.getElementById("botonMenu");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    if (!botonMenu || !sidebar || !overlay) return;
+
+    function toggleMenu() {
+
+        botonMenu.classList.toggle("activo");
+
+        sidebar.classList.toggle("abierto");
+
+        overlay.classList.toggle("activo");
+
+    }
+
+    botonMenu.addEventListener("click", toggleMenu);
+
+    overlay.addEventListener("click", toggleMenu);
+
+});
 const phasesData = {
   requisitos: {
     title: "1. Requisitos",
