@@ -146,7 +146,7 @@ body {
    ===================================================== */
 
 .ej-menu-boton {
-    position: absolute;
+    position: fixed;
     top: 75px;
     right: 45px;
 
@@ -161,10 +161,10 @@ body {
 
     border: none;
     border-radius: 10px;
-
     background: transparent;
+
     cursor: pointer;
-    z-index: 30;
+    z-index: 1002;
 
     transition: background 0.3s ease;
 }
@@ -174,12 +174,12 @@ body {
 }
 
 .ej-menu-boton span {
+    display: block;
+
     width: 21px;
     height: 2px;
 
-    display: block;
     border-radius: 5px;
-
     background: #344b9c;
 
     transition:
@@ -191,6 +191,8 @@ body {
 .ej-menu-boton:hover span {
     background: #ffffff;
 }
+
+/* Transformación de las tres líneas en una X */
 
 .ej-menu-boton.activo span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
@@ -205,39 +207,68 @@ body {
 }
 
 
-/* Menú lateral */
+/* =====================================================
+   MENÚ LATERAL CORREGIDO
+   ===================================================== */
 
 .ej-sidebar {
     position: fixed;
     top: 0;
-    right: -360px;
+    right: 0;
 
-    width: min(360px, 85vw);
+    width: min(400px, 90vw);
     height: 100vh;
+    height: 100dvh;
 
-    padding: 150px 25px 30px;
+    padding: 100px 25px 25px;
 
     display: flex;
     flex-direction: column;
+    align-items: stretch;
 
     background: #02051b;
     border-left: 1px solid #1e3995;
 
-    z-index: 20;
+    overflow-y: auto;
+    overflow-x: hidden;
 
-    transition: right 0.35s ease;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #1e3995 #02051b;
+
+    z-index: 1001;
+
+    transform: translateX(100%);
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        transform 0.35s ease,
+        visibility 0.35s ease;
 }
+
+/* Menú desplegado */
 
 .ej-sidebar.abierto {
-    right: 0;
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
 }
 
+/* Enlaces del menú */
+
 .ej-enlace-menu {
-    padding: 20px;
+    display: block;
+    flex-shrink: 0;
+
+    padding: 16px 15px;
 
     color: #eeeeee;
     font-size: 15px;
+    line-height: 1.4;
     text-decoration: none;
+
+    overflow-wrap: anywhere;
 
     border-bottom: 1px solid #14266e;
 
@@ -248,21 +279,31 @@ body {
 }
 
 .ej-enlace-menu:hover {
-    padding-left: 28px;
+    padding-left: 22px;
     background: #080d2d;
     color: #9e9bf2;
 }
+
+.ej-enlace-menu:focus-visible {
+    outline: 2px solid #9e9bf2;
+    outline-offset: -2px;
+}
+
+/* =====================================================
+   FONDO OSCURO DEL MENÚ
+   ===================================================== */
 
 .ej-overlay {
     position: fixed;
     inset: 0;
 
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.65);
 
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 
-    z-index: 15;
+    z-index: 1000;
 
     transition:
         opacity 0.3s ease,
@@ -272,8 +313,50 @@ body {
 .ej-overlay.activo {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
 }
 
+
+/* =====================================================
+   AJUSTES RESPONSIVE EXCLUSIVOS DEL MENÚ
+   ===================================================== */
+
+@media (max-width: 900px) {
+    .ej-menu-boton {
+        top: 55px;
+        right: 15px;
+    }
+
+    .ej-sidebar {
+        width: min(380px, 90vw);
+        padding: 90px 20px 20px;
+    }
+
+    .ej-enlace-menu {
+        padding: 14px 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 650px) {
+    .ej-menu-boton {
+        top: 38px;
+        right: 8px;
+
+        width: 40px;
+        height: 40px;
+    }
+
+    .ej-sidebar {
+        width: min(340px, 90vw);
+        padding: 80px 18px 20px;
+    }
+
+    .ej-enlace-menu {
+        padding: 13px 10px;
+        font-size: 14px;
+    }
+}
 
 /* =====================================================
    CONTENIDO PRINCIPAL

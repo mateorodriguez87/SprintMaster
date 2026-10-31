@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,20 +8,17 @@
 
     <title>Sistemas de Gestión de Calidad</title>
 
-  
     <link rel="stylesheet" href="../CSS/style.css">
 </head>
 
 <body>
 
-    <!--FONDO-->
-
+    <!-- FONDO -->
     <div class="puntos puntos-izquierda"></div>
     <div class="puntos puntos-derecha"></div>
 
 
-    <!--  HEADER  -->
-
+    <!-- HEADER -->
     <header class="header">
 
         <div class="titulo">
@@ -28,129 +26,97 @@
             <span>inicio</span>
         </div>
 
-
         <!-- BOTÓN HAMBURGUESA -->
-
         <button
             class="boton-menu"
             id="botonMenu"
             type="button"
             aria-label="Abrir menú"
+            aria-expanded="false"
+            aria-controls="sidebar"
         >
-
             <span></span>
             <span></span>
             <span></span>
-
         </button>
 
     </header>
 
 
-    <!-- ================= OSCURECER FONDO ================= -->
-
+    <!-- FONDO OSCURO -->
     <div class="overlay" id="overlay"></div>
 
 
-    <!-- ================= MENÚ LATERAL ================= -->
+    <!-- MENÚ LATERAL -->
+    <nav class="sidebar" id="sidebar"
+         aria-label="Navegación principal" inert>
 
-    <aside class="sidebar" id="sidebar">
+        <a href="../US/us1.html" class="enlace-menu">
+            Inicio
+        </a>
 
-        <div class="opcion">
+        <a href="../US/us2.html" class="enlace-menu">
+            Fundamentos de Calidad
+        </a>
 
-            <div class="icono">
-                GCS
-            </div>
+        <a href="../US/us3.html" class="enlace-menu">
+            Técnicas de Aseguramiento de la Calidad
+        </a>
 
-            <p>
-                Gestión de calidad de software
-            </p>
+        <a href="../US/us4.html" class="enlace-menu">
+            Herramientas de Calidad
+        </a>
 
-        </div>
+        <a href="../US/us5.html" class="enlace-menu">
+            Ciclo de Vida del Software (SDLC)
+        </a>
 
+        <a href="../US/us9.html" class="enlace-menu">
+            Ilustraciones de Metodologías Ágiles
+        </a>
 
-        <div class="opcion">
+        <a href="../US/us12.html" class="enlace-menu">
+            Glosario Interactivo
+        </a>
 
-            <div class="icono">
-                PDS
-            </div>
+        <a href="../US/us13.html" class="enlace-menu">
+            Preguntas Frecuentes (FAQ)
+        </a>
 
-            <p>
-                Proceso de Desarrollo de Software
-            </p>
+        <a href="../US/us14.html" class="enlace-menu">
+            Enlaces de Interés
+        </a>
 
-        </div>
+        <a href="../US/us15.html" class="enlace-menu">
+            Ejercicios y Casos Prácticos
+        </a>
 
+        <a href="../US/us16.html" class="enlace-menu">
+            Sobre Nosotros
+        </a>
 
-        <div class="opcion">
+        <a href="../US/us17.html" class="enlace-menu">
+            Formulario de Contacto
+        </a>
 
-            <div class="icono">
-                MA
-            </div>
+        <a href="../US/us18.html" class="enlace-menu">
+            Comparador
+        </a>
 
-            <p>
-                Metodologías Agiles
-            </p>
+        <a href="../US/us19.html" class="enlace-menu">
+            Encuesta de Preferencias Metodológicas
+        </a>
 
-        </div>
-
-
-        <div class="opcion">
-
-            <div class="icono">
-                RA
-            </div>
-
-            <p>
-                Recursos y Aprendizaje
-            </p>
-
-        </div>
-
-
-        <div class="opcion">
-
-            <div class="icono">
-                CM
-            </div>
-
-            <p>
-                Comparador de Metodologías
-            </p>
-
-        </div>
+    </nav>
 
 
-        <div class="opcion">
-
-            <div class="icono">
-                EPM
-            </div>
-
-            <p>
-                Encuesta de Preferencias
-                <br>
-                de Metodologías
-            </p>
-
-        </div>
-
-    </aside>
-
-
-    <!--  CONTENIDO  -->
-
+    <!-- CONTENIDO PRINCIPAL -->
     <main>
 
-
-        <!--DEFINICIÓN  -->
-
+        <!-- DEFINICIÓN -->
         <section class="definicion">
 
-            <h2>
-                ¿Qué es la gestión de calidad?
-            </h2>
-
+            <h2>¿Qué es la gestión de calidad?</h2>
 
             <div class="texto-definicion">
 
@@ -166,7 +132,6 @@
                     errores, detectar problemas y mejorar continuamente.
                 </p>
 
-
                 <p>
                     La gestión de calidad busca que todas las actividades
                     de una organización se realicen de manera ordenada,
@@ -178,7 +143,6 @@
                     persona y pasa a formar parte de toda la organización.
                 </p>
 
-
                 <p class="texto-oculto">
                     Además, la gestión de calidad tiene un enfoque de
                     mejora continua. Esto significa que una organización
@@ -189,48 +153,39 @@
         </section>
 
 
-    <section class="logo-seccion">
+        <!-- LOGO SPRINT MÁSTER -->
+        <section class="logo-seccion">
 
-        <div class="logo-contenedor" id="logoContenedor">
+            <div class="logo-contenedor" id="logoContenedor">
 
-            <img
-                src="../Imagenes/WhatsApp Image 2026-09-29 at 12.11.58 PM.jpeg"
-                alt="Logo Sprint Máster"
-                class="logo-imagen"
-                id="logoImagen"
-            >
+                <img
+                    src="../Imagenes/WhatsApp Image 2026-09-29 at 12.11.58 PM.jpeg"
+                    alt="Logo Sprint Máster"
+                    class="logo-imagen"
+                    id="logoImagen"
+                >
 
-            <div class="logo-texto">
-                <h1>SPRINT MÁSTER</h1>
+                <div class="logo-texto">
 
-                <p>
-                    SISTEMA DE GESTIÓN DE CALIDAD DE SOFTWARE
-                </p>
+                    <h1>SPRINT MÁSTER</h1>
+
+                    <p>
+                        SISTEMA DE GESTIÓN DE CALIDAD DE SOFTWARE
+                    </p>
+
+                </div>
+
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
     </main>
 
 
+    <!-- SEGUNDA SECCIÓN -->
+    <main class="contenido-secundario">
 
-
-    <script src="../JS/script.js"></script>
-
-
-    <!-- Decoración de fondo -->
-    <div class="puntos puntos-izquierda"></div>
-    <div class="puntos puntos-derecha"></div>
-
-
-    <!-- CONTENIDO PRINCIPAL -->
-
-    <main>
-
-        <!-- IMPORTANCIA  -->
-
+        <!-- IMPORTANCIA -->
         <section class="importancia">
 
             <h1>¿Por qué es importante?</h1>
@@ -267,68 +222,58 @@
         </section>
 
 
-        <!--VÉASE TAMBIÉN -->
+        <!-- VÉASE TAMBIÉN -->
+        <section class="vease">
 
- <section class="vease">
+            <h2>Véase también</h2>
 
-    <h2>Véase también</h2>
+            <div class="linea"></div>
 
-    <div class="linea"></div>
+            <div class="opciones">
 
-    <div class="opciones">
+                <div class="opcion">
+                    <div class="icono">GCS</div>
+                    <p>Gestión de calidad de software</p>
+                </div>
 
-        <!-- GCS -->
-        <div class="opcion">
-            <div class="icono">GCS</div>
-            <p>Gestión de calidad de software</p>
-        </div>
+                <a href="proceso-desarrollo-software.html"
+                   class="opcion enlace-opcion">
+                    <div class="icono">PDS</div>
+                    <p>Proceso de Desarrollo de Software</p>
+                </a>
 
+                <a href="metodologias-agiles.html"
+                   class="opcion enlace-opcion">
+                    <div class="icono">MA</div>
+                    <p>Metodologías Ágiles</p>
+                </a>
 
-        <!-- PDS -->
-        <a href="proceso-desarrollo-software.html" class="opcion enlace-opcion">
-            <div class="icono">PDS</div>
-            <p>Proceso de Desarrollo de Software</p>
-        </a>
+                <a href="recursos-aprendizaje.html"
+                   class="opcion enlace-opcion">
+                    <div class="icono">RA</div>
+                    <p>Recursos y Aprendizaje</p>
+                </a>
 
+                <a href="comparador-metodologias.html"
+                   class="opcion enlace-opcion">
+                    <div class="icono">CM</div>
+                    <p>Comparador de Metodologías</p>
+                </a>
 
-        <!-- Metodologías Ágiles -->
-        <a href="metodologias-agiles.html" class="opcion enlace-opcion">
-            <div class="icono">MA</div>
-            <p>Metodologías Ágiles</p>
-        </a>
+                <a href="encuesta-preferencias-metodologias.html"
+                   class="opcion enlace-opcion">
+                    <div class="icono">EPM</div>
+                    <p>Encuesta de Preferencias de Metodologías</p>
+                </a>
 
+            </div>
 
-        <!-- Recursos y Aprendizaje -->
-        <a href="recursos-aprendizaje.html" class="opcion enlace-opcion">
-            <div class="icono">RA</div>
-            <p>Recursos y Aprendizaje</p>
-        </a>
-
-
-        <!-- Comparador -->
-        <a href="comparador-metodologias.html" class="opcion enlace-opcion">
-            <div class="icono">CM</div>
-            <p>Comparador de Metodologías</p>
-        </a>
-
-
-        <!-- Encuesta -->
-        <a href="encuesta-preferencias-metodologias.html" class="opcion enlace-opcion">
-            <div class="icono">EPM</div>
-            <p>Encuesta de Preferencias de Metodologías</p>
-        </a>
-
-    </div>
-
-</section>
+        </section>
 
     </main>
 
 
-    <!-- =========================
-         BOTÓN INFERIOR
-    ========================== -->
-
+    <!-- PARTE INFERIOR -->
     <div class="parte-inferior">
 
         <div class="linea-inferior"></div>
@@ -340,7 +285,8 @@
     </div>
 
 
+    <!-- JAVASCRIPT -->
+    <script src="../JS/script.js"></script>
 
 </body>
-
 </html>

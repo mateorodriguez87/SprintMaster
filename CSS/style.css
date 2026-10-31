@@ -1,3 +1,4 @@
+
 /* =========================================
    CONFIGURACIÓN GENERAL
 ========================================= */
@@ -25,11 +26,8 @@ body {
     position: fixed;
     width: 280px;
     height: 280px;
-
     pointer-events: none;
-
     opacity: 0.65;
-
     z-index: 0;
 
     background-image: radial-gradient(
@@ -79,7 +77,6 @@ body {
     align-items: center;
 
     position: relative;
-
     z-index: 100;
 }
 
@@ -89,19 +86,14 @@ body {
 
 .titulo h1 {
     color: #2850bd;
-
     font-size: 28px;
-
     font-weight: bold;
 }
 
 .titulo span {
     display: block;
-
     margin-top: 5px;
-
     color: #182a6e;
-
     font-size: 13px;
 }
 
@@ -111,47 +103,50 @@ body {
 ========================================= */
 
 .boton-menu {
-    position: absolute;
-
+    position: fixed;
     top: 32px;
     right: 50px;
 
     width: 52px;
     height: 52px;
 
-    border: none;
-    border-radius: 13px;
-
-    background: #2445ad;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     gap: 5px;
 
+    border: none;
+    border-radius: 13px;
+
+    background: #2445ad;
     cursor: pointer;
 
-    box-shadow:
-        0 0 20px rgba(48, 79, 200, 0.5);
+    box-shadow: 0 0 20px rgba(48, 79, 200, 0.5);
 
-    z-index: 110;
+    z-index: 1002;
+
+    transition: background 0.3s ease;
+}
+
+.boton-menu:hover {
+    background: #3157cc;
 }
 
 .boton-menu span {
+    display: block;
     width: 24px;
     height: 3px;
-
+    border-radius: 5px;
     background: white;
 
-    border-radius: 5px;
-
-    transition: 0.3s;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
 }
 
 
-/* Hamburguesa → X */
+/* HAMBURGUESA A X */
 
 .boton-menu.activo span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
@@ -172,127 +167,117 @@ body {
 
 .sidebar {
     position: fixed;
-
     top: 0;
-    right: -440px;
+    right: 0;
 
-    width: 440px;
+    width: min(400px, 90vw);
     height: 100vh;
+    height: 100dvh;
 
-    padding-top: 127px;
+    padding: 100px 25px 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 
     background: #02051b;
+    border-left: 1px solid #1e3995;
 
-    border-left: 1px solid #15276d;
+    overflow-y: auto;
+    overflow-x: hidden;
 
-    transition: right 0.4s ease;
+    overscroll-behavior: contain;
 
-    z-index: 90;
+    scrollbar-width: thin;
+    scrollbar-color: #1e3995 #02051b;
+
+    transform: translateX(100%);
+    visibility: hidden;
+    pointer-events: none;
+
+    z-index: 1001;
+
+    transition:
+        transform 0.35s ease,
+        visibility 0.35s ease;
 }
-
 
 /* MENÚ ABIERTO */
 
 .sidebar.abierto {
-    right: 0;
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
 }
 
 
 /* =========================================
-   FONDO OSCURO
+   ENLACES DEL MENÚ
+========================================= */
+
+.enlace-menu {
+    display: block;
+    flex-shrink: 0;
+
+    padding: 16px 15px;
+
+    color: #eeeeee;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
+
+    text-decoration: none;
+    overflow-wrap: anywhere;
+
+    border-bottom: 1px solid #14266e;
+
+    transition:
+        background 0.3s ease,
+        padding-left 0.3s ease,
+        color 0.3s ease;
+}
+
+.enlace-menu:visited {
+    color: #eeeeee;
+}
+
+.enlace-menu:hover {
+    padding-left: 22px;
+    background: #080d2d;
+    color: #9e9bf2;
+}
+
+.enlace-menu:focus-visible {
+    outline: 2px solid #9e9bf2;
+    outline-offset: -2px;
+}
+
+
+/* =========================================
+   OVERLAY
 ========================================= */
 
 .overlay {
     position: fixed;
-
     inset: 0;
 
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.65);
 
     opacity: 0;
-
     visibility: hidden;
+    pointer-events: none;
 
-    transition: 0.3s;
+    z-index: 1000;
 
-    z-index: 80;
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
 }
 
 .overlay.activo {
     opacity: 1;
-
     visibility: visible;
-}
-
-
-/* =========================================
-   OPCIONES DEL MENÚ
-========================================= */
-
-.opcion {
-    width: 100%;
-    height: 87px;
-
-    padding: 0 50px;
-
-    display: flex;
-    align-items: center;
-
-    border-bottom: 1px solid #111f58;
-
-    transition: 0.25s;
-}
-
-.opcion:first-child {
-    border-top: 1px solid #111f58;
-}
-
-.opcion:hover {
-    background: #080d2d;
-
-    padding-left: 60px;
-}
-
-.opcion p {
-    margin-left: 15px;
-
-    color: #eeeeee;
-
-    font-size: 13px;
-
-    line-height: 18px;
-}
-
-
-/* =========================================
-   ICONOS DEL MENÚ
-========================================= */
-
-.icono {
-    width: 56px;
-    height: 56px;
-
-    border-radius: 17px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    color: white;
-
-    font-size: 14px;
-    font-weight: bold;
-
-    background: linear-gradient(
-        135deg,
-        #7450d8,
-        #5969dc,
-        #b5bb4c
-    );
-
-    box-shadow:
-        inset 0 0 15px rgba(255,255,255,0.15),
-        0 0 10px rgba(87,70,220,0.25);
+    pointer-events: auto;
 }
 
 
@@ -302,18 +287,22 @@ body {
 
 main {
     position: relative;
-
     z-index: 2;
 
     width: 100%;
 
     display: grid;
-
     grid-template-columns: 42% 58%;
-
-    gap: 4%;
+    column-gap: 4%;
 
     padding: 27px 7% 70px;
+}
+
+/* SEGUNDO CONTENIDO */
+
+main.contenido-secundario {
+    padding-top: 55px;
+    padding-bottom: 80px;
 }
 
 
@@ -323,25 +312,16 @@ main {
 
 .definicion h2 {
     color: #2850bd;
-
     font-size: 30px;
-
     margin-bottom: 15px;
 }
-
-
-/* =========================================
-   CAJA DE DEFINICIÓN
-========================================= */
 
 .texto-definicion {
     width: 100%;
     max-width: 500px;
-
     height: 485px;
 
     padding: 25px;
-
     border-radius: 20px;
 
     background: linear-gradient(
@@ -357,11 +337,8 @@ main {
 
 .texto-definicion p {
     color: #eeeeee;
-
     font-size: 14px;
-
     line-height: 18px;
-
     margin-bottom: 25px;
 }
 
@@ -370,130 +347,22 @@ main {
 }
 
 
-/* =====================================
-   CONFIGURACIÓN GENERAL
-===================================== */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    min-height: 100vh;
-
-    background: #03061f;
-
-    color: white;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    overflow-x: hidden;
-}
-
-
-/* =====================================
-   FONDO DE PUNTOS
-===================================== */
-
-.puntos {
-    position: fixed;
-
-    width: 280px;
-    height: 280px;
-
-    pointer-events: none;
-
-    z-index: 0;
-
-    opacity: 0.65;
-
-    background-image: radial-gradient(
-        circle,
-        #30449b 2px,
-        transparent 3px
-    );
-
-    background-size: 14px 14px;
-}
-
-
-/* Puntos de arriba a la izquierda */
-
-.puntos-izquierda {
-    top: 0;
-    left: 0;
-
-    mask-image: linear-gradient(
-        135deg,
-        black,
-        transparent 80%
-    );
-}
-
-
-/* Puntos de abajo a la derecha */
-
-.puntos-derecha {
-    right: 0;
-    bottom: 0;
-
-    mask-image: linear-gradient(
-        315deg,
-        black,
-        transparent 80%
-    );
-}
-
-
-/* =====================================
-   CONTENIDO PRINCIPAL
-===================================== */
-
-main {
-    position: relative;
-
-    z-index: 2;
-
-    width: 100%;
-
-    display: grid;
-
-    grid-template-columns: 42% 58%;
-
-    gap: 4%;
-
-    padding: 55px 7% 80px;
-}
-
-
-/* =====================================
-   SECCIÓN IMPORTANCIA
-===================================== */
+/* =========================================
+   IMPORTANCIA
+========================================= */
 
 .importancia h1 {
     color: #2850bd;
-
     font-size: 30px;
-
     margin-bottom: 12px;
 }
 
-
-/* =====================================
-   CAJA DE TEXTO
-===================================== */
-
 .caja-texto {
     width: 100%;
-
     max-width: 420px;
-
     height: 485px;
 
     padding: 20px;
-
     border-radius: 20px;
 
     background: linear-gradient(
@@ -507,100 +376,67 @@ main {
         inset 0 0 10px rgba(30, 55, 140, 0.20);
 }
 
-
-/* Texto */
-
 .caja-texto p {
     color: #eeeeee;
-
     font-size: 14px;
-
     line-height: 18px;
-
     margin-bottom: 25px;
 }
 
 
-/* =====================================
+/* =========================================
    VÉASE TAMBIÉN
-===================================== */
+========================================= */
 
 .vease {
     padding-top: 10px;
 }
 
-
-/* Título */
-
 .vease h2 {
     text-align: center;
-
     color: #2850bd;
-
     font-size: 30px;
-
     margin-bottom: 15px;
 }
 
-
-/* Línea debajo del título */
-
 .linea {
     width: 100%;
-
     height: 1px;
-
     background: #14266e;
-
     margin-bottom: 45px;
 }
 
 
-/* =====================================
-   GRID DE OPCIONES
-===================================== */
+/* GRID */
 
 .opciones {
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     column-gap: 35px;
-
     row-gap: 80px;
-
     justify-items: center;
 }
 
 
-/* =====================================
-   OPCIÓN
-===================================== */
+/* =========================================
+   OPCIONES DE VÉASE TAMBIÉN
+========================================= */
 
-.opcion {
+.opciones .opcion {
     width: 180px;
-
     min-width: 180px;
 
     text-align: center;
-
     cursor: pointer;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
 
     transition: 0.3s ease;
 }
 
-
-/* =====================================
-   ICONOS
-===================================== */
-
-.icono {
+.opciones .icono {
     width: 68px;
     height: 68px;
 
@@ -611,23 +447,18 @@ main {
     max-height: 68px;
 
     margin: 0 auto 12px;
-
     padding: 0;
 
     border-radius: 17px;
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 
     flex-shrink: 0;
 
     color: #eeeeee;
-
     font-size: 18px;
-
     font-weight: bold;
 
     background: linear-gradient(
@@ -637,339 +468,40 @@ main {
         #b5bb4c
     );
 
-    box-shadow:
-        0 0 15px rgba(87, 70, 220, 0.30);
+    box-shadow: 0 0 15px rgba(87, 70, 220, 0.30);
 
     transition: 0.3s ease;
 }
 
-
-/* =====================================
-   TEXTO DE LAS OPCIONES
-===================================== */
-
-.opcion p {
+.opciones .opcion p {
     width: 180px;
 
     color: #eeeeee;
-
     font-size: 14px;
-
     line-height: 18px;
-
     text-align: center;
-
     margin: 0;
 }
 
-
-/* =====================================
-   EFECTO AL PASAR EL MOUSE
-===================================== */
-
-.opcion:hover {
+.opciones .opcion:hover {
     transform: translateY(-7px);
 }
 
-.opcion:hover .icono {
+.opciones .opcion:hover .icono {
     transform: scale(1.08);
 
-    box-shadow:
-        0 0 25px rgba(80, 90, 220, 0.55);
+    box-shadow: 0 0 25px rgba(80, 90, 220, 0.55);
 }
-
-
-/* =====================================
-   PARTE INFERIOR
-===================================== */
-
-.parte-inferior {
-    position: relative;
-
-    z-index: 2;
-
-    width: 100%;
-
-    padding: 0 7% 25px;
-
-    text-align: center;
-}
-
-
-/* Línea inferior */
-
-.linea-inferior {
-    width: 100%;
-
-    height: 1px;
-
-    background: #14266e;
-
-    margin-bottom: 23px;
-}
-
-
-/* =====================================
-   BOTÓN SOBRE NOSOTROS
-===================================== */
-
-.sobre-nosotros {
-    border: none;
-
-    padding: 9px 32px;
-
-    border-radius: 25px;
-
-    background: linear-gradient(
-        90deg,
-        #8580dd,
-        #9b8ce6
-    );
-
-    color: white;
-
-    font-size: 17px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 0 15px rgba(130, 120, 220, 0.65);
-
-    transition: 0.3s ease;
-}
-
-.sobre-nosotros:hover {
-    transform: scale(1.05);
-
-    box-shadow:
-        0 0 25px rgba(130, 120, 220, 0.85);
-}
-
-
-/* =========================================
-   CORRECCIÓN DEL MENÚ HAMBURGUESA
-   NO MODIFICA LA PÁGINA PRINCIPAL
-========================================= */
-
-
-/* El contenido del menú puede desplazarse
-   si la pantalla es más chica */
-
-.sidebar {
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-
-/* =========================================
-   OPCIONES DEL MENÚ LATERAL
-========================================= */
-
-.sidebar .opcion {
-    width: 100%;
-    height: 87px;
-    min-height: 87px;
-
-    padding: 0 50px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 0;
-
-    border-bottom: 1px solid #111f58;
-
-    transition:
-        background 0.25s ease;
-}
-
-
-/* Primera opción */
-
-.sidebar .opcion:first-child {
-    border-top: 1px solid #111f58;
-}
-
-
-/* =========================================
-   HOVER DEL MENÚ
-========================================= */
-
-/* IMPORTANTE:
-   no mover la opción al pasar el mouse */
-
-.sidebar .opcion:hover {
-    background: #080d2d;
-
-    padding-left: 50px;
-
-    transform: none;
-}
-
-
-/* =========================================
-   ICONOS DEL MENÚ
-========================================= */
-
-.sidebar .icono {
-    width: 56px;
-    height: 56px;
-
-    min-width: 56px;
-    min-height: 56px;
-
-    max-width: 56px;
-    max-height: 56px;
-
-    flex-shrink: 0;
-
-    margin: 0;
-
-    padding: 0;
-
-    border-radius: 17px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    color: white;
-
-    font-size: 14px;
-    font-weight: bold;
-
-    background: linear-gradient(
-        135deg,
-        #7450d8,
-        #5969dc,
-        #b5bb4c
-    );
-
-    box-shadow:
-        inset 0 0 15px rgba(255,255,255,0.15),
-        0 0 10px rgba(87,70,220,0.25);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-
-/* El icono solamente crece un poco.
-   No cambia de lugar */
-
-.sidebar .opcion:hover .icono {
-    transform: scale(1.05);
-
-    box-shadow:
-        inset 0 0 15px rgba(255,255,255,0.15),
-        0 0 18px rgba(87,70,220,0.45);
-}
-
-
-/* =========================================
-   TEXTO DEL MENÚ
-========================================= */
-
-.sidebar .opcion p {
-    width: auto;
-
-    max-width: 230px;
-
-    margin: 0 0 0 15px;
-
-    color: #eeeeee;
-
-    font-size: 13px;
-
-    line-height: 18px;
-
-    text-align: left;
-
-    white-space: normal;
-
-    overflow-wrap: break-word;
-}
-
-
-/* =========================================
-   SEPARACIÓN ENTRE ELEMENTOS
-========================================= */
-
-/* Evita que un texto largo invada
-   visualmente la siguiente opción */
-
-.sidebar .opcion + .opcion {
-    margin-top: 0;
-}
-
-
-/* =========================================
-   RESPONSIVE DEL MENÚ
-========================================= */
-
-@media (max-width: 600px) {
-
-    .sidebar {
-        width: 350px;
-
-        right: -350px;
-    }
-
-    .sidebar.abierto {
-        right: 0;
-    }
-
-    .sidebar .opcion {
-        padding: 0 30px;
-    }
-
-    .sidebar .opcion:hover {
-        padding-left: 30px;
-    }
-
-    .sidebar .opcion p {
-        max-width: 190px;
-
-        font-size: 12px;
-
-        line-height: 17px;
-    }
-
-}
-
-
-/* =========================================
-   ENLACES DE VÉASE TAMBIÉN
-========================================= */
 
 .enlace-opcion {
     text-decoration: none;
     color: inherit;
 }
 
-
-/* Evita que el enlace cambie el diseño */
-
 .enlace-opcion:visited {
     color: inherit;
 }
 
-
-/* Mantiene el tamaño de los elementos */
-
-.enlace-opcion .icono {
-    flex-shrink: 0;
-}
-
-
-/* Mantiene el efecto hover */
-
-.enlace-opcion:hover {
-    text-decoration: none;
-}
 
 /* =========================================
    LOGO SPRINT MÁSTER
@@ -986,11 +518,6 @@ main {
     padding: 30px;
 }
 
-
-/* =========================================
-   CONTENEDOR DEL LOGO
-========================================= */
-
 .logo-contenedor {
     width: 100%;
     max-width: 520px;
@@ -1006,11 +533,9 @@ main {
 
     background: rgba(255, 255, 255, 0.97);
 
-    box-shadow:
-        0 0 25px rgba(36, 68, 180, 0.25);
+    box-shadow: 0 0 25px rgba(36, 68, 180, 0.25);
 
     opacity: 0;
-
     transform: translateY(25px) scale(0.97);
 
     transition:
@@ -1019,21 +544,10 @@ main {
         box-shadow 0.3s ease;
 }
 
-
-/* =========================================
-   LOGO VISIBLE
-========================================= */
-
 .logo-contenedor.logo-visible {
     opacity: 1;
-
     transform: translateY(0) scale(1);
 }
-
-
-/* =========================================
-   IMAGEN
-========================================= */
 
 .logo-imagen {
     display: block;
@@ -1043,7 +557,6 @@ main {
     height: auto;
 
     object-fit: contain;
-
     border-radius: 15px;
 
     cursor: pointer;
@@ -1053,66 +566,43 @@ main {
         filter 0.4s ease;
 }
 
-
-/* =========================================
-   EFECTO AL PASAR EL MOUSE
-========================================= */
-
 .logo-contenedor:hover {
-    box-shadow:
-        0 0 35px rgba(36, 68, 180, 0.45);
+    box-shadow: 0 0 35px rgba(36, 68, 180, 0.45);
 }
 
 .logo-contenedor:hover .logo-imagen {
     transform: scale(1.03);
 }
 
-
-/* =========================================
-   TEXTO
-========================================= */
-
 .logo-texto {
     width: 100%;
-
     text-align: center;
-
     margin-top: 10px;
 }
 
 .logo-texto h1 {
     color: #10264a;
-
     font-size: 28px;
-
     font-weight: bold;
-
     letter-spacing: 4px;
-
     margin-bottom: 8px;
 }
 
 .logo-texto p {
     color: #3f4857;
-
     font-size: 11px;
-
     letter-spacing: 3px;
-
     margin: 0;
 }
 
 
-/* =========================================
-   ANIMACIÓN AL HACER CLICK
-========================================= */
+/* ANIMACIÓN LOGO */
 
 .logo-imagen.logo-click {
     animation: logoPulso 0.5s ease;
 }
 
 @keyframes logoPulso {
-
     0% {
         transform: scale(1);
     }
@@ -1128,14 +618,137 @@ main {
 
 
 /* =========================================
-   RESPONSIVE
+   PARTE INFERIOR
 ========================================= */
 
-@media (max-width: 600px) {
+.parte-inferior {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    padding: 0 7% 25px;
+
+    text-align: center;
+}
+
+.linea-inferior {
+    width: 100%;
+    height: 1px;
+    background: #14266e;
+    margin-bottom: 23px;
+}
+
+.sobre-nosotros {
+    border: none;
+
+    padding: 9px 32px;
+    border-radius: 25px;
+
+    background: linear-gradient(
+        90deg,
+        #8580dd,
+        #9b8ce6
+    );
+
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 0 15px rgba(130, 120, 220, 0.65);
+
+    transition: 0.3s ease;
+}
+
+.sobre-nosotros:hover {
+    transform: scale(1.05);
+
+    box-shadow: 0 0 25px rgba(130, 120, 220, 0.85);
+}
+
+
+/* =========================================
+   RESPONSIVE DEL MENÚ
+========================================= */
+
+@media (max-width: 900px) {
+
+    .boton-menu {
+        top: 32px;
+        right: 15px;
+    }
+
+    .sidebar {
+        width: min(380px, 90vw);
+        padding: 90px 20px 20px;
+    }
+
+    .enlace-menu {
+        padding: 14px 12px;
+        font-size: 14px;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .boton-menu {
+        top: 38px;
+        right: 8px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .sidebar {
+        width: min(340px, 90vw);
+        padding: 80px 18px 20px;
+    }
+
+    .enlace-menu {
+        padding: 13px 10px;
+        font-size: 14px;
+    }
+
+    .titulo h1 {
+        font-size: 19px;
+        max-width: 75vw;
+    }
+
+    main {
+        grid-template-columns: 1fr;
+        gap: 45px;
+        padding: 35px 7%;
+    }
+
+    main.contenido-secundario {
+        padding-top: 35px;
+    }
+
+    .texto-definicion,
+    .caja-texto {
+        height: auto;
+        min-height: 350px;
+        max-width: 100%;
+    }
+
+    .opciones {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 45px 15px;
+    }
+
+    .opciones .opcion {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .opciones .opcion p {
+        width: 100%;
+    }
 
     .logo-seccion {
         min-height: 400px;
-
         padding: 20px;
     }
 
@@ -1149,13 +762,13 @@ main {
 
     .logo-texto h1 {
         font-size: 22px;
-
         letter-spacing: 3px;
     }
 
     .logo-texto p {
         font-size: 9px;
-
         letter-spacing: 2px;
     }
+
 }
+

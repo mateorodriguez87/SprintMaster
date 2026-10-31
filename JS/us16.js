@@ -173,5 +173,5 @@ tarjetas.forEach((tarjeta) => {
 document.addEventListener("keydown", (evento) => {
     if (evento.key === "Escape") {
         cerrarTarjetaAmpliada();
-    }
+    }   
 });
