@@ -1,3 +1,26 @@
+// =========================================
+// MENÚ LATERAL
+// =========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const botonMenu = document.getElementById("botonMenu");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    if (!botonMenu || !sidebar || !overlay) return;
+
+    function toggleMenu() {
+        botonMenu.classList.toggle("activo");
+        sidebar.classList.toggle("abierto");
+        overlay.classList.toggle("activo");
+    }
+
+    botonMenu.addEventListener("click", toggleMenu);
+
+    overlay.addEventListener("click", toggleMenu);
+
+});
 document.addEventListener("DOMContentLoaded", () => {
 
     const filtroPrincipal = document.getElementById("filtroPrincipal");
