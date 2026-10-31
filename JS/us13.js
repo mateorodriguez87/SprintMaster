@@ -43,3 +43,36 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+// =========================================
+// CONTROL DEL MENÚ LATERAL
+// =========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const botonMenu = document.getElementById("faqMenuBoton");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    if (!botonMenu || !sidebar || !overlay) return;
+
+    function toggleMenu() {
+
+        botonMenu.classList.toggle("activo");
+        sidebar.classList.toggle("abierto");
+        overlay.classList.toggle("activo");
+
+        const menuAbierto = sidebar.classList.contains("abierto");
+
+        botonMenu.setAttribute("aria-expanded", menuAbierto);
+
+        botonMenu.setAttribute(
+            "aria-label",
+            menuAbierto ? "Cerrar menú" : "Abrir menú"
+        );
+    }
+
+    botonMenu.addEventListener("click", toggleMenu);
+
+    overlay.addEventListener("click", toggleMenu);
+
+});
