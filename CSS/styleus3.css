@@ -199,9 +199,17 @@ body {
     right: -440px;
 
     width: 440px;
+    max-width: 90vw;
     height: 100vh;
+    height: 100dvh;
 
-    padding-top: 127px;
+    padding: 127px 25px 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 10px;
 
     background: #02051b;
 
@@ -215,14 +223,142 @@ body {
     overflow-x: hidden;
 }
 
-
 /* MENÚ ABIERTO */
 
 .sidebar.abierto {
     right: 0;
 }
 
+/* BARRA DE DESPLAZAMIENTO */
 
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #02051b;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #203590;
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #2850bd;
+}
+
+/* =========================================
+   ENLACES DEL MENÚ
+========================================= */
+
+.enlace-menu {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 55px;
+    flex-shrink: 0;
+
+    padding: 12px 18px;
+
+    color: #eeeeee;
+    background: rgba(8, 13, 45, 0.65);
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+
+    text-decoration: none;
+    overflow-wrap: anywhere;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+/* EFECTO HOVER */
+
+.enlace-menu:hover {
+    background: #080d2d;
+    border-color: #2850bd;
+    color: #ffffff;
+
+    transform: translateX(-4px);
+}
+
+/* PÁGINA ACTUAL */
+
+.enlace-menu.activo {
+    background: rgba(40, 80, 189, 0.25);
+    border-color: #2850bd;
+
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* =========================================
+   OVERLAY
+========================================= */
+
+.overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: 0.3s;
+
+    z-index: 80;
+}
+
+.overlay.activo {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* =========================================
+   RESPONSIVE DEL MENÚ
+========================================= */
+
+@media (max-width: 600px) {
+
+    .sidebar {
+        width: 350px;
+        max-width: 88vw;
+
+        right: -350px;
+
+        padding: 100px 18px 25px;
+
+        gap: 8px;
+    }
+
+    .sidebar.abierto {
+        right: 0;
+    }
+
+    .enlace-menu {
+        min-height: 48px;
+
+        padding: 10px 14px;
+
+        font-size: 12px;
+    }
+
+}
 /* =========================================
    OVERLAY
 ========================================= */
