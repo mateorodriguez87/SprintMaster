@@ -72,3 +72,90 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+document.addEventListener("DOMContentLoaded", () => {
+
+    // =========================================
+    // ELEMENTOS DEL MENÚ LATERAL
+    // =========================================
+
+    const botonMenu = document.getElementById("faqMenuBoton");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    // Comprobar que existan los elementos
+    if (!botonMenu || !sidebar || !overlay) {
+        console.error("No se encontraron los elementos del menú lateral.");
+        return;
+    }
+
+    // =========================================
+    // ABRIR Y CERRAR MENÚ
+    // =========================================
+
+    function abrirMenu() {
+
+        sidebar.classList.add("abierto");
+        overlay.classList.add("activo");
+        botonMenu.classList.add("activo");
+
+        botonMenu.setAttribute("aria-expanded", "true");
+        botonMenu.setAttribute("aria-label", "Cerrar menú");
+
+        sidebar.setAttribute("aria-hidden", "false");
+    }
+
+    function cerrarMenu() {
+
+        sidebar.classList.remove("abierto");
+        overlay.classList.remove("activo");
+        botonMenu.classList.remove("activo");
+
+        botonMenu.setAttribute("aria-expanded", "false");
+        botonMenu.setAttribute("aria-label", "Abrir menú");
+
+        sidebar.setAttribute("aria-hidden", "true");
+    }
+
+    // =========================================
+    // EVENTO DEL BOTÓN HAMBURGUESA
+    // =========================================
+
+    botonMenu.addEventListener("click", () => {
+
+        if (sidebar.classList.contains("abierto")) {
+            cerrarMenu();
+        } else {
+            abrirMenu();
+        }
+
+    });
+
+    // =========================================
+    // CERRAR AL HACER CLIC FUERA DEL MENÚ
+    // =========================================
+
+    overlay.addEventListener("click", cerrarMenu);
+
+    // =========================================
+    // CERRAR AL SELECCIONAR UN ENLACE
+    // =========================================
+
+    sidebar.querySelectorAll("a").forEach((enlace) => {
+
+        enlace.addEventListener("click", cerrarMenu);
+
+    });
+
+    // =========================================
+    // CERRAR CON LA TECLA ESCAPE
+    // =========================================
+
+    document.addEventListener("keydown", (evento) => {
+
+        if (evento.key === "Escape") {
+            cerrarMenu();
+        }
+
+    });
+
+});
