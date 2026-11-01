@@ -12,37 +12,74 @@ const botonMenu = document.getElementById("botonMenu");
 const menuLateral = document.getElementById("menuLateral");
 const superposicion = document.getElementById("superposicion");
 
-
 /* =====================================================
-   2. ABRIR Y CERRAR EL MENÚ LATERAL
+   1. CONTROL DEL MENÚ LATERAL
 ===================================================== */
 
-function cambiarMenu(abrir) {
+document.addEventListener("DOMContentLoaded", () => {
 
-    botonMenu.classList.toggle("activo", abrir);
+    const botonMenu = document.getElementById("faqMenuBoton");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
 
-    menuLateral.classList.toggle("abierto", abrir);
+    if (!botonMenu || !sidebar || !overlay) {
+        console.error("No se encontraron los elementos del menú lateral.");
+        return;
+    }
 
-    superposicion.classList.toggle("visible", abrir);
+    function abrirMenu() {
 
-    document.body.classList.toggle("menu-abierto", abrir);
+        botonMenu.classList.add("activo");
+        sidebar.classList.add("abierto");
+        overlay.classList.add("activo");
 
-    botonMenu.setAttribute(
-        "aria-expanded",
-        String(abrir)
-    );
+        botonMenu.setAttribute("aria-expanded", "true");
+        botonMenu.setAttribute("aria-label", "Cerrar menú");
 
-    botonMenu.setAttribute(
-        "aria-label",
-        abrir ? "Cerrar menú" : "Abrir menú"
-    );
+        sidebar.setAttribute("aria-hidden", "false");
 
-    menuLateral.setAttribute(
-        "aria-hidden",
-        String(!abrir)
-    );
+    }
 
-}
+    function cerrarMenu() {
+
+        botonMenu.classList.remove("activo");
+        sidebar.classList.remove("abierto");
+        overlay.classList.remove("activo");
+
+        botonMenu.setAttribute("aria-expanded", "false");
+        botonMenu.setAttribute("aria-label", "Abrir menú");
+
+        sidebar.setAttribute("aria-hidden", "true");
+
+    }
+
+    botonMenu.addEventListener("click", () => {
+
+        if (sidebar.classList.contains("abierto")) {
+            cerrarMenu();
+        } else {
+            abrirMenu();
+        }
+
+    });
+
+    overlay.addEventListener("click", cerrarMenu);
+
+    sidebar.querySelectorAll(".enlace-menu").forEach((enlace) => {
+
+        enlace.addEventListener("click", cerrarMenu);
+
+    });
+
+    document.addEventListener("keydown", (evento) => {
+
+        if (evento.key === "Escape") {
+            cerrarMenu();
+        }
+
+    });
+
+});
 
 
 /* =====================================================
