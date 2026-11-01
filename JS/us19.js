@@ -541,3 +541,67 @@ function goPrevious() {
     renderStep();
   }
 }
+// =========================================
+// MENÚ LATERAL COMPARTIDO
+// =========================================
+
+const botonMenu = document.getElementById("faqMenuBoton");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
+
+function abrirMenu() {
+
+    botonMenu.classList.add("activo");
+    sidebar.classList.add("abierto");
+    overlay.classList.add("activo");
+
+    sidebar.inert = false;
+
+    botonMenu.setAttribute("aria-expanded", "true");
+    botonMenu.setAttribute("aria-label", "Cerrar menú");
+
+    sidebar.setAttribute("aria-hidden", "false");
+}
+
+function cerrarMenu() {
+
+    botonMenu.classList.remove("activo");
+    sidebar.classList.remove("abierto");
+    overlay.classList.remove("activo");
+
+    sidebar.inert = true;
+
+    botonMenu.setAttribute("aria-expanded", "false");
+    botonMenu.setAttribute("aria-label", "Abrir menú");
+
+    sidebar.setAttribute("aria-hidden", "true");
+}
+
+if (botonMenu && sidebar && overlay) {
+
+    botonMenu.addEventListener("click", () => {
+
+        if (sidebar.classList.contains("abierto")) {
+            cerrarMenu();
+        } else {
+            abrirMenu();
+        }
+
+    });
+
+    overlay.addEventListener("click", cerrarMenu);
+
+    sidebar.querySelectorAll(".enlace-menu").forEach(enlace => {
+        enlace.addEventListener("click", cerrarMenu);
+    });
+
+    document.addEventListener("keydown", evento => {
+
+        if (evento.key === "Escape") {
+            cerrarMenu();
+        }
+
+    });
+
+    cerrarMenu();
+}

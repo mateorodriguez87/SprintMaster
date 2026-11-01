@@ -780,3 +780,211 @@ body::before {
     grid-template-columns: 1fr;
   }
 }
+/* =========================================
+   MENÚ LATERAL COMPARTIDO
+========================================= */
+
+/* BOTÓN HAMBURGUESA */
+
+.faq-menu-boton {
+    position: fixed;
+    top: 32px;
+    right: 50px;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    background: #07184d;
+    border: 1px solid #2850bd;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 101;
+    transition: 0.3s ease;
+}
+
+.faq-menu-boton:hover {
+    background: #0d2b75;
+    box-shadow: 0 0 15px rgba(40, 80, 189, 0.5);
+}
+
+.faq-menu-boton span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+/* ANIMACIÓN DEL BOTÓN */
+
+.faq-menu-boton.activo span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.faq-menu-boton.activo span:nth-child(2) {
+    opacity: 0;
+}
+
+.faq-menu-boton.activo span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -440px;
+    width: 440px;
+    max-width: 90vw;
+    height: 100vh;
+    height: 100dvh;
+    padding: 127px 25px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    background: #02051b;
+    border-left: 1px solid #15276d;
+    transition: right 0.4s ease;
+    z-index: 100;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.sidebar.abierto {
+    right: 0;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #02051b;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #203590;
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #2850bd;
+}
+
+/* ENLACES */
+
+.enlace-menu {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 55px;
+    flex-shrink: 0;
+    padding: 12px 18px;
+    color: #eee;
+    background: rgba(8, 13, 45, 0.65);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    transition:
+        background 0.25s,
+        border-color 0.25s,
+        color 0.25s,
+        transform 0.25s;
+}
+
+.enlace-menu:hover {
+    background: #080d2d;
+    border-color: #2850bd;
+    color: white;
+    transform: translateX(-4px);
+}
+
+.enlace-menu.activo {
+    background: rgba(40, 80, 189, 0.25);
+    border-color: #2850bd;
+    color: white;
+    font-weight: bold;
+}
+
+/* OVERLAY */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: 0.3s ease;
+    z-index: 90;
+}
+
+.overlay.activo {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* TABLETS */
+
+@media (max-width: 900px) {
+
+    .faq-menu-boton {
+        top: 20px;
+        right: 20px;
+        width: 46px;
+        height: 46px;
+    }
+
+    .sidebar {
+        width: 350px;
+        max-width: 88vw;
+        right: -350px;
+        padding: 100px 18px 25px;
+        gap: 8px;
+    }
+
+    .sidebar.abierto {
+        right: 0;
+    }
+
+    .enlace-menu {
+        min-height: 48px;
+        padding: 10px 14px;
+        font-size: 12px;
+    }
+}
+
+/* CELULARES */
+
+@media (max-width: 600px) {
+
+    .faq-menu-boton {
+        top: 20px;
+        right: 12px;
+        width: 46px;
+        height: 46px;
+    }
+
+    .sidebar {
+        width: 350px;
+        max-width: 88vw;
+        right: -350px;
+        padding: 100px 18px 25px;
+    }
+
+    .sidebar.abierto {
+        right: 0;
+    }
+}
