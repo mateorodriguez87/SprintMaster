@@ -109,60 +109,71 @@ formulario.addEventListener("submit", (evento) => {
     formulario.reset();
     actualizarContador();
 });
+// =========================================
+// MENÚ LATERAL ESTÁNDAR
+// =========================================
 
-    // =========================================
-    // MENÚ HAMBURGUESA
-    // =========================================
+const botonMenu = document.getElementById("faqMenuBoton");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
 
-    const botonMenu = document.getElementById("contactoMenuBoton");
-    const sidebar = document.getElementById("contactoSidebar");
-    const overlay = document.getElementById("contactoOverlay");
-    const enlacesMenu = sidebar.querySelectorAll("a");
+function abrirMenu() {
 
-    function abrirMenu() {
-        sidebar.classList.add("abierto");
-        overlay.classList.add("activo");
-        botonMenu.classList.add("activo");
+    botonMenu.classList.add("activo");
+    sidebar.classList.add("abierto");
+    overlay.classList.add("activo");
 
-        sidebar.inert = false;
+    sidebar.inert = false;
 
-        botonMenu.setAttribute("aria-expanded", "true");
-        botonMenu.setAttribute("aria-label", "Cerrar menú");
+    botonMenu.setAttribute("aria-expanded", "true");
+    botonMenu.setAttribute("aria-label", "Cerrar menú");
+
+    sidebar.setAttribute("aria-hidden", "false");
+
+}
+
+function cerrarMenu() {
+
+    botonMenu.classList.remove("activo");
+    sidebar.classList.remove("abierto");
+    overlay.classList.remove("activo");
+
+    sidebar.inert = true;
+
+    botonMenu.setAttribute("aria-expanded", "false");
+    botonMenu.setAttribute("aria-label", "Abrir menú");
+
+    sidebar.setAttribute("aria-hidden", "true");
+
+}
+
+botonMenu.addEventListener("click", () => {
+
+    if (sidebar.classList.contains("abierto")) {
+        cerrarMenu();
+    } else {
+        abrirMenu();
     }
 
-    function cerrarMenu() {
-        sidebar.classList.remove("abierto");
-        overlay.classList.remove("activo");
-        botonMenu.classList.remove("activo");
+});
 
-        sidebar.inert = true;
+overlay.addEventListener("click", cerrarMenu);
 
-        botonMenu.setAttribute("aria-expanded", "false");
-        botonMenu.setAttribute("aria-label", "Abrir menú");
+sidebar.querySelectorAll(".enlace-menu").forEach((enlace) => {
+
+    enlace.addEventListener("click", cerrarMenu);
+
+});
+
+document.addEventListener("keydown", (evento) => {
+
+    if (evento.key === "Escape") {
+        cerrarMenu();
     }
 
-    botonMenu.addEventListener("click", () => {
-        if (sidebar.classList.contains("abierto")) {
-            cerrarMenu();
-        } else {
-            abrirMenu();
-        }
-    });
+});
 
-    overlay.addEventListener("click", cerrarMenu);
+// Estado inicial
 
-    enlacesMenu.forEach((enlace) => {
-        enlace.addEventListener("click", cerrarMenu);
-    });
-
-    document.addEventListener("keydown", (evento) => {
-        if (evento.key === "Escape") {
-            cerrarMenu();
-        }
-    });
-
-    // Estado inicial
-    cerrarMenu();
-    actualizarContador();
-
+cerrarMenu();
 });
